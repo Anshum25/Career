@@ -16,9 +16,11 @@ import RecruiterDashboard from "@/pages/dashboard/RecruiterDashboard";
 import AdminDashboard from "@/pages/dashboard/AdminDashboard";
 import JobSearch from "@/pages/jobs/JobSearch";
 import JobDetails from "@/pages/jobs/JobDetails";
+import JobPost from "@/pages/jobs/JobPost";
 import ProfileSetup from "@/pages/profile/ProfileSetup";
 import ResumeBuilder from "@/pages/profile/ResumeBuilder";
 import ApplicationTracker from "@/pages/applications/ApplicationTracker";
+import MessageCenter from "@/components/messaging/MessageCenter";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -45,8 +47,10 @@ function App() {
                 />
                 <Route path="/dashboard/admin" element={<AdminDashboard />} />
                 <Route path="/jobs" element={<JobSearch />} />
+                <Route path="/jobs/post" element={<JobPost />} />
                 <Route path="/jobs/:id" element={<JobDetails />} />
                 <Route path="/applications" element={<ApplicationTracker />} />
+                <Route path="/messages" element={<MessageCenter />} />
                 <Route path="/profile/setup" element={<ProfileSetup />} />
                 <Route path="/resume/builder" element={<ResumeBuilder />} />
                 <Route path="*" element={<NotFound />} />

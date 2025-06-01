@@ -21,6 +21,7 @@ import ProfileSetup from "@/pages/profile/ProfileSetup";
 import ResumeBuilder from "@/pages/profile/ResumeBuilder";
 import ApplicationTracker from "@/pages/applications/ApplicationTracker";
 import MessageCenter from "@/components/messaging/MessageCenter";
+import ResumeAnalyzer from "@/pages/tools/ResumeAnalyzer";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -53,6 +54,7 @@ function App() {
                 <Route path="/messages" element={<MessageCenter />} />
                 <Route path="/profile/setup" element={<ProfileSetup />} />
                 <Route path="/resume/builder" element={<ResumeBuilder />} />
+                <Route path="/resume/analyzer" element={<ResumeAnalyzer />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

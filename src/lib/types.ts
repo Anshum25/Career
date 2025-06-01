@@ -205,14 +205,14 @@ export interface ChatMessage {
 export interface Application {
   id: string;
   jobId: string;
-  applicantId: string;
+  candidateId: string;
   status:
-    | "applied"
-    | "viewed"
-    | "shortlisted"
-    | "interview"
+    | "pending"
+    | "reviewed"
+    | "interviewed"
     | "offered"
-    | "rejected";
+    | "rejected"
+    | "withdrawn";
   appliedAt: Date;
   coverLetter?: string;
   resumeUrl?: string;

@@ -144,9 +144,20 @@ export default function Navbar() {
                 </Badge>
               </Button>
 
-              <Button variant="ghost" size="icon">
-                <MessageSquareIcon className="h-5 w-5" />
+              <Button variant="ghost" size="icon" asChild className="relative">
+                <Link to="/messages">
+                  <MessageSquareIcon className="h-5 w-5" />
+                  <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-xs">
+                    2
+                  </Badge>
+                </Link>
               </Button>
+
+              {user?.role === "recruiter" && (
+                <Button asChild>
+                  <Link to="/jobs/post">Post Job</Link>
+                </Button>
+              )}
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -188,6 +199,21 @@ export default function Navbar() {
                     >
                       <UserIcon className="h-4 w-4" />
                       Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/applications"
+                      className="flex items-center gap-2"
+                    >
+                      <BriefcaseIcon className="h-4 w-4" />
+                      My Applications
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/messages" className="flex items-center gap-2">
+                      <MessageSquareIcon className="h-4 w-4" />
+                      Messages
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>

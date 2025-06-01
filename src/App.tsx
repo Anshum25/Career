@@ -13,10 +13,12 @@ import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
 import JobSeekerDashboard from "@/pages/dashboard/JobSeekerDashboard";
 import RecruiterDashboard from "@/pages/dashboard/RecruiterDashboard";
+import AdminDashboard from "@/pages/dashboard/AdminDashboard";
 import JobSearch from "@/pages/jobs/JobSearch";
 import JobDetails from "@/pages/jobs/JobDetails";
 import ProfileSetup from "@/pages/profile/ProfileSetup";
 import ResumeBuilder from "@/pages/profile/ResumeBuilder";
+import ApplicationTracker from "@/pages/applications/ApplicationTracker";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -41,8 +43,10 @@ function App() {
                   path="/dashboard/recruiter"
                   element={<RecruiterDashboard />}
                 />
+                <Route path="/dashboard/admin" element={<AdminDashboard />} />
                 <Route path="/jobs" element={<JobSearch />} />
                 <Route path="/jobs/:id" element={<JobDetails />} />
+                <Route path="/applications" element={<ApplicationTracker />} />
                 <Route path="/profile/setup" element={<ProfileSetup />} />
                 <Route path="/resume/builder" element={<ResumeBuilder />} />
                 <Route path="*" element={<NotFound />} />

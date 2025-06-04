@@ -17,7 +17,7 @@ import {
   StarIcon,
   ZapIcon,
   TargetIcon,
-  FireIcon,
+  FlameIcon,
   CrownIcon,
   GiftIcon,
   TrendingUpIcon,
@@ -449,7 +449,7 @@ export default function GamifiedJobHunt() {
           <Card>
             <CardContent className="p-4 text-center">
               <div className="flex items-center justify-center gap-1 mb-2">
-                <FireIcon className="h-5 w-5 text-orange-500" />
+                <FlameIcon className="h-5 w-5 text-orange-500" />
                 <span className="text-2xl font-bold text-orange-600">
                   {user.streak}
                 </span>
@@ -696,7 +696,7 @@ export default function GamifiedJobHunt() {
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <span>Level {player.level}</span>
                           <div className="flex items-center gap-1">
-                            <FireIcon className="h-3 w-3 text-orange-500" />
+                            <FlameIcon className="h-3 w-3 text-orange-500" />
                             <span>{player.streak} day streak</span>
                           </div>
                         </div>

@@ -30,7 +30,7 @@ import {
   EyeIcon,
   ClockIcon,
   TrendingUpIcon,
-  FireIcon,
+  FlameIcon,
   StarIcon,
   PinIcon,
   FlagIcon,

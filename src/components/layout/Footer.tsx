@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BriefcaseIcon } from "lucide-react";
+import { Briefcase } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <BriefcaseIcon className="h-6 w-6 text-primary" />
+              <Briefcase className="h-6 w-6 text-primary" />
               <span className="text-lg font-bold">CareerAI</span>
             </Link>
             <p className="text-sm text-muted-foreground">

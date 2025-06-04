@@ -433,7 +433,7 @@ export default function EnhancedJobFilters({
             {/* Company Size */}
             <div className="space-y-3">
               <Label className="text-sm font-medium flex items-center gap-2">
-                <BuildingIcon className="w-4 h-4" />
+                <Building className="w-4 h-4" />
                 Company Size
               </Label>
               <div className="space-y-2">
@@ -472,7 +472,7 @@ export default function EnhancedJobFilters({
             {/* Industry */}
             <div className="space-y-3">
               <Label className="text-sm font-medium flex items-center gap-2">
-                <TagIcon className="w-4 h-4" />
+                <Tag className="w-4 h-4" />
                 Industry
               </Label>
               <ScrollArea className="h-48">

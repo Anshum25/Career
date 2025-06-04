@@ -19,7 +19,7 @@ import {
   Building2,
   AlertTriangle,
   Shield,
-  TrendingUpIcon,
+  TrendingUp,
   MessageSquareIcon,
   CheckCircleIcon,
   XCircleIcon,

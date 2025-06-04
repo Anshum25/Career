@@ -27,7 +27,7 @@ import {
   FilterIcon,
   SearchIcon,
   MoreHorizontalIcon,
-  TrendingUpIcon,
+  TrendingUp,
   Users,
   Send,
   Building2,

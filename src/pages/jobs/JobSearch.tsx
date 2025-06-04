@@ -34,7 +34,7 @@ import {
   BuildingIcon,
   StarIcon,
   EyeIcon,
-  TrendingUpIcon,
+  TrendingUp,
   MapIcon,
   ListIcon,
   RefreshCwIcon,

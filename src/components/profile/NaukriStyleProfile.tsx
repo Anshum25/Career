@@ -48,7 +48,7 @@ import {
   CalendarIcon,
   BuildingIcon,
   FileTextIcon,
-  VerifiedIcon,
+  CheckCircleIcon,
 } from "lucide-react";
 
 interface Experience {
@@ -249,7 +249,7 @@ export default function NaukriStyleProfile() {
                   <div className="flex items-center justify-center gap-2">
                     <h2 className="text-xl font-bold">{profileData.name}</h2>
                     {profileData.isEmailVerified && (
-                      <VerifiedIcon className="h-5 w-5 text-blue-500" />
+                      <CheckCircleIcon className="h-5 w-5 text-blue-500" />
                     )}
                   </div>
                   <p className="text-muted-foreground">{profileData.title}</p>

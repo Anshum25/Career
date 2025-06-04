@@ -221,8 +221,15 @@ export default function JobCard({ job }: JobCardProps) {
               </div>
 
               <div className="flex items-center gap-2">
-                <Button size="sm" variant="ghost">
-                  <BookmarkIcon className="w-4 h-4" />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleSaveToggle}
+                  className={isSaved ? "text-primary" : ""}
+                >
+                  <BookmarkIcon
+                    className={`w-4 h-4 ${isSaved ? "fill-current" : ""}`}
+                  />
                 </Button>
                 <div className="text-xs text-muted-foreground">
                   {job.viewsCount} views

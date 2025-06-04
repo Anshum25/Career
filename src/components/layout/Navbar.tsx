@@ -1,6 +1,8 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme/ThemeProvider";
+import { NotificationCenter } from "@/components/notifications/NotificationCenter";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -137,12 +139,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {isAuthenticated ? (
             <>
-              <Button variant="ghost" size="icon" className="relative">
-                <BellIcon className="h-5 w-5" />
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-xs">
-                  3
-                </Badge>
-              </Button>
+              <NotificationCenter />
 
               <Button variant="ghost" size="icon" asChild className="relative">
                 <Link to="/messages">
@@ -159,6 +156,7 @@ export default function Navbar() {
                 </Button>
               )}
 
+              <ThemeToggle />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -214,6 +212,12 @@ export default function Navbar() {
                     <Link to="/messages" className="flex items-center gap-2">
                       <MessageSquareIcon className="h-4 w-4" />
                       Messages
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/saved-jobs" className="flex items-center gap-2">
+                      <BookmarkIcon className="h-4 w-4" />
+                      Saved Jobs
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>

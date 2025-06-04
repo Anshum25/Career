@@ -41,6 +41,7 @@ import GamifiedJobHunt from "@/components/gamification/GamifiedJobHunt";
 import JobSeekerForums from "@/components/community/JobSeekerForums";
 import PersonalityCareerTest from "@/components/assessment/PersonalityCareerTest";
 import JobJournal from "@/components/productivity/JobJournal";
+import FeatureHub from "@/components/navigation/FeatureHub";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -114,6 +115,7 @@ function App() {
                   element={<PersonalityCareerTest />}
                 />
                 <Route path="/tools/job-journal" element={<JobJournal />} />
+                <Route path="/features" element={<FeatureHub />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

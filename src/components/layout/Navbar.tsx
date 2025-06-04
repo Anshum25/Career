@@ -259,6 +259,15 @@ export default function Navbar() {
                           Find My Match
                         </Link>
                       </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/features"
+                          className="flex items-center gap-2"
+                        >
+                          <StarIcon className="h-4 w-4" />
+                          All Features
+                        </Link>
+                      </DropdownMenuItem>
                     </>
                   )}
                   {user.role === "admin" && (

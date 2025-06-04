@@ -38,6 +38,9 @@ import VoiceVideoInterview from "@/components/ai/VoiceVideoInterview";
 import RealTimeSkillMatcher from "@/components/ai/RealTimeSkillMatcher";
 import OneClickAutoApply from "@/components/automation/OneClickAutoApply";
 import GamifiedJobHunt from "@/components/gamification/GamifiedJobHunt";
+import JobSeekerForums from "@/components/community/JobSeekerForums";
+import PersonalityCareerTest from "@/components/assessment/PersonalityCareerTest";
+import JobJournal from "@/components/productivity/JobJournal";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -105,6 +108,12 @@ function App() {
                 />
                 <Route path="/auto-apply" element={<OneClickAutoApply />} />
                 <Route path="/gamification" element={<GamifiedJobHunt />} />
+                <Route path="/community/forums" element={<JobSeekerForums />} />
+                <Route
+                  path="/assessment/personality"
+                  element={<PersonalityCareerTest />}
+                />
+                <Route path="/tools/job-journal" element={<JobJournal />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { AuthProvider } from "@/hooks/useAuth";
 
 // Layout Components
@@ -22,13 +22,15 @@ import ResumeBuilder from "@/pages/profile/ResumeBuilder";
 import ApplicationTracker from "@/pages/applications/ApplicationTracker";
 import MessageCenter from "@/components/messaging/MessageCenter";
 import ResumeAnalyzer from "@/pages/tools/ResumeAnalyzer";
+import SavedJobs from "@/components/jobs/SavedJobs";
+import NotificationPage from "@/components/notifications/NotificationCenter";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
 
 function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+    <ThemeProvider defaultTheme="system">
       <AuthProvider>
         <BrowserRouter>
           <div className="min-h-screen bg-background flex flex-col">
@@ -55,6 +57,8 @@ function App() {
                 <Route path="/profile/setup" element={<ProfileSetup />} />
                 <Route path="/resume/builder" element={<ResumeBuilder />} />
                 <Route path="/resume/analyzer" element={<ResumeAnalyzer />} />
+                <Route path="/saved-jobs" element={<SavedJobs />} />
+                <Route path="/notifications" element={<NotificationPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

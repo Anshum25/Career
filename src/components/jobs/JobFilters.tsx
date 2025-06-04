@@ -263,7 +263,7 @@ export default function JobFilters({
         {/* Experience Level */}
         <div className="space-y-3">
           <Label className="flex items-center gap-2">
-            <TrendingUpIcon className="w-4 h-4" />
+            <TrendingUp className="w-4 h-4" />
             Experience Level
           </Label>
           <div className="space-y-2">

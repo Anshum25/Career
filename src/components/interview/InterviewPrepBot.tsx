@@ -337,7 +337,7 @@ export default function InterviewPrepBot() {
         <Card className="lg:col-span-1">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BrainIcon className="h-5 w-5" />
+              <Brain className="h-5 w-5" />
               Interview Setup
             </CardTitle>
             <CardDescription>Configure your practice session</CardDescription>
@@ -401,7 +401,7 @@ export default function InterviewPrepBot() {
 
             {!sessionStarted ? (
               <Button onClick={startInterview} className="w-full">
-                <PlayIcon className="h-4 w-4 mr-2" />
+                <Play className="h-4 w-4 mr-2" />
                 Start Interview
               </Button>
             ) : (
@@ -410,7 +410,7 @@ export default function InterviewPrepBot() {
                 variant="outline"
                 className="w-full"
               >
-                <RefreshCwIcon className="h-4 w-4 mr-2" />
+                <RefreshCw className="h-4 w-4 mr-2" />
                 New Session
               </Button>
             )}
@@ -431,7 +431,7 @@ export default function InterviewPrepBot() {
                   </div>
                   {currentSession.completedAt && (
                     <div className="flex items-center gap-1">
-                      <StarIcon className="h-3 w-3" />
+                      <Star className="h-3 w-3" />
                       Score: {currentSession.score}/100
                     </div>
                   )}
@@ -445,7 +445,7 @@ export default function InterviewPrepBot() {
         <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BotIcon className="h-5 w-5" />
+              <Bot className="h-5 w-5" />
               AI Interview Practice
             </CardTitle>
             <CardDescription>
@@ -457,7 +457,7 @@ export default function InterviewPrepBot() {
             <ScrollArea className="h-96 p-4">
               {messages.length === 0 && !sessionStarted ? (
                 <div className="text-center py-8">
-                  <BotIcon className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                  <Bot className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
                   <h3 className="text-lg font-medium mb-2">
                     Ready to Practice?
                   </h3>
@@ -478,11 +478,11 @@ export default function InterviewPrepBot() {
                       <Avatar className="h-8 w-8">
                         {message.type === "bot" ? (
                           <AvatarFallback className="bg-primary text-primary-foreground">
-                            <BotIcon className="h-4 w-4" />
+                            <Bot className="h-4 w-4" />
                           </AvatarFallback>
                         ) : (
                           <AvatarFallback className="bg-blue-500 text-white">
-                            <UserIcon className="h-4 w-4" />
+                            <User className="h-4 w-4" />
                           </AvatarFallback>
                         )}
                       </Avatar>
@@ -509,7 +509,7 @@ export default function InterviewPrepBot() {
                           )}
                           {message.rating && (
                             <div className="flex items-center gap-1">
-                              <StarIcon className="h-3 w-3 fill-current text-yellow-500" />
+                              <Star className="h-3 w-3 fill-current text-yellow-500" />
                               <span>{message.rating}/5</span>
                             </div>
                           )}
@@ -522,7 +522,7 @@ export default function InterviewPrepBot() {
                     <div className="flex items-start gap-3">
                       <Avatar className="h-8 w-8">
                         <AvatarFallback className="bg-primary text-primary-foreground">
-                          <BotIcon className="h-4 w-4" />
+                          <Bot className="h-4 w-4" />
                         </AvatarFallback>
                       </Avatar>
                       <div className="bg-muted p-3 rounded-lg">
@@ -570,9 +570,9 @@ export default function InterviewPrepBot() {
                       disabled={isTyping}
                     >
                       {isRecording ? (
-                        <StopCircleIcon className="h-4 w-4" />
+                        <StopCircle className="h-4 w-4" />
                       ) : (
-                        <MicIcon className="h-4 w-4" />
+                        <Mic className="h-4 w-4" />
                       )}
                     </Button>
                     <Button
@@ -580,7 +580,7 @@ export default function InterviewPrepBot() {
                       disabled={!input.trim() || isTyping}
                       size="sm"
                     >
-                      <SendIcon className="h-4 w-4" />
+                      <Send className="h-4 w-4" />
                     </Button>
                   </div>
                   <div className="text-xs text-muted-foreground mt-2">

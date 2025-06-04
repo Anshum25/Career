@@ -28,6 +28,7 @@ import {
   BuildingIcon,
   ClockIcon,
   TagIcon,
+  TrendingUp,
 } from "lucide-react";
 
 interface FiltersType {

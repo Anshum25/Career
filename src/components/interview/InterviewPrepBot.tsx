@@ -31,7 +31,7 @@ import {
   StarIcon,
   ClockIcon,
   CheckCircleIcon,
-  TrendingUpIcon,
+  TrendingUp,
   BrainIcon,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";

@@ -27,7 +27,7 @@ import NotificationPage from "@/components/notifications/NotificationCenter";
 import InterviewPrepBot from "@/components/interview/InterviewPrepBot";
 import CareerPathVisualizer from "@/components/career/CareerPathVisualizer";
 import JobTinder from "@/components/matching/JobTinder";
-import AdminDashboard from "@/components/admin/AdminDashboard";
+import ComprehensiveAdminDashboard from "@/components/admin/AdminDashboard";
 import NaukriStyleAuth from "@/components/auth/NaukriStyleAuth";
 import NaukriStyleProfile from "@/components/profile/NaukriStyleProfile";
 import JobAlerts from "@/components/features/JobAlerts";
@@ -74,7 +74,10 @@ function App() {
                 <Route path="/interview-prep" element={<InterviewPrepBot />} />
                 <Route path="/career-path" element={<CareerPathVisualizer />} />
                 <Route path="/find-my-match" element={<JobTinder />} />
-                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route
+                  path="/admin/dashboard"
+                  element={<ComprehensiveAdminDashboard />}
+                />
                 <Route path="/auth/naukri" element={<NaukriStyleAuth />} />
                 <Route path="/job-alerts" element={<JobAlerts />} />
                 <Route path="/companies" element={<CompanyProfiles />} />

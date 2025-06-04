@@ -572,7 +572,7 @@ export default function EnhancedJobFilters({
                 {filters.keywords && (
                   <Badge variant="secondary" className="gap-1">
                     Keywords: {filters.keywords}
-                    <XIcon
+                    <X
                       className="h-3 w-3 cursor-pointer"
                       onClick={() => handleFilterChange("keywords", "")}
                     />
@@ -581,7 +581,7 @@ export default function EnhancedJobFilters({
                 {filters.location && (
                   <Badge variant="secondary" className="gap-1">
                     Location: {filters.location}
-                    <XIcon
+                    <X
                       className="h-3 w-3 cursor-pointer"
                       onClick={() => handleFilterChange("location", "")}
                     />
@@ -590,7 +590,7 @@ export default function EnhancedJobFilters({
                 {filters.companyName && (
                   <Badge variant="secondary" className="gap-1">
                     Company: {filters.companyName}
-                    <XIcon
+                    <X
                       className="h-3 w-3 cursor-pointer"
                       onClick={() => handleFilterChange("companyName", "")}
                     />
@@ -599,7 +599,7 @@ export default function EnhancedJobFilters({
                 {filters.jobTypes.map((type) => (
                   <Badge key={type} variant="secondary" className="gap-1">
                     {jobTypeOptions.find((o) => o.value === type)?.label}
-                    <XIcon
+                    <X
                       className="h-3 w-3 cursor-pointer"
                       onClick={() =>
                         handleArrayFilterChange("jobTypes", type, false)
@@ -610,7 +610,7 @@ export default function EnhancedJobFilters({
                 {filters.workModes.map((mode) => (
                   <Badge key={mode} variant="secondary" className="gap-1">
                     {workModeOptions.find((o) => o.value === mode)?.label}
-                    <XIcon
+                    <X
                       className="h-3 w-3 cursor-pointer"
                       onClick={() =>
                         handleArrayFilterChange("workModes", mode, false)
@@ -621,7 +621,7 @@ export default function EnhancedJobFilters({
                 {filters.skills.map((skill) => (
                   <Badge key={skill} variant="secondary" className="gap-1">
                     {skill}
-                    <XIcon
+                    <X
                       className="h-3 w-3 cursor-pointer"
                       onClick={() =>
                         handleArrayFilterChange("skills", skill, false)

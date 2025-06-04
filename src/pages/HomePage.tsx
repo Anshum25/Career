@@ -61,7 +61,7 @@ export default function HomePage() {
       color: "text-orange-600",
     },
     {
-      icon: TrendingUpIcon,
+      icon: TrendingUp,
       title: "Career Coach AI",
       description:
         "Get personalized career advice, skill gap analysis, and growth recommendations.",

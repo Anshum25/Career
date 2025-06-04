@@ -20,19 +20,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  BotIcon,
-  UserIcon,
-  SendIcon,
-  MicIcon,
-  StopCircleIcon,
-  PlayIcon,
-  RefreshCwIcon,
-  BookIcon,
-  StarIcon,
-  ClockIcon,
-  CheckCircleIcon,
+  Bot,
+  User,
+  Send,
+  Mic,
+  StopCircle,
+  Play,
+  RefreshCw,
+  Book,
+  Star,
+  Clock,
+  CheckCircle,
   TrendingUp,
-  BrainIcon,
+  Brain,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 

@@ -25,6 +25,7 @@ import {
   UsersIcon,
   MapPinIcon,
   StarIcon,
+  BookmarkIcon,
 } from "lucide-react";
 
 export default function Navbar() {

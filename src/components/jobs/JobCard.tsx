@@ -10,7 +10,7 @@ import {
   BookmarkIcon,
   StarIcon,
   BriefcaseIcon,
-  TrendingUpIcon,
+  TrendingUp,
   EyeIcon,
 } from "lucide-react";
 import { Job } from "@/lib/types";

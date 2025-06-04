@@ -15,7 +15,7 @@ import {
   VideoIcon,
   MapPinIcon,
   UsersIcon,
-  TrendingUpIcon,
+  TrendingUp,
   GlobeIcon,
   ShieldIcon,
   ZapIcon,

@@ -23,7 +23,7 @@ import {
   AlertTriangleIcon,
   PlusIcon,
   EyeIcon,
-  BookmarkeIcon,
+  BookmarkIcon,
   BriefcaseIcon,
   MapPinIcon,
   DollarSignIcon,
@@ -552,7 +552,7 @@ export default function RealTimeSkillMatcher() {
                       <div className="flex gap-2">
                         <Button size="sm">Apply Now</Button>
                         <Button size="sm" variant="outline">
-                          <BookmarkeIcon className="h-4 w-4" />
+                          <BookmarkIcon className="h-4 w-4" />
                         </Button>
                       </div>
                       <Button size="sm" variant="ghost">

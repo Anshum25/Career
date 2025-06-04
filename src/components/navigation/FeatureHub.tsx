@@ -22,7 +22,7 @@ import {
   SearchIcon,
   MicIcon,
   BarChart3Icon,
-  BookmarkeIcon,
+  BookmarkIcon,
   BuildingIcon,
   BellIcon,
   MapPinIcon,
@@ -173,7 +173,7 @@ export default function FeatureHub() {
       title: "Advanced Saved Jobs",
       description:
         "Bookmark jobs with priority levels, status tracking, and personal notes",
-      icon: <BookmarkeIcon className="h-6 w-6" />,
+      icon: <BookmarkIcon className="h-6 w-6" />,
       category: "tools",
       path: "/saved-jobs",
       difficulty: "beginner",

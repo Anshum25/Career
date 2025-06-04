@@ -17,8 +17,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/components/ui/use-toast";
 import {
   BriefcaseIcon,
-  GoogleIcon,
-  LinkedinIcon,
   EyeIcon,
   EyeOffIcon,
   CheckCircleIcon,

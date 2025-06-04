@@ -22,6 +22,17 @@ interface JobCardProps {
 }
 
 export default function JobCard({ job }: JobCardProps) {
+  const { saveJob, removeSavedJob, isJobSaved } = useSavedJobs();
+  const isSaved = isJobSaved(job.id);
+
+  const handleSaveToggle = () => {
+    if (isSaved) {
+      removeSavedJob(job.id);
+    } else {
+      saveJob(job);
+    }
+  };
+
   const getWorkModeColor = (workMode: string) => {
     switch (workMode) {
       case "remote":

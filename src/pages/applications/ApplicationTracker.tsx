@@ -329,7 +329,7 @@ export default function ApplicationTracker() {
                 </div>
                 <div className="text-2xl font-bold">{responseRate}</div>
               </div>
-              <TrendingUpIcon className="h-8 w-8 text-muted-foreground" />
+              <TrendingUp className="h-8 w-8 text-muted-foreground" />
             </div>
           </CardContent>
         </Card>

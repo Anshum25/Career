@@ -30,7 +30,7 @@ import {
   ExternalLinkIcon,
   TrashIcon,
   SettingsIcon,
-  MarkAsUnreadIcon,
+  Mail,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { Link } from "react-router-dom";
@@ -414,7 +414,7 @@ export function NotificationCenter() {
                             }
                           >
                             {notification.read ? (
-                              <MarkAsUnreadIcon className="h-3 w-3" />
+                              <Mail className="h-3 w-3" />
                             ) : (
                               <CheckIcon className="h-3 w-3" />
                             )}

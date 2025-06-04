@@ -25,6 +25,13 @@ import ResumeAnalyzer from "@/pages/tools/ResumeAnalyzer";
 import SavedJobs from "@/components/jobs/SavedJobs";
 import NotificationPage from "@/components/notifications/NotificationCenter";
 import InterviewPrepBot from "@/components/interview/InterviewPrepBot";
+import CareerPathVisualizer from "@/components/career/CareerPathVisualizer";
+import JobTinder from "@/components/matching/JobTinder";
+import AdminDashboard from "@/components/admin/AdminDashboard";
+import NaukriStyleAuth from "@/components/auth/NaukriStyleAuth";
+import NaukriStyleProfile from "@/components/profile/NaukriStyleProfile";
+import JobAlerts from "@/components/features/JobAlerts";
+import CompanyProfiles from "@/components/features/CompanyProfiles";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -56,11 +63,21 @@ function App() {
                 <Route path="/applications" element={<ApplicationTracker />} />
                 <Route path="/messages" element={<MessageCenter />} />
                 <Route path="/profile/setup" element={<ProfileSetup />} />
+                <Route
+                  path="/profile/naukri"
+                  element={<NaukriStyleProfile />}
+                />
                 <Route path="/resume/builder" element={<ResumeBuilder />} />
                 <Route path="/resume/analyzer" element={<ResumeAnalyzer />} />
                 <Route path="/saved-jobs" element={<SavedJobs />} />
                 <Route path="/notifications" element={<NotificationPage />} />
                 <Route path="/interview-prep" element={<InterviewPrepBot />} />
+                <Route path="/career-path" element={<CareerPathVisualizer />} />
+                <Route path="/find-my-match" element={<JobTinder />} />
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route path="/auth/naukri" element={<NaukriStyleAuth />} />
+                <Route path="/job-alerts" element={<JobAlerts />} />
+                <Route path="/companies" element={<CompanyProfiles />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

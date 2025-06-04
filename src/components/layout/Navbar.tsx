@@ -223,7 +223,7 @@ export default function Navbar() {
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link
-                      to="/profile/setup"
+                      to="/profile/naukri"
                       className="flex items-center gap-2"
                     >
                       <SettingsIcon className="h-4 w-4" />
@@ -231,13 +231,44 @@ export default function Navbar() {
                     </Link>
                   </DropdownMenuItem>
                   {user.role === "job_seeker" && (
+                    <>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/job-alerts"
+                          className="flex items-center gap-2"
+                        >
+                          <BellIcon className="h-4 w-4" />
+                          Job Alerts
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/career-path"
+                          className="flex items-center gap-2"
+                        >
+                          <StarIcon className="h-4 w-4" />
+                          Career Path
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/find-my-match"
+                          className="flex items-center gap-2"
+                        >
+                          <StarIcon className="h-4 w-4" />
+                          Find My Match
+                        </Link>
+                      </DropdownMenuItem>
+                    </>
+                  )}
+                  {user.role === "admin" && (
                     <DropdownMenuItem asChild>
                       <Link
-                        to="/achievements"
+                        to="/admin/dashboard"
                         className="flex items-center gap-2"
                       >
-                        <StarIcon className="h-4 w-4" />
-                        My Achievements
+                        <SettingsIcon className="h-4 w-4" />
+                        Admin Dashboard
                       </Link>
                     </DropdownMenuItem>
                   )}

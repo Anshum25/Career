@@ -190,7 +190,7 @@ export default function EnhancedJobFilters({
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FilterIcon className="w-5 h-5" />
+            <Filter className="w-5 h-5" />
             <CardTitle className="text-lg">Filters</CardTitle>
             {activeFiltersCount > 0 && (
               <Badge variant="secondary">{activeFiltersCount}</Badge>
@@ -199,7 +199,7 @@ export default function EnhancedJobFilters({
           <div className="flex gap-2">
             {activeFiltersCount > 0 && (
               <Button variant="ghost" size="sm" onClick={onClearFilters}>
-                <XIcon className="w-4 h-4 mr-1" />
+                <X className="w-4 h-4 mr-1" />
                 Clear
               </Button>
             )}
@@ -223,7 +223,7 @@ export default function EnhancedJobFilters({
         {/* Keywords Search */}
         <div className="space-y-3">
           <Label className="text-sm font-medium flex items-center gap-2">
-            <SearchIcon className="w-4 h-4" />
+            <Search className="w-4 h-4" />
             Keywords
           </Label>
           <Input
@@ -236,7 +236,7 @@ export default function EnhancedJobFilters({
         {/* Location */}
         <div className="space-y-3">
           <Label className="text-sm font-medium flex items-center gap-2">
-            <MapPinIcon className="w-4 h-4" />
+            <MapPin className="w-4 h-4" />
             Location
           </Label>
           <Input
@@ -249,7 +249,7 @@ export default function EnhancedJobFilters({
         {/* Company Name */}
         <div className="space-y-3">
           <Label className="text-sm font-medium flex items-center gap-2">
-            <BuildingIcon className="w-4 h-4" />
+            <Building className="w-4 h-4" />
             Company
           </Label>
           <Input
@@ -262,7 +262,7 @@ export default function EnhancedJobFilters({
         {/* Posted Within */}
         <div className="space-y-3">
           <Label className="text-sm font-medium flex items-center gap-2">
-            <CalendarIcon className="w-4 h-4" />
+            <Calendar className="w-4 h-4" />
             Posted Within
           </Label>
           <Select
@@ -285,7 +285,7 @@ export default function EnhancedJobFilters({
         {/* Salary Range */}
         <div className="space-y-4">
           <Label className="text-sm font-medium flex items-center gap-2">
-            <DollarSignIcon className="w-4 h-4" />
+            <DollarSign className="w-4 h-4" />
             Salary Range
           </Label>
           <div className="px-2">
@@ -311,7 +311,7 @@ export default function EnhancedJobFilters({
         {/* Job Type */}
         <div className="space-y-3">
           <Label className="text-sm font-medium flex items-center gap-2">
-            <BriefcaseIcon className="w-4 h-4" />
+            <Briefcase className="w-4 h-4" />
             Job Type
           </Label>
           <div className="space-y-2">
@@ -350,7 +350,7 @@ export default function EnhancedJobFilters({
         {/* Work Mode */}
         <div className="space-y-3">
           <Label className="text-sm font-medium flex items-center gap-2">
-            <ClockIcon className="w-4 h-4" />
+            <Clock className="w-4 h-4" />
             Work Mode
           </Label>
           <div className="space-y-2">

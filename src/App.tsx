@@ -24,6 +24,7 @@ import MessageCenter from "@/components/messaging/MessageCenter";
 import ResumeAnalyzer from "@/pages/tools/ResumeAnalyzer";
 import SavedJobs from "@/components/jobs/SavedJobs";
 import NotificationPage from "@/components/notifications/NotificationCenter";
+import InterviewPrepBot from "@/components/interview/InterviewPrepBot";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/resume/analyzer" element={<ResumeAnalyzer />} />
                 <Route path="/saved-jobs" element={<SavedJobs />} />
                 <Route path="/notifications" element={<NotificationPage />} />
+                <Route path="/interview-prep" element={<InterviewPrepBot />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

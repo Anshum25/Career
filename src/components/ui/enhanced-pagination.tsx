@@ -8,11 +8,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronsLeftIcon,
-  ChevronsRightIcon,
-  LoaderIcon,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  Loader,
 } from "lucide-react";
 
 interface PaginationProps {

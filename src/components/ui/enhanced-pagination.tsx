@@ -114,7 +114,7 @@ export function EnhancedPagination({
         )}
         {isLoadingMore && (
           <div className="flex items-center space-x-2 text-muted-foreground">
-            <LoaderIcon className="h-4 w-4 animate-spin" />
+            <Loader className="h-4 w-4 animate-spin" />
             <span className="text-sm">Loading more results...</span>
           </div>
         )}
@@ -168,7 +168,7 @@ export function EnhancedPagination({
           onClick={() => onPageChange(1)}
           disabled={currentPage === 1 || loading}
         >
-          <ChevronsLeftIcon className="h-4 w-4" />
+          <ChevronsLeft className="h-4 w-4" />
         </Button>
 
         {/* Previous page button */}
@@ -178,7 +178,7 @@ export function EnhancedPagination({
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1 || loading}
         >
-          <ChevronLeftIcon className="h-4 w-4" />
+          <ChevronLeft className="h-4 w-4" />
         </Button>
 
         {/* Page numbers */}
@@ -193,7 +193,7 @@ export function EnhancedPagination({
               className="min-w-[36px]"
             >
               {loading && page === currentPage ? (
-                <LoaderIcon className="h-4 w-4 animate-spin" />
+                <Loader className="h-4 w-4 animate-spin" />
               ) : (
                 page
               )}
@@ -208,7 +208,7 @@ export function EnhancedPagination({
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages || loading}
         >
-          <ChevronRightIcon className="h-4 w-4" />
+          <ChevronRight className="h-4 w-4" />
         </Button>
 
         {/* Last page button */}
@@ -218,7 +218,7 @@ export function EnhancedPagination({
           onClick={() => onPageChange(totalPages)}
           disabled={currentPage === totalPages || loading}
         >
-          <ChevronsRightIcon className="h-4 w-4" />
+          <ChevronsRight className="h-4 w-4" />
         </Button>
       </div>
     </div>

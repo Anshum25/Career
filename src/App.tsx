@@ -32,6 +32,12 @@ import NaukriStyleAuth from "@/components/auth/NaukriStyleAuth";
 import NaukriStyleProfile from "@/components/profile/NaukriStyleProfile";
 import JobAlerts from "@/components/features/JobAlerts";
 import CompanyProfiles from "@/components/features/CompanyProfiles";
+import SmartCareerPathBuilder from "@/components/ai/SmartCareerPathBuilder";
+import LiveResumeScorer from "@/components/ai/LiveResumeScorer";
+import VoiceVideoInterview from "@/components/ai/VoiceVideoInterview";
+import RealTimeSkillMatcher from "@/components/ai/RealTimeSkillMatcher";
+import OneClickAutoApply from "@/components/automation/OneClickAutoApply";
+import GamifiedJobHunt from "@/components/gamification/GamifiedJobHunt";
 import NotFound from "@/pages/NotFound";
 
 import "./App.css";
@@ -81,6 +87,24 @@ function App() {
                 <Route path="/auth/naukri" element={<NaukriStyleAuth />} />
                 <Route path="/job-alerts" element={<JobAlerts />} />
                 <Route path="/companies" element={<CompanyProfiles />} />
+                <Route
+                  path="/ai/career-builder"
+                  element={<SmartCareerPathBuilder />}
+                />
+                <Route
+                  path="/ai/resume-scorer"
+                  element={<LiveResumeScorer />}
+                />
+                <Route
+                  path="/ai/voice-interview"
+                  element={<VoiceVideoInterview />}
+                />
+                <Route
+                  path="/ai/skill-matcher"
+                  element={<RealTimeSkillMatcher />}
+                />
+                <Route path="/auto-apply" element={<OneClickAutoApply />} />
+                <Route path="/gamification" element={<GamifiedJobHunt />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

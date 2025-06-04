@@ -45,7 +45,7 @@ export default function JobSeekerDashboard() {
   const stats = [
     { label: "Profile Views", value: "127", icon: EyeIcon, change: "+12%" },
     { label: "Job Matches", value: "23", icon: BriefcaseIcon, change: "+5%" },
-    { label: "Applications", value: "8", icon: TrendingUpIcon, change: "+3" },
+    { label: "Applications", value: "8", icon: TrendingUp, change: "+3" },
     {
       label: "Interview Requests",
       value: "2",
@@ -136,7 +136,7 @@ export default function JobSeekerDashboard() {
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="flex items-center gap-2">
-                    <TrendingUpIcon className="w-5 h-5" />
+                    <TrendingUp className="w-5 h-5" />
                     Profile Strength
                   </CardTitle>
                   <CardDescription>

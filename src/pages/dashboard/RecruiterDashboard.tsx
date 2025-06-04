@@ -17,7 +17,7 @@ import {
   BarChart3,
   Users,
   BriefcaseIcon,
-  TrendingUpIcon,
+  TrendingUp,
   MessageSquareIcon,
   CalendarIcon,
   PlusCircleIcon,

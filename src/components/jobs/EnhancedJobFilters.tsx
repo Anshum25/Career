@@ -22,17 +22,17 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  FilterIcon,
-  XIcon,
-  MapPinIcon,
-  DollarSignIcon,
-  BriefcaseIcon,
-  BuildingIcon,
-  ClockIcon,
-  TagIcon,
+  Filter,
+  X,
+  MapPin,
+  DollarSign,
+  Briefcase,
+  Building,
+  Clock,
+  Tag,
   TrendingUp,
-  CalendarIcon,
-  SearchIcon,
+  Calendar,
+  Search,
 } from "lucide-react";
 
 interface FiltersType {

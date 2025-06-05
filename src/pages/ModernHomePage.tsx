@@ -240,7 +240,7 @@ export default function ModernHomePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden w-full">
       {/* Hero Section - Full Width with Asymmetrical Design */}
-      <section className="relative w-full min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 px-6 sm:px-8 lg:px-12 xl:px-20">
+      <section className="relative w-full min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl dark:from-blue-500/10 dark:to-purple-500/10"></div>
@@ -391,7 +391,7 @@ export default function ModernHomePage() {
       </section>
 
       {/* All Features Section - Full Width Grid */}
-      <section className="w-full py-16 lg:py-20 px-6 sm:px-8 lg:px-12 xl:px-20 bg-gray-50 dark:bg-slate-800">
+      <section className="w-full py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-gray-50 dark:bg-slate-800">
         <div className="w-full space-y-16">
           <div className="text-center space-y-6">
             <Badge
@@ -501,7 +501,7 @@ export default function ModernHomePage() {
       </section>
 
       {/* Success Stories - Full Width */}
-      <section className="w-full py-16 lg:py-20 px-6 sm:px-8 lg:px-12 xl:px-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 text-white">
+      <section className="w-full py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 text-white">
         <div className="w-full space-y-16">
           <div className="text-center space-y-6">
             <Badge
@@ -564,7 +564,7 @@ export default function ModernHomePage() {
       </section>
 
       {/* CTA Section - Full Width Gradient */}
-      <section className="w-full py-16 lg:py-20 px-6 sm:px-8 lg:px-12 xl:px-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-700 text-white relative overflow-hidden">
+      <section className="w-full py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-700 text-white relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>

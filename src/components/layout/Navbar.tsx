@@ -66,8 +66,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <div className="w-full flex h-16 items-center justify-between px-8 lg:px-20">
+    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full">
+      <div className="w-full flex h-16 items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-20">
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
             <BriefcaseIcon className="h-8 w-8 text-primary" />

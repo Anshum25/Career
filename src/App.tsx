@@ -51,9 +51,9 @@ function App() {
     <ThemeProvider defaultTheme="system">
       <AuthProvider>
         <BrowserRouter>
-          <div className="min-h-screen bg-background flex flex-col">
+          <div className="min-h-screen bg-background flex flex-col w-full">
             <Navbar />
-            <main className="flex-1">
+            <main className="flex-1 w-full">
               <Routes>
                 <Route path="/" element={<ModernHomePage />} />
                 <Route path="/login" element={<Login />} />

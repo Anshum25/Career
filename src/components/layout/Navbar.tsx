@@ -68,14 +68,14 @@ export default function Navbar() {
       icon: <BookmarkIcon className="h-4 w-4" />,
     },
     {
+      name: "Tools",
+      path: "/features",
+      icon: <BarChart3Icon className="h-4 w-4" />,
+    },
+    {
       name: "My Resume",
       path: "/ai/resume-scorer",
       icon: <FileTextIcon className="h-4 w-4" />,
-    },
-    {
-      name: "Settings",
-      path: "/profile/naukri",
-      icon: <SettingsIcon className="h-4 w-4" />,
     },
   ];
 
@@ -193,7 +193,7 @@ export default function Navbar() {
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
 
-                      {/* Only Profile and Logout */}
+                      {/* Profile and Settings */}
                       <DropdownMenuItem asChild>
                         <Link
                           to="/profile/naukri"
@@ -201,6 +201,16 @@ export default function Navbar() {
                         >
                           <UserIcon className="h-4 w-4" />
                           View Profile
+                        </Link>
+                      </DropdownMenuItem>
+
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/profile/naukri"
+                          className="flex items-center gap-2 text-slate-700 dark:text-slate-300"
+                        >
+                          <SettingsIcon className="h-4 w-4" />
+                          Settings
                         </Link>
                       </DropdownMenuItem>
 

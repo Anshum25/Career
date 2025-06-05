@@ -238,161 +238,163 @@ export default function ModernHomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden w-full">
+    <div className="w-screen min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
       {/* Hero Section - Full Width with Asymmetrical Design */}
-      <section className="relative w-full min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      <section className="w-screen min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl dark:from-blue-500/10 dark:to-purple-500/10"></div>
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-pink-600/20 rounded-full blur-3xl dark:from-indigo-500/10 dark:to-pink-500/10"></div>
         </div>
 
-        <div className="relative w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Content - Asymmetrical Left Side */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-6">
-              <Badge
-                variant="outline"
-                className="text-lg px-6 py-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-blue-200 dark:border-blue-800 shadow-lg"
-              >
-                <RocketIcon className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
-                Next-Generation AI Job Platform
-              </Badge>
-
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                  AI-Powered
-                </span>
-                <br />
-                <span className="text-gray-900 dark:text-gray-100">
-                  Career Success
-                </span>
-              </h1>
-
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
-                Transform your job search with cutting-edge AI tools, automated
-                applications, and a thriving community. Join{" "}
-                <span className="font-bold text-blue-600 dark:text-blue-400">
-                  500K+
-                </span>{" "}
-                professionals who found their dream careers.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                asChild
-              >
-                <Link to="/register">
-                  Start Your Journey
-                  <RocketIcon className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 hover:bg-white dark:hover:bg-slate-700 shadow-lg hover:shadow-xl transition-all duration-300"
-                asChild
-              >
-                <Link to="/features">
-                  <PlayIcon className="mr-2 h-5 w-5" />
-                  Watch Demo
-                </Link>
-              </Button>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300"
+        <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Content - Asymmetrical Left Side */}
+            <div className="lg:col-span-7 space-y-8">
+              <div className="space-y-6">
+                <Badge
+                  variant="outline"
+                  className="text-lg px-6 py-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-blue-200 dark:border-blue-800 shadow-lg"
                 >
-                  <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
-                    {stat.icon}
-                    <span className="text-sm font-medium text-green-600 dark:text-green-400">
-                      {stat.change}
-                    </span>
+                  <RocketIcon className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  Next-Generation AI Job Platform
+                </Badge>
+
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
+                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                    AI-Powered
+                  </span>
+                  <br />
+                  <span className="text-gray-900 dark:text-gray-100">
+                    Career Success
+                  </span>
+                </h1>
+
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
+                  Transform your job search with cutting-edge AI tools,
+                  automated applications, and a thriving community. Join{" "}
+                  <span className="font-bold text-blue-600 dark:text-blue-400">
+                    500K+
+                  </span>{" "}
+                  professionals who found their dream careers.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  asChild
+                >
+                  <Link to="/register">
+                    Start Your Journey
+                    <RocketIcon className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-8 py-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 hover:bg-white dark:hover:bg-slate-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                  asChild
+                >
+                  <Link to="/features">
+                    <PlayIcon className="mr-2 h-5 w-5" />
+                    Watch Demo
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
+                {stats.map((stat, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
+                      {stat.icon}
+                      <span className="text-sm font-medium text-green-600 dark:text-green-400">
+                        {stat.change}
+                      </span>
+                    </div>
+                    <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Right Side - Floating Feature Cards */}
-          <div className="lg:col-span-5 relative">
-            <div className="grid grid-cols-1 gap-6">
-              {/* Floating Cards with Glassmorphism */}
-              <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl text-white">
-                      <BrainIcon className="h-6 w-6" />
+            {/* Right Side - Floating Feature Cards */}
+            <div className="lg:col-span-5 relative">
+              <div className="grid grid-cols-1 gap-6">
+                {/* Floating Cards with Glassmorphism */}
+                <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl text-white">
+                        <BrainIcon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                          AI-Powered Matching
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          87% compatibility rate
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 dark:text-gray-100">
-                        AI-Powered Matching
-                      </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        87% compatibility rate
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
 
-              <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 ml-4 sm:ml-8">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white">
-                      <ZapIcon className="h-6 w-6" />
+                <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 ml-4 sm:ml-8">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white">
+                        <ZapIcon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                          Auto Apply
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          50+ jobs in minutes
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 dark:text-gray-100">
-                        Auto Apply
-                      </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        50+ jobs in minutes
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
 
-              <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl text-white">
-                      <TrophyIcon className="h-6 w-6" />
+                <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl text-white">
+                        <TrophyIcon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                          Gamified Experience
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          Earn while you search
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 dark:text-gray-100">
-                        Gamified Experience
-                      </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Earn while you search
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* All Features Section - Full Width Grid */}
-      <section className="w-full py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-gray-50 dark:bg-slate-800">
-        <div className="w-full space-y-16">
+      <section className="w-screen py-16 lg:py-20 bg-gray-50 dark:bg-slate-800">
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-16">
           <div className="text-center space-y-6">
             <Badge
               variant="outline"
@@ -501,8 +503,8 @@ export default function ModernHomePage() {
       </section>
 
       {/* Success Stories - Full Width */}
-      <section className="w-full py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 text-white">
-        <div className="w-full space-y-16">
+      <section className="w-screen py-16 lg:py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 text-white">
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-16">
           <div className="text-center space-y-6">
             <Badge
               variant="outline"
@@ -564,14 +566,14 @@ export default function ModernHomePage() {
       </section>
 
       {/* CTA Section - Full Width Gradient */}
-      <section className="w-full py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-700 text-white relative overflow-hidden">
+      <section className="w-screen py-16 lg:py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-700 text-white relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative text-center space-y-8">
+        <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 text-center space-y-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Your Dream Career
             <span className="block text-yellow-300">Starts Here</span>

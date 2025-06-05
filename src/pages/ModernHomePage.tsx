@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,7 +15,6 @@ import {
   BrainIcon,
   ZapIcon,
   TrophyIcon,
-  MessageSquareIcon,
   FileTextIcon,
   TargetIcon,
   MicIcon,
@@ -26,235 +26,159 @@ import {
   PlayIcon,
   TrendingUpIcon,
   UsersIcon,
-  HeartIcon,
-  ShieldIcon,
-  DollarSignIcon,
-  MapPinIcon,
-  CalendarIcon,
-  BookOpenIcon,
   SearchIcon,
   MessageCircleIcon,
   UserIcon,
-  SettingsIcon,
-  BellIcon,
-  FilterIcon,
-  PlusIcon,
-  EyeIcon,
-  RefreshCwIcon,
-  FlameIcon,
+  CalendarIcon,
+  BookOpenIcon,
 } from "lucide-react";
 
 export default function ModernHomePage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   const allFeatures = [
     {
       id: "smart-search",
       title: "Smart Job Search",
       description:
-        "AI-powered search with advanced filters, salary ranges, and company matching",
-      icon: <SearchIcon className="h-8 w-8" />,
+        "AI-powered search with advanced filters and company matching",
+      icon: <SearchIcon className="h-6 w-6" />,
       path: "/jobs",
       category: "Core",
-      gradient: "from-blue-500 to-blue-600",
-      hoverGradient: "hover:from-blue-600 hover:to-blue-700",
-      iconBg: "bg-gradient-to-br from-blue-500 to-blue-600",
-      cta: "Start Searching",
-      categoryColor:
-        "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
     },
     {
       id: "ai-resume",
       title: "AI Resume Builder",
       description:
-        "Build perfect resumes with AI suggestions, real-time scoring, and optimization",
-      icon: <FileTextIcon className="h-8 w-8" />,
+        "Build perfect resumes with AI suggestions and real-time scoring",
+      icon: <FileTextIcon className="h-6 w-6" />,
       path: "/ai/resume-scorer",
       category: "AI",
-      gradient: "from-purple-500 to-purple-600",
-      hoverGradient: "hover:from-purple-600 hover:to-purple-700",
-      iconBg: "bg-gradient-to-br from-purple-500 to-purple-600",
-      cta: "Build Resume",
-      categoryColor:
-        "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
     },
     {
       id: "job-match",
       title: "Job Match Score",
-      description:
-        "See your compatibility percentage with each job using NLP analysis",
-      icon: <TargetIcon className="h-8 w-8" />,
+      description: "See your compatibility percentage with each job using NLP",
+      icon: <TargetIcon className="h-6 w-6" />,
       path: "/ai/skill-matcher",
       category: "AI",
-      gradient: "from-emerald-500 to-emerald-600",
-      hoverGradient: "hover:from-emerald-600 hover:to-emerald-700",
-      iconBg: "bg-gradient-to-br from-emerald-500 to-emerald-600",
-      cta: "Get Match Score",
-      categoryColor:
-        "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
     },
     {
       id: "company-chat",
-      title: "Instant Company Chat",
-      description:
-        "Connect directly with recruiters through our integrated messaging system",
-      icon: <MessageCircleIcon className="h-8 w-8" />,
+      title: "Direct Messaging",
+      description: "Connect directly with recruiters through integrated chat",
+      icon: <MessageCircleIcon className="h-6 w-6" />,
       path: "/messages",
       category: "Communication",
-      gradient: "from-orange-500 to-orange-600",
-      hoverGradient: "hover:from-orange-600 hover:to-orange-700",
-      iconBg: "bg-gradient-to-br from-orange-500 to-orange-600",
-      cta: "Start Chatting",
-      categoryColor:
-        "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
     },
     {
       id: "interview-schedule",
-      title: "Schedule Interviews",
-      description:
-        "Smart calendar integration with automated scheduling and reminders",
-      icon: <CalendarIcon className="h-8 w-8" />,
+      title: "Smart Scheduling",
+      description: "Calendar integration with automated interview scheduling",
+      icon: <CalendarIcon className="h-6 w-6" />,
       path: "/tools/job-journal",
       category: "Productivity",
-      gradient: "from-indigo-500 to-indigo-600",
-      hoverGradient: "hover:from-indigo-600 hover:to-indigo-700",
-      iconBg: "bg-gradient-to-br from-indigo-500 to-indigo-600",
-      cta: "Schedule Now",
-      categoryColor:
-        "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
     },
     {
-      id: "saved-applications",
-      title: "Saved Applications",
-      description:
-        "Track all your applications with priority levels, notes, and status updates",
-      icon: <BookOpenIcon className="h-8 w-8" />,
-      path: "/saved-jobs",
+      id: "application-tracker",
+      title: "Application Tracker",
+      description: "Track applications with priority levels and status updates",
+      icon: <BookOpenIcon className="h-6 w-6" />,
+      path: "/applications",
       category: "Tracking",
-      gradient: "from-teal-500 to-teal-600",
-      hoverGradient: "hover:from-teal-600 hover:to-teal-700",
-      iconBg: "bg-gradient-to-br from-teal-500 to-teal-600",
-      cta: "View Applications",
-      categoryColor:
-        "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300",
     },
     {
       id: "analytics",
-      title: "Application Analytics",
-      description:
-        "Detailed insights with timeline view, success rates, and optimization tips",
-      icon: <BarChart3Icon className="h-8 w-8" />,
+      title: "Career Analytics",
+      description: "Detailed insights with success rates and optimization tips",
+      icon: <BarChart3Icon className="h-6 w-6" />,
       path: "/tools/job-journal",
       category: "Analytics",
-      gradient: "from-amber-500 to-amber-600",
-      hoverGradient: "hover:from-amber-600 hover:to-amber-700",
-      iconBg: "bg-gradient-to-br from-amber-500 to-amber-600",
-      cta: "View Analytics",
-      categoryColor:
-        "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
     },
     {
-      id: "profile-dashboard",
-      title: "Profile & Dashboard",
-      description:
-        "Comprehensive profile management with completion tracking and insights",
-      icon: <UserIcon className="h-8 w-8" />,
+      id: "profile-builder",
+      title: "Profile Builder",
+      description: "Comprehensive profile management with completion tracking",
+      icon: <UserIcon className="h-6 w-6" />,
       path: "/profile/naukri",
       category: "Profile",
-      gradient: "from-rose-500 to-rose-600",
-      hoverGradient: "hover:from-rose-600 hover:to-rose-700",
-      iconBg: "bg-gradient-to-br from-rose-500 to-rose-600",
-      cta: "Complete Profile",
-      categoryColor:
-        "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
     },
     {
       id: "voice-interview",
-      title: "AI Voice Interview",
+      title: "AI Interview Practice",
       description:
-        "Practice interviews with AI feedback on confidence, tone, and content",
-      icon: <MicIcon className="h-8 w-8" />,
+        "Practice interviews with AI feedback on confidence and tone",
+      icon: <MicIcon className="h-6 w-6" />,
       path: "/ai/voice-interview",
       category: "AI",
-      gradient: "from-violet-500 to-violet-600",
-      hoverGradient: "hover:from-violet-600 hover:to-violet-700",
-      iconBg: "bg-gradient-to-br from-violet-500 to-violet-600",
-      cta: "Practice Interview",
-      categoryColor:
-        "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
     },
     {
       id: "auto-apply",
       title: "Auto Apply",
-      description:
-        "One-click application to multiple jobs with AI-generated cover letters",
-      icon: <ZapIcon className="h-8 w-8" />,
+      description: "One-click application with AI-generated cover letters",
+      icon: <ZapIcon className="h-6 w-6" />,
       path: "/auto-apply",
       category: "Automation",
-      gradient: "from-cyan-500 to-cyan-600",
-      hoverGradient: "hover:from-cyan-600 hover:to-cyan-700",
-      iconBg: "bg-gradient-to-br from-cyan-500 to-cyan-600",
-      cta: "Auto Apply",
-      categoryColor:
-        "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
     },
     {
       id: "career-path",
       title: "Career Path Builder",
-      description:
-        "AI creates personalized roadmap with skills, courses, and timeline",
-      icon: <BrainIcon className="h-8 w-8" />,
+      description: "AI creates personalized roadmap with skills and timeline",
+      icon: <BrainIcon className="h-6 w-6" />,
       path: "/ai/career-builder",
       category: "AI",
-      gradient: "from-green-500 to-green-600",
-      hoverGradient: "hover:from-green-600 hover:to-green-700",
-      iconBg: "bg-gradient-to-br from-green-500 to-green-600",
-      cta: "Build Career Path",
-      categoryColor:
-        "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
     },
     {
       id: "gamification",
       title: "Gamified Experience",
       description:
         "Earn points, unlock achievements, and compete on leaderboards",
-      icon: <TrophyIcon className="h-8 w-8" />,
+      icon: <TrophyIcon className="h-6 w-6" />,
       path: "/gamification",
       category: "Engagement",
-      gradient: "from-yellow-500 to-yellow-600",
-      hoverGradient: "hover:from-yellow-600 hover:to-yellow-700",
-      iconBg: "bg-gradient-to-br from-yellow-500 to-yellow-600",
-      cta: "Start Gaming",
-      categoryColor:
-        "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
     },
   ];
 
   const testimonials = [
     {
       name: "Priya Sharma",
-      role: "Software Engineer at Google",
+      role: "Software Engineer",
+      company: "Google",
       content:
         "The AI career path builder helped me identify exactly what skills I needed. Got my dream job in 6 months!",
       avatar: "/avatars/priya.jpg",
       rating: 5,
-      company: "Google",
     },
     {
       name: "Rahul Gupta",
-      role: "Product Manager at Flipkart",
+      role: "Product Manager",
+      company: "Flipkart",
       content:
         "Auto-apply feature saved me hours. Applied to 50+ jobs in one day with personalized cover letters.",
       avatar: "/avatars/rahul.jpg",
       rating: 5,
-      company: "Flipkart",
     },
     {
       name: "Sneha Patel",
-      role: "Data Scientist at Microsoft",
+      role: "Data Scientist",
+      company: "Microsoft",
       content:
         "Voice interview practice boosted my confidence. The AI feedback was incredibly detailed and helpful.",
       avatar: "/avatars/sneha.jpg",
       rating: 5,
-      company: "Microsoft",
     },
   ];
 
@@ -262,88 +186,78 @@ export default function ModernHomePage() {
     {
       label: "Active Users",
       value: "500K+",
-      icon: <UsersIcon className="h-6 w-6" />,
+      icon: <UsersIcon className="h-5 w-5" />,
       change: "+12%",
     },
     {
       label: "Success Rate",
       value: "89%",
-      icon: <TrendingUpIcon className="h-6 w-6" />,
+      icon: <TrendingUpIcon className="h-5 w-5" />,
       change: "+5%",
     },
     {
       label: "AI Matches",
       value: "2.5M+",
-      icon: <BrainIcon className="h-6 w-6" />,
+      icon: <BrainIcon className="h-5 w-5" />,
       change: "+23%",
     },
     {
       label: "Jobs Filled",
       value: "125K+",
-      icon: <StarIcon className="h-6 w-6" />,
+      icon: <StarIcon className="h-5 w-5" />,
       change: "+18%",
     },
   ];
 
   return (
-    <div className="w-screen min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
-      {/* Hero Section - Full Width with Asymmetrical Design */}
-      <section className="w-screen min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl dark:from-blue-500/10 dark:to-purple-500/10"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-pink-600/20 rounded-full blur-3xl dark:from-indigo-500/10 dark:to-pink-500/10"></div>
-        </div>
+    <div className="w-full min-h-screen bg-white dark:bg-gray-900">
+      {/* Hero Section */}
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="w-full min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              <Badge
+                variant="outline"
+                className="text-base px-4 py-2 bg-white/80 dark:bg-gray-800/80 border-blue-200 dark:border-blue-800"
+              >
+                <RocketIcon className="mr-2 h-4 w-4 text-blue-600 dark:text-blue-400" />
+                AI-Powered Job Platform
+              </Badge>
 
-        <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Content - Asymmetrical Left Side */}
-            <div className="lg:col-span-7 space-y-8">
-              <div className="space-y-6">
-                <Badge
-                  variant="outline"
-                  className="text-lg px-6 py-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-blue-200 dark:border-blue-800 shadow-lg"
-                >
-                  <RocketIcon className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  Next-Generation AI Job Platform
-                </Badge>
+              <h1 className="text-5xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
+                Land Your
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
+                  Dream Job
+                </span>
+              </h1>
 
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
-                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                    AI-Powered
-                  </span>
-                  <br />
-                  <span className="text-gray-900 dark:text-gray-100">
-                    Career Success
-                  </span>
-                </h1>
-
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
-                  Transform your job search with cutting-edge AI tools,
-                  automated applications, and a thriving community. Join{" "}
-                  <span className="font-bold text-blue-600 dark:text-blue-400">
-                    500K+
-                  </span>{" "}
-                  professionals who found their dream careers.
-                </p>
-              </div>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed">
+                Transform your career with AI-powered tools, automated
+                applications, and intelligent matching. Join 500K+ professionals
+                who found success.
+              </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="text-lg px-8 py-6 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
                   asChild
                 >
                   <Link to="/register">
-                    Start Your Journey
-                    <RocketIcon className="ml-2 h-5 w-5" />
+                    Get Started Free
+                    <ArrowRightIcon className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 py-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 hover:bg-white dark:hover:bg-slate-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-lg px-8 py-6 border-gray-300 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800"
                   asChild
                 >
                   <Link to="/features">
@@ -356,9 +270,10 @@ export default function ModernHomePage() {
               {/* Stats Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
                 {stats.map((stat, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                    variants={itemVariants}
+                    className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-4 border border-gray-200 dark:border-gray-700"
                   >
                     <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
                       {stat.icon}
@@ -366,29 +281,28 @@ export default function ModernHomePage() {
                         {stat.change}
                       </span>
                     </div>
-                    <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">
+                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
                       {stat.value}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
                       {stat.label}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            {/* Right Side - Floating Feature Cards */}
-            <div className="lg:col-span-5 relative">
+            {/* Right Side - Feature Preview */}
+            <motion.div variants={itemVariants} className="relative">
               <div className="grid grid-cols-1 gap-6">
-                {/* Floating Cards with improved colors */}
-                <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
+                <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-0 shadow-xl">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl text-white shadow-lg">
+                      <div className="p-3 bg-blue-600 rounded-xl text-white">
                         <BrainIcon className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                        <h3 className="font-bold text-gray-900 dark:text-white">
                           AI-Powered Matching
                         </h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -399,14 +313,14 @@ export default function ModernHomePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 ml-4 sm:ml-8">
+                <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-0 shadow-xl ml-8">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl text-white shadow-lg">
+                      <div className="p-3 bg-purple-600 rounded-xl text-white">
                         <ZapIcon className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                        <h3 className="font-bold text-gray-900 dark:text-white">
                           Auto Apply
                         </h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -417,14 +331,14 @@ export default function ModernHomePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
+                <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-0 shadow-xl">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl text-white shadow-lg">
+                      <div className="p-3 bg-green-600 rounded-xl text-white">
                         <TrophyIcon className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100">
+                        <h3 className="font-bold text-gray-900 dark:text-white">
                           Gamified Experience
                         </h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -435,208 +349,176 @@ export default function ModernHomePage() {
                   </CardContent>
                 </Card>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* All Features Section - Full Width Grid */}
-      <section className="w-screen py-16 lg:py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-16">
-          <div className="text-center space-y-6">
-            <Badge
-              variant="outline"
-              className="text-lg px-6 py-3 bg-white dark:bg-slate-700 shadow-lg"
-            >
-              <StarIcon className="mr-2 h-5 w-5 text-yellow-500" />
+      {/* Features Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="w-full py-20 bg-white dark:bg-gray-900"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20 space-y-16">
+          <motion.div variants={itemVariants} className="text-center space-y-6">
+            <Badge variant="outline" className="text-base px-4 py-2">
+              <StarIcon className="mr-2 h-4 w-4 text-yellow-500" />
               Complete Feature Suite
             </Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100">
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white">
               Everything You Need to
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent block">
-                Land Your Dream Job
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
+                Accelerate Your Career
               </span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-              Discover our complete toolkit designed to accelerate your career
-              success with AI-powered intelligence and automation.
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
+              Discover our complete toolkit designed to help you find, apply to,
+              and land your dream job with AI-powered intelligence.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Features Grid - Asymmetrical Layout with improved colors */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {allFeatures.map((feature, index) => (
-              <Card
+              <motion.div
                 key={feature.id}
-                className={`group relative overflow-hidden bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-gray-200/50 dark:border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 ${
-                  index === 0
-                    ? "sm:col-span-2 lg:col-span-2"
-                    : index === 3
-                      ? "lg:col-span-2"
-                      : index === 7
-                        ? "sm:col-span-2"
-                        : ""
-                }`}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                className="group"
               >
-                {/* Subtle gradient background */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}
-                ></div>
-
-                <CardHeader className="relative">
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`p-3 rounded-xl ${feature.iconBg} text-white shadow-lg`}
-                    >
-                      {feature.icon}
+                <Card className="h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded-xl text-gray-700 dark:text-gray-300 group-hover:bg-blue-100 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-all duration-300">
+                        {feature.icon}
+                      </div>
+                      <Badge
+                        variant="secondary"
+                        className="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
+                      >
+                        {feature.category}
+                      </Badge>
                     </div>
-                    <Badge
-                      variant="secondary"
-                      className={feature.categoryColor}
+                    <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {feature.title}
+                    </CardTitle>
+                    <CardDescription className="text-gray-600 dark:text-gray-400">
+                      {feature.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button
+                      className="w-full bg-gray-900 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+                      asChild
                     >
-                      {feature.category}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {feature.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {feature.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent className="relative">
-                  <Button
-                    className={`w-full bg-gradient-to-r ${feature.gradient} ${feature.hoverGradient} text-white border-0 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium`}
-                    asChild
-                  >
-                    <Link to={feature.path}>
-                      {feature.cta}
-                      <ArrowRightIcon className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                      <Link to={feature.path}>
+                        Explore
+                        <ArrowRightIcon className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
-
-          {/* Quick Action Bar */}
-          <div className="bg-gradient-to-r from-slate-900 to-blue-900 dark:from-slate-800 dark:to-blue-800 rounded-2xl p-6 sm:p-8 text-center text-white shadow-2xl">
-            <h3 className="text-xl sm:text-2xl font-bold mb-4">
-              Ready to Get Started?
-            </h3>
-            <p className="text-lg mb-6 opacity-90">
-              Choose your path and begin your career transformation today
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-white text-slate-900 hover:bg-gray-100 font-semibold"
-                asChild
-              >
-                <Link to="/register">Create Free Account</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 font-semibold"
-                asChild
-              >
-                <Link to="/features">Explore All Features</Link>
-              </Button>
-            </div>
-          </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Success Stories - Full Width */}
-      <section className="w-screen py-16 lg:py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 text-white">
-        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-16">
-          <div className="text-center space-y-6">
-            <Badge
-              variant="outline"
-              className="text-lg px-6 py-3 border-white/30 text-white bg-white/10 backdrop-blur-sm"
-            >
-              <HeartIcon className="mr-2 h-5 w-5" />
+      {/* Testimonials Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="w-full py-20 bg-gray-50 dark:bg-gray-800"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20 space-y-16">
+          <motion.div variants={itemVariants} className="text-center space-y-6">
+            <Badge variant="outline" className="text-base px-4 py-2">
               Success Stories
             </Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-              Transforming Careers
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block">
-                Across the Globe
-              </span>
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+              Trusted by Top Professionals
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                className="bg-white/10 dark:bg-slate-800/20 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 transition-all duration-500 transform hover:scale-105"
-              >
-                <CardContent className="p-6 sm:p-8">
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <StarIcon
-                          key={i}
-                          className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
-                    </div>
-
-                    <blockquote className="text-lg italic leading-relaxed">
-                      "{testimonial.content}"
-                    </blockquote>
-
-                    <div className="flex items-center gap-4">
-                      <Avatar className="h-12 w-12 border-2 border-white/30">
-                        <AvatarImage src={testimonial.avatar} />
-                        <AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-                          {testimonial.name[0]}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className="font-bold">{testimonial.name}</div>
-                        <div className="text-white/80">{testimonial.role}</div>
-                        <div className="text-sm text-white/60">
-                          {testimonial.company}
+              <motion.div key={index} variants={itemVariants}>
+                <Card className="h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                  <CardContent className="p-6">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-1">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <StarIcon
+                            key={i}
+                            className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                          />
+                        ))}
+                      </div>
+                      <blockquote className="text-gray-700 dark:text-gray-300 italic">
+                        "{testimonial.content}"
+                      </blockquote>
+                      <div className="flex items-center gap-3">
+                        <Avatar className="h-10 w-10">
+                          <AvatarImage src={testimonial.avatar} />
+                          <AvatarFallback className="bg-blue-600 text-white">
+                            {testimonial.name[0]}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <div className="font-medium text-gray-900 dark:text-white">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                            {testimonial.role} at {testimonial.company}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* CTA Section - Full Width Gradient */}
-      <section className="w-screen py-16 lg:py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-700 text-white relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-        </div>
+      {/* CTA Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="w-full py-20 bg-gray-900 dark:bg-black text-white"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20 text-center space-y-8">
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl lg:text-6xl font-bold"
+          >
+            Ready to Transform
+            <span className="text-blue-400 block">Your Career?</span>
+          </motion.h2>
 
-        <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 text-center space-y-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Your Dream Career
-            <span className="block text-yellow-300">Starts Here</span>
-          </h2>
-
-          <p className="text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto opacity-90 leading-relaxed">
+          <motion.p
+            variants={itemVariants}
+            className="text-xl max-w-3xl mx-auto text-gray-300"
+          >
             Join 500,000+ professionals who've accelerated their career success
             with CareerAI's cutting-edge platform and AI-powered tools.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+          >
             <Button
               size="lg"
-              variant="secondary"
-              className="text-xl px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 font-bold"
+              className="text-xl px-12 py-6 bg-white text-gray-900 hover:bg-gray-100"
               asChild
             >
               <Link to="/register">
@@ -644,27 +526,13 @@ export default function ModernHomePage() {
                 <CheckCircleIcon className="ml-2 h-6 w-6" />
               </Link>
             </Button>
-
-            <div className="flex items-center gap-4 text-white/80">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-white/20 border-2 border-white/30"
-                  ></div>
-                ))}
-              </div>
-              <span className="text-sm">Trusted by 500K+ users</span>
+            <div className="flex items-center gap-4 text-gray-400">
+              <span>✨ No credit card required</span>
+              <span>⚡ Setup in 2 minutes</span>
             </div>
-          </div>
-
-          <div className="text-sm text-white/70 space-x-4 sm:space-x-8">
-            <span>✨ No credit card required</span>
-            <span>⚡ Setup in 2 minutes</span>
-            <span>🛡️ Completely secure</span>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

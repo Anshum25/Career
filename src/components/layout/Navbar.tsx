@@ -67,7 +67,7 @@ export default function Navbar() {
 
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="w-full flex h-16 items-center justify-between px-8 lg:px-20">
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
             <BriefcaseIcon className="h-8 w-8 text-primary" />
@@ -293,13 +293,16 @@ export default function Navbar() {
               </DropdownMenu>
             </>
           ) : (
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild>
-                <Link to="/login">Login</Link>
-              </Button>
-              <Button asChild>
-                <Link to="/register">Get Started</Link>
-              </Button>
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" asChild>
+                  <Link to="/login">Login</Link>
+                </Button>
+                <Button asChild>
+                  <Link to="/register">Get Started</Link>
+                </Button>
+              </div>
             </div>
           )}
         </div>

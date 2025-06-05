@@ -238,16 +238,16 @@ export default function ModernHomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden w-full">
       {/* Hero Section - Full Width with Asymmetrical Design */}
-      <section className="relative w-full min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 px-8 lg:px-20">
+      <section className="relative w-full min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 px-6 sm:px-8 lg:px-12 xl:px-20">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl dark:from-blue-500/10 dark:to-purple-500/10"></div>
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-pink-600/20 rounded-full blur-3xl dark:from-indigo-500/10 dark:to-pink-500/10"></div>
         </div>
 
-        <div className="relative w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="relative w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Content - Asymmetrical Left Side */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-6">
@@ -259,7 +259,7 @@ export default function ModernHomePage() {
                 Next-Generation AI Job Platform
               </Badge>
 
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">
                   AI-Powered
                 </span>
@@ -269,7 +269,7 @@ export default function ModernHomePage() {
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
                 Transform your job search with cutting-edge AI tools, automated
                 applications, and a thriving community. Join{" "}
                 <span className="font-bold text-blue-600 dark:text-blue-400">
@@ -317,7 +317,7 @@ export default function ModernHomePage() {
                       {stat.change}
                     </span>
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  <div className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -350,7 +350,7 @@ export default function ModernHomePage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 ml-8">
+              <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 ml-4 sm:ml-8">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white">
@@ -391,8 +391,8 @@ export default function ModernHomePage() {
       </section>
 
       {/* All Features Section - Full Width Grid */}
-      <section className="w-full py-20 px-8 lg:px-20 bg-gray-50 dark:bg-slate-800">
-        <div className="space-y-16">
+      <section className="w-full py-16 lg:py-20 px-6 sm:px-8 lg:px-12 xl:px-20 bg-gray-50 dark:bg-slate-800">
+        <div className="w-full space-y-16">
           <div className="text-center space-y-6">
             <Badge
               variant="outline"
@@ -401,30 +401,30 @@ export default function ModernHomePage() {
               <StarIcon className="mr-2 h-5 w-5 text-yellow-500" />
               Complete Feature Suite
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-100">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100">
               Everything You Need to
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent block">
                 Land Your Dream Job
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
               Discover our complete toolkit designed to accelerate your career
               success with AI-powered intelligence and automation.
             </p>
           </div>
 
           {/* Features Grid - Asymmetrical Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {allFeatures.map((feature, index) => (
               <Card
                 key={feature.id}
                 className={`group relative overflow-hidden bg-white dark:bg-slate-900 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 ${
                   index === 0
-                    ? "md:col-span-2 lg:col-span-2"
+                    ? "sm:col-span-2 lg:col-span-2"
                     : index === 3
                       ? "lg:col-span-2"
                       : index === 7
-                        ? "md:col-span-2"
+                        ? "sm:col-span-2"
                         : ""
                 }`}
               >
@@ -471,8 +471,10 @@ export default function ModernHomePage() {
           </div>
 
           {/* Quick Action Bar */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 rounded-2xl p-8 text-center text-white shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 rounded-2xl p-6 sm:p-8 text-center text-white shadow-2xl">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4">
+              Ready to Get Started?
+            </h3>
             <p className="text-lg mb-6 opacity-90">
               Choose your path and begin your career transformation today
             </p>
@@ -499,8 +501,8 @@ export default function ModernHomePage() {
       </section>
 
       {/* Success Stories - Full Width */}
-      <section className="w-full py-20 px-8 lg:px-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 text-white">
-        <div className="space-y-16">
+      <section className="w-full py-16 lg:py-20 px-6 sm:px-8 lg:px-12 xl:px-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-950 dark:via-purple-950 dark:to-pink-950 text-white">
+        <div className="w-full space-y-16">
           <div className="text-center space-y-6">
             <Badge
               variant="outline"
@@ -509,7 +511,7 @@ export default function ModernHomePage() {
               <HeartIcon className="mr-2 h-5 w-5" />
               Success Stories
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
               Transforming Careers
               <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block">
                 Across the Globe
@@ -517,13 +519,13 @@ export default function ModernHomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
                 className="bg-white/10 dark:bg-slate-800/20 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 transition-all duration-500 transform hover:scale-105"
               >
-                <CardContent className="p-8">
+                <CardContent className="p-6 sm:p-8">
                   <div className="space-y-6">
                     <div className="flex items-center gap-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
@@ -562,7 +564,7 @@ export default function ModernHomePage() {
       </section>
 
       {/* CTA Section - Full Width Gradient */}
-      <section className="w-full py-20 px-8 lg:px-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-700 text-white relative overflow-hidden">
+      <section className="w-full py-16 lg:py-20 px-6 sm:px-8 lg:px-12 xl:px-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-700 dark:via-purple-700 dark:to-indigo-700 text-white relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
@@ -570,12 +572,12 @@ export default function ModernHomePage() {
         </div>
 
         <div className="relative text-center space-y-8">
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Your Dream Career
             <span className="block text-yellow-300">Starts Here</span>
           </h2>
 
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto opacity-90 leading-relaxed">
             Join 500,000+ professionals who've accelerated their career success
             with CareerAI's cutting-edge platform and AI-powered tools.
           </p>
@@ -606,7 +608,7 @@ export default function ModernHomePage() {
             </div>
           </div>
 
-          <div className="text-sm text-white/70 space-x-8">
+          <div className="text-sm text-white/70 space-x-4 sm:space-x-8">
             <span>✨ No credit card required</span>
             <span>⚡ Setup in 2 minutes</span>
             <span>🛡️ Completely secure</span>

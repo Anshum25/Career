@@ -51,9 +51,9 @@ function App() {
     <ThemeProvider defaultTheme="system">
       <AuthProvider>
         <BrowserRouter>
-          <div className="min-h-screen bg-background flex flex-col w-full">
+          <div className="min-h-screen bg-background text-foreground w-full">
             <Navbar />
-            <main className="flex-1 w-full">
+            <main className="w-full">
               <Routes>
                 <Route path="/" element={<ModernHomePage />} />
                 <Route path="/login" element={<Login />} />
@@ -91,6 +91,8 @@ function App() {
                 <Route path="/auth/naukri" element={<NaukriStyleAuth />} />
                 <Route path="/job-alerts" element={<JobAlerts />} />
                 <Route path="/companies" element={<CompanyProfiles />} />
+
+                {/* AI Features */}
                 <Route
                   path="/ai/career-builder"
                   element={<SmartCareerPathBuilder />}
@@ -107,15 +109,22 @@ function App() {
                   path="/ai/skill-matcher"
                   element={<RealTimeSkillMatcher />}
                 />
+
+                {/* Automation & Tools */}
                 <Route path="/auto-apply" element={<OneClickAutoApply />} />
+                <Route path="/tools/job-journal" element={<JobJournal />} />
+
+                {/* Community & Engagement */}
                 <Route path="/gamification" element={<GamifiedJobHunt />} />
                 <Route path="/community/forums" element={<JobSeekerForums />} />
                 <Route
                   path="/assessment/personality"
                   element={<PersonalityCareerTest />}
                 />
-                <Route path="/tools/job-journal" element={<JobJournal />} />
+
+                {/* Navigation */}
                 <Route path="/features" element={<FeatureHub />} />
+
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

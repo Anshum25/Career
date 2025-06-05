@@ -2,36 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: "Inter", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
+    /* Professional Minimal Color Palette - Light Mode */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 220 9% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 220 9% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --popover-foreground: 220 9% 15%;
+    --primary: 220 90% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 9% 96%;
+    --secondary-foreground: 220 9% 25%;
+    --muted: 220 9% 96%;
+    --muted-foreground: 220 9% 45%;
+    --accent: 220 9% 96%;
+    --accent-foreground: 220 9% 15%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 9% 91%;
+    --input: 220 9% 91%;
+    --ring: 220 90% 58%;
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -45,34 +42,26 @@
   }
 
   .dark {
-    /* Enhanced Dark Mode with Better Color Combinations */
-    --background: 222.2 84% 3.5%;
-    --foreground: 210 40% 98%;
-
-    --card: 220 13% 8%;
-    --card-foreground: 210 40% 95%;
-
-    --popover: 220 13% 9%;
-    --popover-foreground: 210 40% 95%;
-
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 12%;
-    --secondary-foreground: 210 40% 85%;
-
-    --muted: 217.2 32.6% 10%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 15%;
-    --accent-foreground: 210 40% 90%;
-
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 15%;
-    --input: 217.2 32.6% 12%;
-    --ring: 217.2 91.2% 59.8%;
+    /* Professional Dark Mode with Enhanced Contrast */
+    --background: 220 15% 6%;
+    --foreground: 220 9% 95%;
+    --card: 220 15% 8%;
+    --card-foreground: 220 9% 95%;
+    --popover: 220 15% 8%;
+    --popover-foreground: 220 9% 95%;
+    --primary: 220 90% 65%;
+    --primary-foreground: 220 15% 6%;
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 220 9% 85%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 9% 60%;
+    --accent: 220 15% 12%;
+    --accent-foreground: 220 9% 95%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 15%;
+    --input: 220 15% 15%;
+    --ring: 220 90% 65%;
 
     --sidebar-background: 220 13% 6%;
     --sidebar-foreground: 220 9% 85%;
@@ -88,6 +77,18 @@
 @layer base {
   * {
     @apply border-border;
+    transition:
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      text-decoration-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      fill 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      filter 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   html,
@@ -104,169 +105,174 @@
   #root {
     @apply w-full;
   }
-  /* Enhanced Dark Mode Styles */
+
   .dark {
     color-scheme: dark;
   }
+}
 
-  /* Glassmorphism Effects */
-  .glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* Professional Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Enhanced Backdrop Blur */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Professional Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Professional Shadows */
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.2);
+}
+
+.dark .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth Hover Transitions */
+.btn-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-smooth:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .btn-smooth:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient Text Effects */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Minimal Glow Effects */
+.glow-minimal {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.dark .glow-minimal {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* Clean Animation for Loading States */
+.pulse-clean {
+  animation: pulseClean 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseClean {
+  0%,
+  100% {
+    opacity: 1;
   }
-
-  .glass-dark {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Gradient Text */
-  .gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Glow Effects */
-  .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  }
-
-  .glow-purple {
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
-  }
-
-  .glow-green {
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
-  }
-
-  /* Animated Gradients */
-  .animated-gradient {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-  }
-
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  /* Floating Animation */
-  .float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  /* Pulse Glow */
-  .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulseGlow {
-    from {
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-    }
-    to {
-      box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
-    }
-  }
-
-  /* Enhanced Shadows for Dark Mode */
-  .dark .shadow-xl {
-    box-shadow:
-      0 20px 25px -5px rgba(0, 0, 0, 0.3),
-      0 10px 10px -5px rgba(0, 0, 0, 0.1);
-  }
-
-  .dark .shadow-2xl {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-  }
-
-  .dark .shadow-3xl {
-    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Scrollbar Styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgb(241, 245, 249);
-  }
-
-  .dark ::-webkit-scrollbar-track {
-    background: rgb(15, 23, 42);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgb(203, 213, 225);
-    border-radius: 4px;
-  }
-
-  .dark ::-webkit-scrollbar-thumb {
-    background: rgb(51, 65, 85);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(148, 163, 184);
-  }
-
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background: rgb(71, 85, 105);
-  }
-
-  /* Enhanced Button Hover Effects */
-  .btn-glow {
-    transition: all 0.3s ease;
-  }
-
-  .btn-glow:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  }
-
-  .dark .btn-glow:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  50% {
+    opacity: 0.7;
   }
 }
 
-/* Custom Gradient Backgrounds for Dark Mode */
-.dark .bg-gradient-to-br {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+/* Professional Border Styles */
+.border-subtle {
+  border-color: hsl(var(--border) / 0.5);
 }
 
-.dark .from-blue-50 {
-  --tw-gradient-from: rgb(30, 41, 59);
-  --tw-gradient-to: rgb(30, 41, 59, 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+.dark .border-subtle {
+  border-color: hsl(var(--border) / 0.8);
 }
 
-.dark .to-indigo-50 {
-  --tw-gradient-to: rgb(30, 27, 75);
+/* Clean Focus States */
+.focus-clean:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
 }
 
-/* Improved Card Styling for Dark Mode */
+/* Minimal Card Hover Effect */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Professional Notification Styling */
+.notification-slide {
+  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Clean Section Separators */
+.section-divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--border)),
+    transparent
+  );
+}
+
+/* Optimized Mobile Touch Targets */
+@media (max-width: 768px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Professional Dark Mode Adjustments */
 .dark .bg-white\/70 {
   background-color: rgba(30, 41, 59, 0.7);
 }
@@ -275,7 +281,11 @@
   background-color: rgba(30, 41, 59, 0.8);
 }
 
-/* Better Text Contrast in Dark Mode */
+.dark .bg-white\/90 {
+  background-color: rgba(30, 41, 59, 0.9);
+}
+
+/* Better Text Contrast */
 .dark .text-gray-600 {
   color: rgb(148, 163, 184);
 }

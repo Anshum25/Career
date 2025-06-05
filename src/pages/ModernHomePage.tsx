@@ -54,8 +54,12 @@ export default function ModernHomePage() {
       icon: <SearchIcon className="h-8 w-8" />,
       path: "/jobs",
       category: "Core",
-      gradient: "from-blue-500 to-cyan-500",
+      gradient: "from-blue-500 to-blue-600",
+      hoverGradient: "hover:from-blue-600 hover:to-blue-700",
+      iconBg: "bg-gradient-to-br from-blue-500 to-blue-600",
       cta: "Start Searching",
+      categoryColor:
+        "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
     },
     {
       id: "ai-resume",
@@ -65,8 +69,12 @@ export default function ModernHomePage() {
       icon: <FileTextIcon className="h-8 w-8" />,
       path: "/ai/resume-scorer",
       category: "AI",
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-purple-500 to-purple-600",
+      hoverGradient: "hover:from-purple-600 hover:to-purple-700",
+      iconBg: "bg-gradient-to-br from-purple-500 to-purple-600",
       cta: "Build Resume",
+      categoryColor:
+        "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
     },
     {
       id: "job-match",
@@ -76,8 +84,12 @@ export default function ModernHomePage() {
       icon: <TargetIcon className="h-8 w-8" />,
       path: "/ai/skill-matcher",
       category: "AI",
-      gradient: "from-green-500 to-emerald-500",
+      gradient: "from-emerald-500 to-emerald-600",
+      hoverGradient: "hover:from-emerald-600 hover:to-emerald-700",
+      iconBg: "bg-gradient-to-br from-emerald-500 to-emerald-600",
       cta: "Get Match Score",
+      categoryColor:
+        "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
     },
     {
       id: "company-chat",
@@ -87,8 +99,12 @@ export default function ModernHomePage() {
       icon: <MessageCircleIcon className="h-8 w-8" />,
       path: "/messages",
       category: "Communication",
-      gradient: "from-orange-500 to-red-500",
+      gradient: "from-orange-500 to-orange-600",
+      hoverGradient: "hover:from-orange-600 hover:to-orange-700",
+      iconBg: "bg-gradient-to-br from-orange-500 to-orange-600",
       cta: "Start Chatting",
+      categoryColor:
+        "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
     },
     {
       id: "interview-schedule",
@@ -98,8 +114,12 @@ export default function ModernHomePage() {
       icon: <CalendarIcon className="h-8 w-8" />,
       path: "/tools/job-journal",
       category: "Productivity",
-      gradient: "from-indigo-500 to-purple-500",
+      gradient: "from-indigo-500 to-indigo-600",
+      hoverGradient: "hover:from-indigo-600 hover:to-indigo-700",
+      iconBg: "bg-gradient-to-br from-indigo-500 to-indigo-600",
       cta: "Schedule Now",
+      categoryColor:
+        "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
     },
     {
       id: "saved-applications",
@@ -109,8 +129,12 @@ export default function ModernHomePage() {
       icon: <BookOpenIcon className="h-8 w-8" />,
       path: "/saved-jobs",
       category: "Tracking",
-      gradient: "from-teal-500 to-blue-500",
+      gradient: "from-teal-500 to-teal-600",
+      hoverGradient: "hover:from-teal-600 hover:to-teal-700",
+      iconBg: "bg-gradient-to-br from-teal-500 to-teal-600",
       cta: "View Applications",
+      categoryColor:
+        "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300",
     },
     {
       id: "analytics",
@@ -120,8 +144,12 @@ export default function ModernHomePage() {
       icon: <BarChart3Icon className="h-8 w-8" />,
       path: "/tools/job-journal",
       category: "Analytics",
-      gradient: "from-yellow-500 to-orange-500",
+      gradient: "from-amber-500 to-amber-600",
+      hoverGradient: "hover:from-amber-600 hover:to-amber-700",
+      iconBg: "bg-gradient-to-br from-amber-500 to-amber-600",
       cta: "View Analytics",
+      categoryColor:
+        "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
     },
     {
       id: "profile-dashboard",
@@ -131,8 +159,12 @@ export default function ModernHomePage() {
       icon: <UserIcon className="h-8 w-8" />,
       path: "/profile/naukri",
       category: "Profile",
-      gradient: "from-pink-500 to-rose-500",
+      gradient: "from-rose-500 to-rose-600",
+      hoverGradient: "hover:from-rose-600 hover:to-rose-700",
+      iconBg: "bg-gradient-to-br from-rose-500 to-rose-600",
       cta: "Complete Profile",
+      categoryColor:
+        "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
     },
     {
       id: "voice-interview",
@@ -142,8 +174,12 @@ export default function ModernHomePage() {
       icon: <MicIcon className="h-8 w-8" />,
       path: "/ai/voice-interview",
       category: "AI",
-      gradient: "from-violet-500 to-purple-500",
+      gradient: "from-violet-500 to-violet-600",
+      hoverGradient: "hover:from-violet-600 hover:to-violet-700",
+      iconBg: "bg-gradient-to-br from-violet-500 to-violet-600",
       cta: "Practice Interview",
+      categoryColor:
+        "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
     },
     {
       id: "auto-apply",
@@ -153,8 +189,12 @@ export default function ModernHomePage() {
       icon: <ZapIcon className="h-8 w-8" />,
       path: "/auto-apply",
       category: "Automation",
-      gradient: "from-cyan-500 to-blue-500",
+      gradient: "from-cyan-500 to-cyan-600",
+      hoverGradient: "hover:from-cyan-600 hover:to-cyan-700",
+      iconBg: "bg-gradient-to-br from-cyan-500 to-cyan-600",
       cta: "Auto Apply",
+      categoryColor:
+        "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
     },
     {
       id: "career-path",
@@ -164,8 +204,12 @@ export default function ModernHomePage() {
       icon: <BrainIcon className="h-8 w-8" />,
       path: "/ai/career-builder",
       category: "AI",
-      gradient: "from-emerald-500 to-teal-500",
+      gradient: "from-green-500 to-green-600",
+      hoverGradient: "hover:from-green-600 hover:to-green-700",
+      iconBg: "bg-gradient-to-br from-green-500 to-green-600",
       cta: "Build Career Path",
+      categoryColor:
+        "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
     },
     {
       id: "gamification",
@@ -175,8 +219,12 @@ export default function ModernHomePage() {
       icon: <TrophyIcon className="h-8 w-8" />,
       path: "/gamification",
       category: "Engagement",
-      gradient: "from-amber-500 to-yellow-500",
+      gradient: "from-yellow-500 to-yellow-600",
+      hoverGradient: "hover:from-yellow-600 hover:to-yellow-700",
+      iconBg: "bg-gradient-to-br from-yellow-500 to-yellow-600",
       cta: "Start Gaming",
+      categoryColor:
+        "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
     },
   ];
 
@@ -332,11 +380,11 @@ export default function ModernHomePage() {
             {/* Right Side - Floating Feature Cards */}
             <div className="lg:col-span-5 relative">
               <div className="grid grid-cols-1 gap-6">
-                {/* Floating Cards with Glassmorphism */}
+                {/* Floating Cards with improved colors */}
                 <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl text-white">
+                      <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl text-white shadow-lg">
                         <BrainIcon className="h-6 w-6" />
                       </div>
                       <div>
@@ -354,7 +402,7 @@ export default function ModernHomePage() {
                 <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 ml-4 sm:ml-8">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white">
+                      <div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl text-white shadow-lg">
                         <ZapIcon className="h-6 w-6" />
                       </div>
                       <div>
@@ -372,7 +420,7 @@ export default function ModernHomePage() {
                 <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl text-white">
+                      <div className="p-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl text-white shadow-lg">
                         <TrophyIcon className="h-6 w-6" />
                       </div>
                       <div>
@@ -415,12 +463,12 @@ export default function ModernHomePage() {
             </p>
           </div>
 
-          {/* Features Grid - Asymmetrical Layout */}
+          {/* Features Grid - Asymmetrical Layout with improved colors */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {allFeatures.map((feature, index) => (
               <Card
                 key={feature.id}
-                className={`group relative overflow-hidden bg-white dark:bg-slate-900 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 ${
+                className={`group relative overflow-hidden bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-gray-200/50 dark:border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 ${
                   index === 0
                     ? "sm:col-span-2 lg:col-span-2"
                     : index === 3
@@ -430,7 +478,7 @@ export default function ModernHomePage() {
                         : ""
                 }`}
               >
-                {/* Gradient Background */}
+                {/* Subtle gradient background */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}
                 ></div>
@@ -438,13 +486,13 @@ export default function ModernHomePage() {
                 <CardHeader className="relative">
                   <div className="flex items-center justify-between">
                     <div
-                      className={`p-3 rounded-xl bg-gradient-to-br ${feature.gradient} text-white shadow-lg`}
+                      className={`p-3 rounded-xl ${feature.iconBg} text-white shadow-lg`}
                     >
                       {feature.icon}
                     </div>
                     <Badge
                       variant="secondary"
-                      className="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300"
+                      className={feature.categoryColor}
                     >
                       {feature.category}
                     </Badge>
@@ -459,7 +507,7 @@ export default function ModernHomePage() {
 
                 <CardContent className="relative">
                   <Button
-                    className={`w-full bg-gradient-to-r ${feature.gradient} hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
+                    className={`w-full bg-gradient-to-r ${feature.gradient} ${feature.hoverGradient} text-white border-0 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium`}
                     asChild
                   >
                     <Link to={feature.path}>
@@ -473,7 +521,7 @@ export default function ModernHomePage() {
           </div>
 
           {/* Quick Action Bar */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700 rounded-2xl p-6 sm:p-8 text-center text-white shadow-2xl">
+          <div className="bg-gradient-to-r from-slate-900 to-blue-900 dark:from-slate-800 dark:to-blue-800 rounded-2xl p-6 sm:p-8 text-center text-white shadow-2xl">
             <h3 className="text-xl sm:text-2xl font-bold mb-4">
               Ready to Get Started?
             </h3>
@@ -484,7 +532,7 @@ export default function ModernHomePage() {
               <Button
                 size="lg"
                 variant="secondary"
-                className="bg-white text-blue-600 hover:bg-gray-100"
+                className="bg-white text-slate-900 hover:bg-gray-100 font-semibold"
                 asChild
               >
                 <Link to="/register">Create Free Account</Link>
@@ -492,7 +540,7 @@ export default function ModernHomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-white text-white hover:bg-white/10 font-semibold"
                 asChild
               >
                 <Link to="/features">Explore All Features</Link>
@@ -588,7 +636,7 @@ export default function ModernHomePage() {
             <Button
               size="lg"
               variant="secondary"
-              className="text-xl px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+              className="text-xl px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 font-bold"
               asChild
             >
               <Link to="/register">

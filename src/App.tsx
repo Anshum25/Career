@@ -8,7 +8,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 // Pages
-import EnhancedHomePage from "@/pages/EnhancedHomePage";
+import ModernHomePage from "@/pages/ModernHomePage";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
 import JobSeekerDashboard from "@/pages/dashboard/JobSeekerDashboard";
@@ -55,7 +55,7 @@ function App() {
             <Navbar />
             <main className="flex-1">
               <Routes>
-                <Route path="/" element={<EnhancedHomePage />} />
+                <Route path="/" element={<ModernHomePage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   BrainIcon,
   ZapIcon,
@@ -48,11 +49,303 @@ import {
   BoltIcon,
   GlobeIcon,
   ShieldIcon,
+  ChevronRightIcon,
+  SendIcon,
+  XIcon,
+  MinimizeIcon,
+  MaximizeIcon,
+  HelpCircleIcon,
+  MessageSquareIcon,
+  ChevronDownIcon,
+  PlusIcon,
+  MailIcon,
+  LinkedinIcon,
+  TwitterIcon,
+  YoutubeIcon,
+  InstagramIcon,
 } from "lucide-react";
+
+// AI Chatbot Component
+function AIChatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      text: "Hi! I'm CareerAI Assistant. How can I help you today? 🤖",
+      sender: "bot",
+      timestamp: new Date(),
+    },
+  ]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+
+  const faqQuestions = [
+    {
+      question: "How does AI job matching work?",
+      answer:
+        "Our AI analyzes your skills, experience, and preferences to match you with jobs that fit your profile. It uses natural language processing to understand job descriptions and compare them with your background.",
+    },
+    {
+      question: "Is the platform free to use?",
+      answer:
+        "Yes! CareerAI is completely free for job seekers. You can search jobs, get AI recommendations, and apply to positions without any cost. Premium features for recruiters are available separately.",
+    },
+    {
+      question: "How accurate is the resume scoring?",
+      answer:
+        "Our AI resume scorer has 89% accuracy based on industry standards and ATS compatibility. It analyzes format, content, keywords, and provides specific improvement suggestions.",
+    },
+    {
+      question: "Can I use this for remote jobs?",
+      answer:
+        "Absolutely! We have 50K+ remote job opportunities from companies worldwide. You can filter specifically for work-from-home positions in your job search.",
+    },
+    {
+      question: "How do I get started?",
+      answer:
+        "Simply create a free account, upload your resume, and start browsing jobs. Our AI will immediately begin matching you with relevant opportunities based on your profile.",
+    },
+  ];
+
+  const sendMessage = async () => {
+    if (!inputMessage.trim()) return;
+
+    const userMessage = {
+      id: messages.length + 1,
+      text: inputMessage,
+      sender: "user",
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInputMessage("");
+    setIsTyping(true);
+
+    // Simulate AI response
+    setTimeout(() => {
+      const botResponse = getBotResponse(inputMessage);
+      const botMessage = {
+        id: messages.length + 2,
+        text: botResponse,
+        sender: "bot",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, botMessage]);
+      setIsTyping(false);
+    }, 1500);
+  };
+
+  const getBotResponse = (userInput: string) => {
+    const input = userInput.toLowerCase();
+
+    if (input.includes("job") && input.includes("search")) {
+      return "You can search for jobs using our AI-powered search. Click on 'Find Jobs' in the navigation or use the search bar on the homepage. Our AI will match you with relevant opportunities! 🔍";
+    }
+
+    if (input.includes("resume")) {
+      return "Our AI Resume Builder can help you create and optimize your resume! It provides real-time scoring and suggestions. You can access it from the 'My Resume' section or try our resume scorer tool. 📄";
+    }
+
+    if (input.includes("free") || input.includes("cost")) {
+      return "CareerAI is completely free for job seekers! You can search jobs, get AI recommendations, and apply to positions without any cost. We believe everyone deserves access to great career opportunities. 💝";
+    }
+
+    if (
+      input.includes("how") &&
+      (input.includes("work") || input.includes("start"))
+    ) {
+      return "Getting started is easy! 1️⃣ Create a free account 2️⃣ Upload your resume 3️⃣ Browse AI-matched jobs 4️⃣ Apply with one click. Our AI handles the rest! 🚀";
+    }
+
+    if (input.includes("contact") || input.includes("support")) {
+      return "You can reach our support team at support@careerai.com or use this chat for quick questions. We're here to help you succeed in your career journey! 📧";
+    }
+
+    if (input.includes("hi") || input.includes("hello")) {
+      return "Hello! Welcome to CareerAI! I'm here to help you with any questions about our platform. What would you like to know? 😊";
+    }
+
+    return "That's a great question! I'd be happy to help. For specific queries, you can also check our FAQ section or contact our support team. Is there anything particular about CareerAI you'd like to know more about? 🤔";
+  };
+
+  const selectFAQ = (faq: any) => {
+    const userMessage = {
+      id: messages.length + 1,
+      text: faq.question,
+      sender: "user",
+      timestamp: new Date(),
+    };
+
+    const botMessage = {
+      id: messages.length + 2,
+      text: faq.answer,
+      sender: "bot",
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage, botMessage]);
+  };
+
+  return (
+    <>
+      {/* Chat Button */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        className="fixed bottom-6 right-6 z-50"
+      >
+        <Button
+          onClick={() => setIsOpen(true)}
+          className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-2xl hover:shadow-3xl"
+          size="icon"
+        >
+          <MessageSquareIcon className="h-6 w-6" />
+        </Button>
+      </motion.div>
+
+      {/* Chat Window */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col z-50"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-2xl">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                  <BrainIcon className="h-4 w-4" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">CareerAI Assistant</h3>
+                  <p className="text-xs opacity-90">Always here to help</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsMinimized(!isMinimized)}
+                  className="w-6 h-6 hover:bg-white/20"
+                >
+                  {isMinimized ? (
+                    <MaximizeIcon className="h-3 w-3" />
+                  ) : (
+                    <MinimizeIcon className="h-3 w-3" />
+                  )}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsOpen(false)}
+                  className="w-6 h-6 hover:bg-white/20"
+                >
+                  <XIcon className="h-3 w-3" />
+                </Button>
+              </div>
+            </div>
+
+            {!isMinimized && (
+              <>
+                {/* FAQ Quick Actions */}
+                <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    Quick questions:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {faqQuestions.slice(0, 3).map((faq, index) => (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        size="sm"
+                        onClick={() => selectFAQ(faq)}
+                        className="text-xs h-6"
+                      >
+                        {faq.question.split("?")[0]}?
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Messages */}
+                <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                  {messages.map((message) => (
+                    <div
+                      key={message.id}
+                      className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                    >
+                      <div
+                        className={`max-w-[80%] p-3 rounded-2xl ${
+                          message.sender === "user"
+                            ? "bg-blue-600 text-white"
+                            : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"
+                        }`}
+                      >
+                        <p className="text-sm">{message.text}</p>
+                        <p className="text-xs opacity-70 mt-1">
+                          {message.timestamp.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+
+                  {isTyping && (
+                    <div className="flex justify-start">
+                      <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-2xl">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                          <div
+                            className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                            style={{ animationDelay: "0.1s" }}
+                          ></div>
+                          <div
+                            className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                            style={{ animationDelay: "0.2s" }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Input */}
+                <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex gap-2">
+                    <Input
+                      value={inputMessage}
+                      onChange={(e) => setInputMessage(e.target.value)}
+                      placeholder="Ask me anything..."
+                      onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+                      className="flex-1"
+                    />
+                    <Button
+                      onClick={sendMessage}
+                      size="icon"
+                      disabled={!inputMessage.trim()}
+                    >
+                      <SendIcon className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
 
 export default function ModernHomePage() {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
   const handleProtectedFeatureClick = (path: string) => {
     if (!isAuthenticated) {
@@ -150,6 +443,108 @@ export default function ModernHomePage() {
     },
   ];
 
+  const features = [
+    {
+      icon: <BrainIcon className="h-8 w-8" />,
+      title: "AI-Powered Matching",
+      description:
+        "Our advanced AI analyzes your skills, experience, and preferences to find the perfect job matches.",
+      benefits: [
+        "87% accuracy rate",
+        "Saves 5+ hours weekly",
+        "Personalized recommendations",
+      ],
+    },
+    {
+      icon: <ZapIcon className="h-8 w-8" />,
+      title: "One-Click Apply",
+      description:
+        "Apply to multiple jobs instantly with our smart application system and AI-generated cover letters.",
+      benefits: [
+        "Apply to 50+ jobs/day",
+        "Auto-generated letters",
+        "Application tracking",
+      ],
+    },
+    {
+      icon: <BarChart3Icon className="h-8 w-8" />,
+      title: "Career Analytics",
+      description:
+        "Get detailed insights about your job search progress, market trends, and improvement suggestions.",
+      benefits: ["Real-time insights", "Market analysis", "Success tracking"],
+    },
+    {
+      icon: <TrophyIcon className="h-8 w-8" />,
+      title: "Skill Development",
+      description:
+        "Identify skill gaps and get personalized learning recommendations to advance your career.",
+      benefits: ["Skill gap analysis", "Learning paths", "Progress tracking"],
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: "Priya Sharma",
+      role: "Software Engineer",
+      company: "Google",
+      content:
+        "CareerAI's AI matching was incredibly accurate. I found my dream job at Google in just 2 weeks!",
+      avatar: "/avatars/priya.jpg",
+      rating: 5,
+    },
+    {
+      name: "Rahul Gupta",
+      role: "Product Manager",
+      company: "Flipkart",
+      content:
+        "The auto-apply feature saved me hours. I applied to 50+ jobs in one day with personalized cover letters.",
+      avatar: "/avatars/rahul.jpg",
+      rating: 5,
+    },
+    {
+      name: "Sneha Patel",
+      role: "Data Scientist",
+      company: "Microsoft",
+      content:
+        "The interview practice tool boosted my confidence. The AI feedback was detailed and incredibly helpful.",
+      avatar: "/avatars/sneha.jpg",
+      rating: 5,
+    },
+  ];
+
+  const faqData = [
+    {
+      question: "How does CareerAI's job matching work?",
+      answer:
+        "Our AI uses natural language processing and machine learning to analyze your resume, skills, and preferences. It then compares this with job descriptions to find matches with high compatibility scores. The system learns from your interactions to improve recommendations over time.",
+    },
+    {
+      question: "Is CareerAI completely free?",
+      answer:
+        "Yes! CareerAI is 100% free for job seekers. You can search jobs, get AI recommendations, apply to positions, and access all our tools without any cost. We believe everyone deserves access to the best career opportunities.",
+    },
+    {
+      question: "How accurate is the AI resume scoring?",
+      answer:
+        "Our AI resume scorer has an 89% accuracy rate based on ATS compatibility and industry standards. It analyzes format, content, keywords, and provides specific suggestions. The scoring is based on data from 100,000+ successful job applications.",
+    },
+    {
+      question: "Can I find remote jobs on CareerAI?",
+      answer:
+        "Absolutely! We have 50,000+ remote job opportunities from companies worldwide. You can specifically filter for work-from-home positions, and our AI will prioritize remote-friendly matches based on your preferences.",
+    },
+    {
+      question: "How do I get started with CareerAI?",
+      answer:
+        "Getting started is simple: 1) Create a free account, 2) Upload your resume, 3) Set your job preferences, 4) Start browsing AI-matched jobs. Our system begins working immediately to find relevant opportunities for you.",
+    },
+    {
+      question: "What makes CareerAI different from other job platforms?",
+      answer:
+        "CareerAI combines advanced AI technology with a user-first approach. We offer real-time job matching, AI-powered resume optimization, interview practice tools, and career analytics - all free for job seekers. Our focus is on quality matches, not quantity.",
+    },
+  ];
+
   return (
     <div className="w-full min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Full Screen Hero with Diagonal Split */}
@@ -161,10 +556,8 @@ export default function ModernHomePage() {
       >
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Diagonal Background Split */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900"></div>
 
-          {/* Floating Geometric Shapes */}
           <motion.div
             animate={floatingVariants.float}
             className="absolute top-20 left-20 w-20 h-20 bg-blue-200 dark:bg-blue-800 rounded-full opacity-20"
@@ -180,7 +573,6 @@ export default function ModernHomePage() {
             className="absolute bottom-32 left-40 w-12 h-12 bg-green-200 dark:bg-green-800 rounded-full opacity-20"
           />
 
-          {/* Grid Pattern */}
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         </div>
 
@@ -188,7 +580,6 @@ export default function ModernHomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen py-20">
             {/* Left Side - Main Content */}
             <motion.div variants={itemVariants} className="space-y-8">
-              {/* Animated Badge */}
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -200,7 +591,6 @@ export default function ModernHomePage() {
                 </Badge>
               </motion.div>
 
-              {/* Main Heading with Staggered Animation */}
               <div className="space-y-4">
                 <motion.h1
                   initial={{ opacity: 0, x: -50 }}
@@ -232,7 +622,6 @@ export default function ModernHomePage() {
                 </motion.p>
               </div>
 
-              {/* Interactive Search Bar */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -255,7 +644,6 @@ export default function ModernHomePage() {
                 </div>
               </motion.div>
 
-              {/* Action Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -285,7 +673,6 @@ export default function ModernHomePage() {
                 </Button>
               </motion.div>
 
-              {/* Quick Stats */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -319,9 +706,7 @@ export default function ModernHomePage() {
 
             {/* Right Side - Interactive Cards */}
             <motion.div variants={itemVariants} className="relative">
-              {/* 3D Card Stack */}
               <div className="relative perspective-1000">
-                {/* Quick Actions Grid */}
                 <div className="grid grid-cols-2 gap-6">
                   {quickActions.map((action, index) => (
                     <motion.div
@@ -354,7 +739,6 @@ export default function ModernHomePage() {
                   ))}
                 </div>
 
-                {/* Floating Achievement Badge */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -367,7 +751,6 @@ export default function ModernHomePage() {
                   </div>
                 </motion.div>
 
-                {/* Success Rate Indicator */}
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -393,7 +776,6 @@ export default function ModernHomePage() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -414,7 +796,69 @@ export default function ModernHomePage() {
         </motion.div>
       </motion.section>
 
-      {/* Job Categories Quick Access */}
+      {/* About CareerAI Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="w-full py-20 bg-white dark:bg-gray-900"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20">
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              Why Choose CareerAI?
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
+              We're revolutionizing the job search experience with cutting-edge
+              AI technology that connects talent with opportunity more
+              efficiently than ever before.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                className="group"
+              >
+                <Card className="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <CardContent className="p-8 text-center space-y-6">
+                    <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                        {feature.description}
+                      </p>
+                      <div className="space-y-2">
+                        {feature.benefits.map((benefit, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center justify-center gap-2"
+                          >
+                            <CheckCircleIcon className="h-4 w-4 text-green-500" />
+                            <span className="text-sm text-gray-600 dark:text-gray-400">
+                              {benefit}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Job Categories */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -425,11 +869,11 @@ export default function ModernHomePage() {
         <div className="w-full px-6 lg:px-12 xl:px-20">
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Popular Job Categories
+              Explore Job Categories
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Explore opportunities across different industries and find your
-              perfect match
+              From remote work to full-time positions, find opportunities across
+              all industries and work arrangements
             </p>
           </motion.div>
 
@@ -490,6 +934,136 @@ export default function ModernHomePage() {
         </div>
       </motion.section>
 
+      {/* Success Stories */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="w-full py-20 bg-white dark:bg-gray-900"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20">
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <Badge variant="outline" className="text-base px-4 py-2 mb-4">
+              <HeartIcon className="mr-2 h-4 w-4 text-red-500" />
+              Success Stories
+            </Badge>
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              Real People, Real Success
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Join thousands of professionals who've transformed their careers
+              with CareerAI
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Card className="h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-8">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-1">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <StarIcon
+                            key={i}
+                            className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                          />
+                        ))}
+                      </div>
+                      <blockquote className="text-gray-700 dark:text-gray-300 italic text-lg leading-relaxed">
+                        "{testimonial.content}"
+                      </blockquote>
+                      <div className="flex items-center gap-4">
+                        <Avatar className="h-12 w-12">
+                          <AvatarImage src={testimonial.avatar} />
+                          <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                            {testimonial.name[0]}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <div className="font-bold text-gray-900 dark:text-white">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-gray-600 dark:text-gray-400">
+                            {testimonial.role} at {testimonial.company}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* FAQ Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="w-full py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-purple-900"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20">
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Everything you need to know about CareerAI. Can't find the answer
+              you're looking for? Chat with our AI assistant!
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {faqData.map((faq, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-0">
+                    <button
+                      onClick={() =>
+                        setExpandedFAQ(expandedFAQ === index ? null : index)
+                      }
+                      className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-lg"
+                    >
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white pr-4">
+                        {faq.question}
+                      </h3>
+                      <ChevronDownIcon
+                        className={`h-5 w-5 text-gray-500 transition-transform duration-200 ${
+                          expandedFAQ === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {expandedFAQ === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6">
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
       {/* Trust Indicators */}
       <motion.section
         initial="hidden"
@@ -499,8 +1073,8 @@ export default function ModernHomePage() {
         className="w-full py-20 bg-white dark:bg-gray-900"
       >
         <div className="w-full px-6 lg:px-12 xl:px-20">
-          <motion.div variants={itemVariants} className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-12">
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-12">
               Trusted by professionals worldwide
             </h3>
 
@@ -513,7 +1087,8 @@ export default function ModernHomePage() {
                   100% Secure
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Your data is protected with enterprise-grade security
+                  Your data is protected with enterprise-grade security and
+                  privacy controls
                 </p>
               </motion.div>
 
@@ -525,7 +1100,8 @@ export default function ModernHomePage() {
                   AI-Powered
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Advanced algorithms match you with perfect opportunities
+                  Advanced machine learning algorithms ensure the most relevant
+                  job matches
                 </p>
               </motion.div>
 
@@ -537,7 +1113,8 @@ export default function ModernHomePage() {
                   Global Reach
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Connect with opportunities from around the world
+                  Connect with opportunities from leading companies around the
+                  world
                 </p>
               </motion.div>
             </div>
@@ -553,7 +1130,6 @@ export default function ModernHomePage() {
         variants={containerVariants}
         className="w-full py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white relative overflow-hidden"
       >
-        {/* Background Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
 
         <div className="relative w-full px-6 lg:px-12 xl:px-20 text-center space-y-8 z-10">
@@ -569,7 +1145,7 @@ export default function ModernHomePage() {
             className="text-xl lg:text-2xl max-w-3xl mx-auto opacity-90"
           >
             Join half a million professionals who've found their dream jobs with
-            CareerAI
+            CareerAI's intelligent platform
           </motion.p>
 
           <motion.div
@@ -590,10 +1166,14 @@ export default function ModernHomePage() {
             <div className="text-white/80 text-sm space-y-1">
               <div>✨ No credit card required</div>
               <div>⚡ Setup in under 2 minutes</div>
+              <div>🎯 AI matches you instantly</div>
             </div>
           </motion.div>
         </div>
       </motion.section>
+
+      {/* AI Chatbot */}
+      <AIChatbot />
     </div>
   );
 }

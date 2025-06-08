@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input } from "@/components/ui/input";
 import {
   BrainIcon,
   ZapIcon,
@@ -31,9 +33,35 @@ import {
   UserIcon,
   CalendarIcon,
   BookOpenIcon,
+  MapPinIcon,
+  ClockIcon,
+  HomeIcon,
+  PhoneIcon,
+  TruckIcon,
+  ShoppingBagIcon,
+  ComputerIcon,
+  HeartIcon,
+  BuildingIcon,
+  GraduationCapIcon,
+  AwardIcon,
+  SparklesIcon,
+  BoltIcon,
+  GlobeIcon,
+  ShieldIcon,
 } from "lucide-react";
 
 export default function ModernHomePage() {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  const handleProtectedFeatureClick = (path: string) => {
+    if (!isAuthenticated) {
+      navigate("/login");
+      return;
+    }
+    navigate(path);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -49,138 +77,16 @@ export default function ModernHomePage() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const allFeatures = [
-    {
-      id: "smart-search",
-      title: "Smart Job Search",
-      description:
-        "AI-powered search with advanced filters and company matching",
-      icon: <SearchIcon className="h-6 w-6" />,
-      path: "/jobs",
-      category: "Core",
+  const floatingVariants = {
+    float: {
+      y: [-10, 10, -10],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
     },
-    {
-      id: "ai-resume",
-      title: "AI Resume Builder",
-      description:
-        "Build perfect resumes with AI suggestions and real-time scoring",
-      icon: <FileTextIcon className="h-6 w-6" />,
-      path: "/ai/resume-scorer",
-      category: "AI",
-    },
-    {
-      id: "job-match",
-      title: "Job Match Score",
-      description: "See your compatibility percentage with each job using NLP",
-      icon: <TargetIcon className="h-6 w-6" />,
-      path: "/ai/skill-matcher",
-      category: "AI",
-    },
-    {
-      id: "company-chat",
-      title: "Direct Messaging",
-      description: "Connect directly with recruiters through integrated chat",
-      icon: <MessageCircleIcon className="h-6 w-6" />,
-      path: "/messages",
-      category: "Communication",
-    },
-    {
-      id: "interview-schedule",
-      title: "Smart Scheduling",
-      description: "Calendar integration with automated interview scheduling",
-      icon: <CalendarIcon className="h-6 w-6" />,
-      path: "/tools/job-journal",
-      category: "Productivity",
-    },
-    {
-      id: "application-tracker",
-      title: "Application Tracker",
-      description: "Track applications with priority levels and status updates",
-      icon: <BookOpenIcon className="h-6 w-6" />,
-      path: "/applications",
-      category: "Tracking",
-    },
-    {
-      id: "analytics",
-      title: "Career Analytics",
-      description: "Detailed insights with success rates and optimization tips",
-      icon: <BarChart3Icon className="h-6 w-6" />,
-      path: "/tools/job-journal",
-      category: "Analytics",
-    },
-    {
-      id: "profile-builder",
-      title: "Profile Builder",
-      description: "Comprehensive profile management with completion tracking",
-      icon: <UserIcon className="h-6 w-6" />,
-      path: "/profile/naukri",
-      category: "Profile",
-    },
-    {
-      id: "voice-interview",
-      title: "AI Interview Practice",
-      description:
-        "Practice interviews with AI feedback on confidence and tone",
-      icon: <MicIcon className="h-6 w-6" />,
-      path: "/ai/voice-interview",
-      category: "AI",
-    },
-    {
-      id: "auto-apply",
-      title: "Auto Apply",
-      description: "One-click application with AI-generated cover letters",
-      icon: <ZapIcon className="h-6 w-6" />,
-      path: "/auto-apply",
-      category: "Automation",
-    },
-    {
-      id: "career-path",
-      title: "Career Path Builder",
-      description: "AI creates personalized roadmap with skills and timeline",
-      icon: <BrainIcon className="h-6 w-6" />,
-      path: "/ai/career-builder",
-      category: "AI",
-    },
-    {
-      id: "gamification",
-      title: "Gamified Experience",
-      description:
-        "Earn points, unlock achievements, and compete on leaderboards",
-      icon: <TrophyIcon className="h-6 w-6" />,
-      path: "/gamification",
-      category: "Engagement",
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: "Priya Sharma",
-      role: "Software Engineer",
-      company: "Google",
-      content:
-        "The AI career path builder helped me identify exactly what skills I needed. Got my dream job in 6 months!",
-      avatar: "/avatars/priya.jpg",
-      rating: 5,
-    },
-    {
-      name: "Rahul Gupta",
-      role: "Product Manager",
-      company: "Flipkart",
-      content:
-        "Auto-apply feature saved me hours. Applied to 50+ jobs in one day with personalized cover letters.",
-      avatar: "/avatars/rahul.jpg",
-      rating: 5,
-    },
-    {
-      name: "Sneha Patel",
-      role: "Data Scientist",
-      company: "Microsoft",
-      content:
-        "Voice interview practice boosted my confidence. The AI feedback was incredibly detailed and helpful.",
-      avatar: "/avatars/sneha.jpg",
-      rating: 5,
-    },
-  ];
+  };
 
   const stats = [
     {
@@ -202,62 +108,174 @@ export default function ModernHomePage() {
       change: "+23%",
     },
     {
-      label: "Jobs Filled",
+      label: "Jobs Posted",
       value: "125K+",
       icon: <StarIcon className="h-5 w-5" />,
       change: "+18%",
     },
   ];
 
+  const quickActions = [
+    {
+      title: "Find Jobs",
+      desc: "Browse 100K+ opportunities",
+      icon: <SearchIcon className="h-6 w-6" />,
+      path: "/jobs",
+      color: "from-blue-500 to-blue-600",
+      delay: 0,
+    },
+    {
+      title: "AI Resume",
+      desc: "Build & optimize your resume",
+      icon: <FileTextIcon className="h-6 w-6" />,
+      path: "/ai/resume-scorer",
+      color: "from-purple-500 to-purple-600",
+      delay: 0.1,
+    },
+    {
+      title: "Skill Match",
+      desc: "See job compatibility",
+      icon: <TargetIcon className="h-6 w-6" />,
+      path: "/ai/skill-matcher",
+      color: "from-green-500 to-green-600",
+      delay: 0.2,
+    },
+    {
+      title: "Interview Prep",
+      desc: "Practice with AI feedback",
+      icon: <MicIcon className="h-6 w-6" />,
+      path: "/ai/voice-interview",
+      color: "from-orange-500 to-orange-600",
+      delay: 0.3,
+    },
+  ];
+
   return (
-    <div className="w-full min-h-screen bg-white dark:bg-gray-900">
-      {/* Hero Section */}
+    <div className="w-full min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
+      {/* Full Screen Hero with Diagonal Split */}
       <motion.section
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="w-full min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800"
+        className="relative w-full h-screen flex items-center"
       >
-        <div className="w-full px-6 lg:px-12 xl:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Content */}
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Diagonal Background Split */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900"></div>
+
+          {/* Floating Geometric Shapes */}
+          <motion.div
+            animate={floatingVariants.float}
+            className="absolute top-20 left-20 w-20 h-20 bg-blue-200 dark:bg-blue-800 rounded-full opacity-20"
+          />
+          <motion.div
+            animate={floatingVariants.float}
+            transition={{ delay: 1 }}
+            className="absolute top-40 right-32 w-16 h-16 bg-purple-200 dark:bg-purple-800 rotate-45 opacity-20"
+          />
+          <motion.div
+            animate={floatingVariants.float}
+            transition={{ delay: 2 }}
+            className="absolute bottom-32 left-40 w-12 h-12 bg-green-200 dark:bg-green-800 rounded-full opacity-20"
+          />
+
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        </div>
+
+        <div className="relative w-full px-6 lg:px-12 xl:px-20 z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen py-20">
+            {/* Left Side - Main Content */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <Badge
-                variant="outline"
-                className="text-base px-4 py-2 bg-white/80 dark:bg-gray-800/80 border-blue-200 dark:border-blue-800"
+              {/* Animated Badge */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring" }}
               >
-                <RocketIcon className="mr-2 h-4 w-4 text-blue-600 dark:text-blue-400" />
-                AI-Powered Job Platform
-              </Badge>
+                <Badge className="text-base px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 shadow-lg">
+                  <SparklesIcon className="mr-2 h-4 w-4" />
+                  AI-Powered Career Platform
+                </Badge>
+              </motion.div>
 
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight text-gray-900 dark:text-white">
-                Land Your
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
-                  Dream Job
-                </span>
-              </h1>
+              {/* Main Heading with Staggered Animation */}
+              <div className="space-y-4">
+                <motion.h1
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-6xl lg:text-8xl font-black leading-none"
+                >
+                  <span className="text-gray-900 dark:text-white">Your</span>
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    Dream Job
+                  </span>
+                  <br />
+                  <span className="text-gray-900 dark:text-white">Awaits</span>
+                </motion.h1>
 
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed">
-                Transform your career with AI-powered tools, automated
-                applications, and intelligent matching. Join 500K+ professionals
-                who found success.
-              </p>
+                <motion.p
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed"
+                >
+                  Discover opportunities with our AI-powered platform.
+                  <span className="font-semibold text-blue-600 dark:text-blue-400">
+                    {" "}
+                    500K+ professionals
+                  </span>{" "}
+                  already found their perfect match.
+                </motion.p>
+              </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* Interactive Search Bar */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="relative"
+              >
+                <div className="relative max-w-2xl">
+                  <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400" />
+                  <Input
+                    placeholder="Search jobs by title, company, or skills..."
+                    className="pl-12 pr-32 py-6 text-lg rounded-2xl border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 shadow-lg"
+                    onClick={() => handleProtectedFeatureClick("/jobs")}
+                  />
+                  <Button
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl px-6"
+                    onClick={() => handleProtectedFeatureClick("/jobs")}
+                  >
+                    Search
+                  </Button>
+                </div>
+              </motion.div>
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-6 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+                  className="text-lg px-8 py-6 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 rounded-2xl"
                   asChild
                 >
                   <Link to="/register">
                     Get Started Free
-                    <ArrowRightIcon className="ml-2 h-5 w-5" />
+                    <RocketIcon className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 py-6 border-gray-300 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800"
+                  className="text-lg px-8 py-6 border-2 hover:bg-gray-50 dark:hover:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl"
                   asChild
                 >
                   <Link to="/features">
@@ -265,23 +283,30 @@ export default function ModernHomePage() {
                     Watch Demo
                   </Link>
                 </Button>
-              </div>
+              </motion.div>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
+              {/* Quick Stats */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8"
+              >
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    variants={itemVariants}
-                    className="bg-white/80 dark:bg-gray-800/80 rounded-xl p-4 border border-gray-200 dark:border-gray-700"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2 + index * 0.1 }}
+                    className="text-center"
                   >
-                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
+                    <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
                       {stat.icon}
                       <span className="text-sm font-medium text-green-600 dark:text-green-400">
                         {stat.change}
                       </span>
                     </div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <div className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
                       {stat.value}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -289,72 +314,183 @@ export default function ModernHomePage() {
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
-            {/* Right Side - Feature Preview */}
+            {/* Right Side - Interactive Cards */}
             <motion.div variants={itemVariants} className="relative">
-              <div className="grid grid-cols-1 gap-6">
-                <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-0 shadow-xl">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 bg-blue-600 rounded-xl text-white">
-                        <BrainIcon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">
-                          AI-Powered Matching
-                        </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          87% compatibility rate
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              {/* 3D Card Stack */}
+              <div className="relative perspective-1000">
+                {/* Quick Actions Grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  {quickActions.map((action, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 50, rotateY: -15 }}
+                      animate={{ opacity: 1, y: 0, rotateY: 0 }}
+                      transition={{ delay: 0.5 + action.delay }}
+                      whileHover={{ scale: 1.05, rotateY: 5 }}
+                      className="group cursor-pointer"
+                      onClick={() => handleProtectedFeatureClick(action.path)}
+                    >
+                      <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform-gpu">
+                        <CardContent className="p-6 text-center space-y-4">
+                          <div
+                            className={`mx-auto w-16 h-16 bg-gradient-to-r ${action.color} rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                          >
+                            {action.icon}
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                              {action.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                              {action.desc}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
 
-                <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-0 shadow-xl ml-8">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 bg-purple-600 rounded-xl text-white">
-                        <ZapIcon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">
-                          Auto Apply
-                        </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          50+ jobs in minutes
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                {/* Floating Achievement Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.5, type: "spring" }}
+                  className="absolute -top-6 -right-6 z-10"
+                >
+                  <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                    <TrophyIcon className="h-4 w-4" />
+                    <span className="text-sm font-bold">#1 Platform</span>
+                  </div>
+                </motion.div>
 
-                <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-0 shadow-xl">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 bg-green-600 rounded-xl text-white">
-                        <TrophyIcon className="h-6 w-6" />
-                      </div>
+                {/* Success Rate Indicator */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.8 }}
+                  className="absolute -bottom-6 -left-6 z-10"
+                >
+                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center gap-3">
+                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                       <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">
-                          Gamified Experience
-                        </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Earn while you search
-                        </p>
+                        <div className="text-sm font-bold text-gray-900 dark:text-white">
+                          89% Success Rate
+                        </div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400">
+                          Job placements
+                        </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2"
+            />
+          </motion.div>
+        </motion.div>
       </motion.section>
 
-      {/* Features Section */}
+      {/* Job Categories Quick Access */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="w-full py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-purple-900"
+      >
+        <div className="w-full px-6 lg:px-12 xl:px-20">
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              Popular Job Categories
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Explore opportunities across different industries and find your
+              perfect match
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Work From Home",
+                count: "50K+ Jobs",
+                icon: <HomeIcon className="h-8 w-8" />,
+                color: "from-blue-500 to-blue-600",
+              },
+              {
+                name: "Full Time",
+                count: "100K+ Jobs",
+                icon: <BrainIcon className="h-8 w-8" />,
+                color: "from-purple-500 to-purple-600",
+              },
+              {
+                name: "Part Time",
+                count: "25K+ Jobs",
+                icon: <ClockIcon className="h-8 w-8" />,
+                color: "from-green-500 to-green-600",
+              },
+              {
+                name: "IT Jobs",
+                count: "45K+ Jobs",
+                icon: <ComputerIcon className="h-8 w-8" />,
+                color: "from-orange-500 to-orange-600",
+              },
+            ].map((category, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                className="group cursor-pointer"
+                onClick={() => handleProtectedFeatureClick("/jobs")}
+              >
+                <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <CardContent className="p-8 text-center space-y-6">
+                    <div
+                      className={`mx-auto w-20 h-20 bg-gradient-to-r ${category.color} rounded-3xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}
+                    >
+                      {category.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {category.name}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 mt-2">
+                        {category.count}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Trust Indicators */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -362,173 +498,98 @@ export default function ModernHomePage() {
         variants={containerVariants}
         className="w-full py-20 bg-white dark:bg-gray-900"
       >
-        <div className="w-full px-6 lg:px-12 xl:px-20 space-y-16">
-          <motion.div variants={itemVariants} className="text-center space-y-6">
-            <Badge variant="outline" className="text-base px-4 py-2">
-              <StarIcon className="mr-2 h-4 w-4 text-yellow-500" />
-              Complete Feature Suite
-            </Badge>
-            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white">
-              Everything You Need to
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block">
-                Accelerate Your Career
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-              Discover our complete toolkit designed to help you find, apply to,
-              and land your dream job with AI-powered intelligence.
-            </p>
-          </motion.div>
+        <div className="w-full px-6 lg:px-12 xl:px-20">
+          <motion.div variants={itemVariants} className="text-center">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-12">
+              Trusted by professionals worldwide
+            </h3>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {allFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                className="group"
-              >
-                <Card className="h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded-xl text-gray-700 dark:text-gray-300 group-hover:bg-blue-100 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-all duration-300">
-                        {feature.icon}
-                      </div>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
-                      >
-                        {feature.category}
-                      </Badge>
-                    </div>
-                    <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {feature.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-400">
-                      {feature.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button
-                      className="w-full bg-gray-900 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
-                      asChild
-                    >
-                      <Link to={feature.path}>
-                        Explore
-                        <ArrowRightIcon className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <motion.div variants={itemVariants} className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <ShieldIcon className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  100% Secure
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Your data is protected with enterprise-grade security
+                </p>
               </motion.div>
-            ))}
-          </div>
+
+              <motion.div variants={itemVariants} className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BoltIcon className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  AI-Powered
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Advanced algorithms match you with perfect opportunities
+                </p>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <GlobeIcon className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Global Reach
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Connect with opportunities from around the world
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* Testimonials Section */}
+      {/* Final CTA */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className="w-full py-20 bg-gray-50 dark:bg-gray-800"
+        className="w-full py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white relative overflow-hidden"
       >
-        <div className="w-full px-6 lg:px-12 xl:px-20 space-y-16">
-          <motion.div variants={itemVariants} className="text-center space-y-6">
-            <Badge variant="outline" className="text-base px-4 py-2">
-              Success Stories
-            </Badge>
-            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white">
-              Trusted by Top Professionals
-            </h2>
-          </motion.div>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                  <CardContent className="p-6">
-                    <div className="space-y-6">
-                      <div className="flex items-center gap-1">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <StarIcon
-                            key={i}
-                            className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                          />
-                        ))}
-                      </div>
-                      <blockquote className="text-gray-700 dark:text-gray-300 italic">
-                        "{testimonial.content}"
-                      </blockquote>
-                      <div className="flex items-center gap-3">
-                        <Avatar className="h-10 w-10">
-                          <AvatarImage src={testimonial.avatar} />
-                          <AvatarFallback className="bg-blue-600 text-white">
-                            {testimonial.name[0]}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <div className="font-medium text-gray-900 dark:text-white">
-                            {testimonial.name}
-                          </div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">
-                            {testimonial.role} at {testimonial.company}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* CTA Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="w-full py-20 bg-gray-900 dark:bg-black text-white"
-      >
-        <div className="w-full px-6 lg:px-12 xl:px-20 text-center space-y-8">
+        <div className="relative w-full px-6 lg:px-12 xl:px-20 text-center space-y-8 z-10">
           <motion.h2
             variants={itemVariants}
             className="text-4xl lg:text-6xl font-bold"
           >
-            Ready to Transform
-            <span className="text-blue-400 block">Your Career?</span>
+            Ready to Transform Your Career?
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl max-w-3xl mx-auto text-gray-300"
+            className="text-xl lg:text-2xl max-w-3xl mx-auto opacity-90"
           >
-            Join 500,000+ professionals who've accelerated their career success
-            with CareerAI's cutting-edge platform and AI-powered tools.
+            Join half a million professionals who've found their dream jobs with
+            CareerAI
           </motion.p>
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
           >
             <Button
               size="lg"
-              className="text-xl px-12 py-6 bg-white text-gray-900 hover:bg-gray-100"
+              className="text-xl px-12 py-6 bg-white text-purple-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 rounded-2xl"
               asChild
             >
               <Link to="/register">
-                Start Free Today
-                <CheckCircleIcon className="ml-2 h-6 w-6" />
+                Start Your Journey
+                <RocketIcon className="ml-2 h-6 w-6" />
               </Link>
             </Button>
-            <div className="flex items-center gap-4 text-gray-400">
-              <span>✨ No credit card required</span>
-              <span>⚡ Setup in 2 minutes</span>
+
+            <div className="text-white/80 text-sm space-y-1">
+              <div>✨ No credit card required</div>
+              <div>⚡ Setup in under 2 minutes</div>
             </div>
           </motion.div>
         </div>

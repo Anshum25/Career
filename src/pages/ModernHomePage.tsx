@@ -190,19 +190,15 @@ function AIChatbot() {
   return (
     <>
       {/* Chat Button */}
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        className="fixed bottom-6 right-6 z-50"
-      >
+      <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(true)}
-          className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-2xl hover:shadow-3xl"
+          className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-2xl hover:shadow-3xl transition-all duration-300"
           size="icon"
         >
           <MessageSquareIcon className="h-6 w-6" />
         </Button>
-      </motion.div>
+      </div>
 
       {/* Chat Window */}
       <AnimatePresence>
@@ -211,6 +207,7 @@ function AIChatbot() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={{ duration: 0.2 }}
             className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col z-50"
           >
             {/* Header */}
@@ -370,17 +367,6 @@ export default function ModernHomePage() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const floatingVariants = {
-    float: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   const stats = [
     {
       label: "Active Users",
@@ -415,7 +401,6 @@ export default function ModernHomePage() {
       icon: <SearchIcon className="h-6 w-6" />,
       path: "/jobs",
       color: "from-blue-500 to-blue-600",
-      delay: 0,
     },
     {
       title: "AI Resume",
@@ -423,7 +408,6 @@ export default function ModernHomePage() {
       icon: <FileTextIcon className="h-6 w-6" />,
       path: "/ai/resume-scorer",
       color: "from-purple-500 to-purple-600",
-      delay: 0.1,
     },
     {
       title: "Skill Match",
@@ -431,7 +415,6 @@ export default function ModernHomePage() {
       icon: <TargetIcon className="h-6 w-6" />,
       path: "/ai/skill-matcher",
       color: "from-green-500 to-green-600",
-      delay: 0.2,
     },
     {
       title: "Interview Prep",
@@ -439,7 +422,6 @@ export default function ModernHomePage() {
       icon: <MicIcon className="h-6 w-6" />,
       path: "/ai/voice-interview",
       color: "from-orange-500 to-orange-600",
-      delay: 0.3,
     },
   ];
 
@@ -547,31 +529,21 @@ export default function ModernHomePage() {
 
   return (
     <div className="w-full min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Full Screen Hero with Diagonal Split */}
+      {/* Full Screen Hero */}
       <motion.section
         initial="hidden"
         animate="visible"
         variants={containerVariants}
         className="relative w-full h-screen flex items-center"
       >
-        {/* Animated Background Elements */}
+        {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900"></div>
 
-          <motion.div
-            animate={floatingVariants.float}
-            className="absolute top-20 left-20 w-20 h-20 bg-blue-200 dark:bg-blue-800 rounded-full opacity-20"
-          />
-          <motion.div
-            animate={floatingVariants.float}
-            transition={{ delay: 1 }}
-            className="absolute top-40 right-32 w-16 h-16 bg-purple-200 dark:bg-purple-800 rotate-45 opacity-20"
-          />
-          <motion.div
-            animate={floatingVariants.float}
-            transition={{ delay: 2 }}
-            className="absolute bottom-32 left-40 w-12 h-12 bg-green-200 dark:bg-green-800 rounded-full opacity-20"
-          />
+          {/* Simple floating shapes */}
+          <div className="absolute top-20 left-20 w-20 h-20 bg-blue-200 dark:bg-blue-800 rounded-full opacity-20 animate-pulse"></div>
+          <div className="absolute top-40 right-32 w-16 h-16 bg-purple-200 dark:bg-purple-800 rotate-45 opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-32 left-40 w-12 h-12 bg-green-200 dark:bg-green-800 rounded-full opacity-20 animate-pulse"></div>
 
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         </div>
@@ -580,24 +552,13 @@ export default function ModernHomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen py-20">
             {/* Left Side - Main Content */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring" }}
-              >
-                <Badge className="text-base px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 shadow-lg">
-                  <SparklesIcon className="mr-2 h-4 w-4" />
-                  AI-Powered Career Platform
-                </Badge>
-              </motion.div>
+              <Badge className="text-base px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 shadow-lg">
+                <SparklesIcon className="mr-2 h-4 w-4" />
+                AI-Powered Career Platform
+              </Badge>
 
               <div className="space-y-4">
-                <motion.h1
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-6xl lg:text-8xl font-black leading-none"
-                >
+                <h1 className="text-6xl lg:text-8xl font-black leading-none">
                   <span className="text-gray-900 dark:text-white">Your</span>
                   <br />
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -605,54 +566,39 @@ export default function ModernHomePage() {
                   </span>
                   <br />
                   <span className="text-gray-900 dark:text-white">Awaits</span>
-                </motion.h1>
+                </h1>
 
-                <motion.p
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed"
-                >
+                <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
                   Discover opportunities with our AI-powered platform.
                   <span className="font-semibold text-blue-600 dark:text-blue-400">
                     {" "}
                     500K+ professionals
                   </span>{" "}
                   already found their perfect match.
-                </motion.p>
+                </p>
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="relative"
-              >
-                <div className="relative max-w-2xl">
-                  <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400" />
-                  <Input
-                    placeholder="Search jobs by title, company, or skills..."
-                    className="pl-12 pr-32 py-6 text-lg rounded-2xl border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 shadow-lg"
-                    onClick={() => handleProtectedFeatureClick("/jobs")}
-                  />
-                  <Button
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl px-6"
-                    onClick={() => handleProtectedFeatureClick("/jobs")}
-                  >
-                    Search
-                  </Button>
-                </div>
-              </motion.div>
+              {/* Search Bar */}
+              <div className="relative max-w-2xl">
+                <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400" />
+                <Input
+                  placeholder="Search jobs by title, company, or skills..."
+                  className="pl-12 pr-32 py-6 text-lg rounded-2xl border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 shadow-lg"
+                  onClick={() => handleProtectedFeatureClick("/jobs")}
+                />
+                <Button
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl px-6"
+                  onClick={() => handleProtectedFeatureClick("/jobs")}
+                >
+                  Search
+                </Button>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-6 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 rounded-2xl"
+                  className="text-lg px-8 py-6 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-2xl"
                   asChild
                 >
                   <Link to="/register">
@@ -671,20 +617,14 @@ export default function ModernHomePage() {
                     Watch Demo
                   </Link>
                 </Button>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8"
-              >
+              {/* Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2 + index * 0.1 }}
+                    variants={itemVariants}
                     className="text-center"
                   >
                     <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
@@ -701,99 +641,75 @@ export default function ModernHomePage() {
                     </div>
                   </motion.div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
 
-            {/* Right Side - Interactive Cards */}
+            {/* Right Side - Quick Actions */}
             <motion.div variants={itemVariants} className="relative">
-              <div className="relative perspective-1000">
-                <div className="grid grid-cols-2 gap-6">
-                  {quickActions.map((action, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 50, rotateY: -15 }}
-                      animate={{ opacity: 1, y: 0, rotateY: 0 }}
-                      transition={{ delay: 0.5 + action.delay }}
-                      whileHover={{ scale: 1.05, rotateY: 5 }}
-                      className="group cursor-pointer"
-                      onClick={() => handleProtectedFeatureClick(action.path)}
-                    >
-                      <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform-gpu">
-                        <CardContent className="p-6 text-center space-y-4">
-                          <div
-                            className={`mx-auto w-16 h-16 bg-gradient-to-r ${action.color} rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                          >
-                            {action.icon}
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                              {action.title}
-                            </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                              {action.desc}
-                            </p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+              <div className="grid grid-cols-2 gap-6">
+                {quickActions.map((action, index) => (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.05 }}
+                    className="group cursor-pointer"
+                    onClick={() => handleProtectedFeatureClick(action.path)}
+                  >
+                    <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border-0 shadow-2xl hover:shadow-3xl transition-all duration-500">
+                      <CardContent className="p-6 text-center space-y-4">
+                        <div
+                          className={`mx-auto w-16 h-16 bg-gradient-to-r ${action.color} rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                        >
+                          {action.icon}
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {action.title}
+                          </h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            {action.desc}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Achievement Badge */}
+              <div className="absolute -top-6 -right-6 z-10">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                  <TrophyIcon className="h-4 w-4" />
+                  <span className="text-sm font-bold">#1 Platform</span>
                 </div>
+              </div>
 
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.5, type: "spring" }}
-                  className="absolute -top-6 -right-6 z-10"
-                >
-                  <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
-                    <TrophyIcon className="h-4 w-4" />
-                    <span className="text-sm font-bold">#1 Platform</span>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.8 }}
-                  className="absolute -bottom-6 -left-6 z-10"
-                >
-                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                      <div>
-                        <div className="text-sm font-bold text-gray-900 dark:text-white">
-                          89% Success Rate
-                        </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400">
-                          Job placements
-                        </div>
+              {/* Success Rate */}
+              <div className="absolute -bottom-6 -left-6 z-10">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <div>
+                      <div className="text-sm font-bold text-gray-900 dark:text-white">
+                        89% Success Rate
+                      </div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400">
+                        Job placements
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2"
-            />
-          </motion.div>
-        </motion.div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-bounce"></div>
+          </div>
+        </div>
       </motion.section>
 
       {/* About CareerAI Section */}
@@ -907,14 +823,14 @@ export default function ModernHomePage() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, rotateY: 5 }}
+                whileHover={{ scale: 1.05 }}
                 className="group cursor-pointer"
                 onClick={() => handleProtectedFeatureClick("/jobs")}
               >
                 <Card className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border-0 shadow-xl hover:shadow-2xl transition-all duration-500">
                   <CardContent className="p-8 text-center space-y-6">
                     <div
-                      className={`mx-auto w-20 h-20 bg-gradient-to-r ${category.color} rounded-3xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}
+                      className={`mx-auto w-20 h-20 bg-gradient-to-r ${category.color} rounded-3xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all duration-300`}
                     >
                       {category.icon}
                     </div>
@@ -1154,7 +1070,7 @@ export default function ModernHomePage() {
           >
             <Button
               size="lg"
-              className="text-xl px-12 py-6 bg-white text-purple-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 rounded-2xl"
+              className="text-xl px-12 py-6 bg-white text-purple-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-300 rounded-2xl"
               asChild
             >
               <Link to="/register">

@@ -51,7 +51,7 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
-  const coreNavItems = [
+  const jobSeekerNavItems = [
     {
       name: "Find Jobs",
       path: "/jobs",
@@ -78,6 +78,37 @@ export default function Navbar() {
       icon: <FileTextIcon className="h-4 w-4" />,
     },
   ];
+
+  const recruiterNavItems = [
+    {
+      name: "Dashboard",
+      path: "/dashboard/recruiter",
+      icon: <BarChart3Icon className="h-4 w-4" />,
+    },
+    {
+      name: "Job Posts",
+      path: "/dashboard/recruiter?section=jobs",
+      icon: <BriefcaseIcon className="h-4 w-4" />,
+    },
+    {
+      name: "Applicants",
+      path: "/dashboard/recruiter?section=applicants",
+      icon: <UserIcon className="h-4 w-4" />,
+    },
+    {
+      name: "Company Profile",
+      path: "/dashboard/recruiter?section=company",
+      icon: <BuildingIcon className="h-4 w-4" />,
+    },
+    {
+      name: "Notifications",
+      path: "/dashboard/recruiter?section=notifications",
+      icon: <BellIcon className="h-4 w-4" />,
+    },
+  ];
+
+  const coreNavItems =
+    user?.role === "recruiter" ? recruiterNavItems : jobSeekerNavItems;
 
   const NavLink = ({
     item,

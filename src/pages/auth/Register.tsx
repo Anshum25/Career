@@ -498,7 +498,7 @@ export default function Register() {
 
           {/* Progress Bar */}
           <div className="space-y-2">
-            <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex justify-between text-xs md:text-sm text-gray-600 dark:text-gray-400">
               <span>
                 Step {currentStep} of {totalSteps}
               </span>

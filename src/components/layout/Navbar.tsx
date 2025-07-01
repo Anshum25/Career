@@ -268,7 +268,11 @@ export default function Navbar() {
                       {/* Profile and Settings */}
                       <DropdownMenuItem asChild>
                         <Link
-                          to="/profile/naukri"
+                          to={
+                            user.role === "admin"
+                              ? "/admin/profile"
+                              : "/profile/naukri"
+                          }
                           className="flex items-center gap-2 text-slate-700 dark:text-slate-300"
                         >
                           <UserIcon className="h-4 w-4" />
@@ -278,7 +282,13 @@ export default function Navbar() {
 
                       <DropdownMenuItem asChild>
                         <Link
-                          to="/profile/naukri"
+                          to={
+                            user.role === "admin"
+                              ? "/admin/settings"
+                              : user.role === "recruiter"
+                                ? "/dashboard/recruiter?section=settings"
+                                : "/profile/naukri"
+                          }
                           className="flex items-center gap-2 text-slate-700 dark:text-slate-300"
                         >
                           <SettingsIcon className="h-4 w-4" />

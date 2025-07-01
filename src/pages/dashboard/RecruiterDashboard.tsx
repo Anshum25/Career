@@ -176,15 +176,6 @@ const mockApplicants = [
   },
 ];
 
-const sidebarItems = [
-  { id: "overview", label: "Dashboard", icon: BarChart3 },
-  { id: "jobs", label: "Job Posts", icon: BriefcaseIcon },
-  { id: "applicants", label: "Applicants", icon: Users },
-  { id: "company", label: "Company Profile", icon: BuildingIcon },
-  { id: "notifications", label: "Notifications", icon: BellIcon },
-  { id: "settings", label: "Settings", icon: SettingsIcon },
-];
-
 export default function RecruiterDashboard() {
   const { user } = useAuth();
   const [searchParams] = useSearchParams();

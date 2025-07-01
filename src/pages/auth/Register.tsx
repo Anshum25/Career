@@ -47,13 +47,11 @@ import {
 import { UserRole } from "@/lib/types";
 
 interface RecruiterFormData {
-  // Personal Info
   fullName: string;
   email: string;
   phone: string;
   password: string;
   confirmPassword: string;
-  // Company Info
   companyName: string;
   companyWebsite: string;
   companyDescription: string;
@@ -65,13 +63,11 @@ interface RecruiterFormData {
 }
 
 interface JobSeekerFormData {
-  // Basic Info
   fullName: string;
   email: string;
   phone: string;
   password: string;
   confirmPassword: string;
-  // Career Profile
   resume: File | null;
   desiredJobTitle: string;
   experienceLevel: string;
@@ -79,7 +75,6 @@ interface JobSeekerFormData {
   education: string;
   locationPreference: string;
   employmentType: string;
-  // Optional
   linkedinUrl: string;
   portfolioWebsite: string;
   githubUrl: string;
@@ -94,7 +89,6 @@ export default function Register() {
   const { register, loading } = useAuth();
   const navigate = useNavigate();
 
-  // Recruiter form data
   const [recruiterData, setRecruiterData] = useState<RecruiterFormData>({
     fullName: "",
     email: "",
@@ -111,7 +105,6 @@ export default function Register() {
     agreeToTerms: false,
   });
 
-  // Job seeker form data
   const [jobSeekerData, setJobSeekerData] = useState<JobSeekerFormData>({
     fullName: "",
     email: "",
@@ -132,7 +125,7 @@ export default function Register() {
     agreeToTerms: false,
   });
 
-  const totalSteps = selectedRole === "recruiter" ? 3 : 3;
+  const totalSteps = 3;
 
   const handleRecruiterInputChange = (
     field: keyof RecruiterFormData,
@@ -169,6 +162,45 @@ export default function Register() {
     } else {
       handleJobSeekerInputChange(field as keyof JobSeekerFormData, file);
     }
+  };
+
+  const resetForm = () => {
+    setCurrentStep(1);
+    setError("");
+    setRecruiterData({
+      fullName: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
+      companyName: "",
+      companyWebsite: "",
+      companyDescription: "",
+      companySize: "",
+      industry: "",
+      location: "",
+      companyLogo: null,
+      agreeToTerms: false,
+    });
+    setJobSeekerData({
+      fullName: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
+      resume: null,
+      desiredJobTitle: "",
+      experienceLevel: "",
+      skills: [],
+      education: "",
+      locationPreference: "",
+      employmentType: "",
+      linkedinUrl: "",
+      portfolioWebsite: "",
+      githubUrl: "",
+      languages: "",
+      agreeToTerms: false,
+    });
   };
 
   const validateCurrentStep = () => {
@@ -238,14 +270,13 @@ export default function Register() {
           break;
         case 2:
           if (
-            !jobSeekerData.resume ||
             !jobSeekerData.desiredJobTitle ||
             !jobSeekerData.experienceLevel ||
             jobSeekerData.skills.length === 0 ||
             !jobSeekerData.education ||
             !jobSeekerData.locationPreference
           ) {
-            setError("Please fill in all required career profile fields");
+            setError("Please fill in all required career fields");
             return false;
           }
           break;
@@ -350,16 +381,16 @@ export default function Register() {
     "TypeScript",
     "Angular",
     "Vue.js",
-    "SQL",
-    "MongoDB",
+    "PHP",
+    "Ruby",
+    "Go",
+    "Swift",
+    "Kotlin",
+    "Machine Learning",
+    "Data Science",
     "AWS",
     "Docker",
     "Kubernetes",
-    "Git",
-    "Figma",
-    "Photoshop",
-    "Project Management",
-    "Data Analysis",
   ];
 
   const industries = [
@@ -370,11 +401,11 @@ export default function Register() {
     "Retail",
     "Manufacturing",
     "Consulting",
-    "Media",
+    "Media & Entertainment",
     "Real Estate",
-    "Automotive",
-    "Aerospace",
+    "Transportation",
     "Energy",
+    "Other",
   ];
 
   const companySizes = [
@@ -386,27 +417,22 @@ export default function Register() {
   ];
 
   const experienceLevels = [
-    "Fresher (0 years)",
-    "0-1 years",
-    "1-3 years",
-    "3-5 years",
-    "5-10 years",
-    "10+ years",
+    "Fresher (0-1 years)",
+    "Junior (1-3 years)",
+    "Mid-level (3-6 years)",
+    "Senior (6-10 years)",
+    "Lead (10-15 years)",
+    "Executive (15+ years)",
   ];
 
   const employmentTypes = [
     "Full-time",
     "Part-time",
     "Contract",
+    "Freelance",
     "Internship",
     "Remote",
-    "Freelance",
   ];
-
-  const resetForm = () => {
-    setCurrentStep(1);
-    setError("");
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-8">
@@ -508,13 +534,15 @@ export default function Register() {
             </div>
             <Progress
               value={(currentStep / totalSteps) * 100}
-              className="h-2"
+              className="h-2 md:h-3"
             />
           </div>
 
           {error && (
             <Alert variant="destructive">
-              <AlertDescription>{error}</AlertDescription>
+              <AlertDescription className="text-sm md:text-base">
+                {error}
+              </AlertDescription>
             </Alert>
           )}
 
@@ -525,17 +553,17 @@ export default function Register() {
               <>
                 {currentStep === 1 && (
                   <div className="space-y-6">
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold flex items-center justify-center gap-2">
-                        <UserIcon className="h-6 w-6" />
+                    <div className="text-center mb-4 md:mb-6">
+                      <h3 className="text-lg md:text-xl font-semibold flex items-center justify-center gap-2">
+                        <UserIcon className="h-5 w-5 md:h-6 md:w-6" />
                         Personal Information
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mt-2">
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
                         Tell us about yourself
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
                         <Label
                           htmlFor="fullName"
@@ -560,11 +588,14 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email">Work Email *</Label>
+                        <Label htmlFor="email" className="text-sm md:text-base">
+                          Work Email *
+                        </Label>
                         <Input
                           id="email"
                           type="email"
-                          placeholder="you@company.com"
+                          placeholder="john@company.com"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.email}
                           onChange={(e) =>
                             handleRecruiterInputChange("email", e.target.value)
@@ -574,11 +605,14 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Label htmlFor="phone" className="text-sm md:text-base">
+                          Phone Number *
+                        </Label>
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="+1 (555) 000-0000"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.phone}
                           onChange={(e) =>
                             handleRecruiterInputChange("phone", e.target.value)
@@ -588,11 +622,17 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="password">Password *</Label>
+                        <Label
+                          htmlFor="password"
+                          className="text-sm md:text-base"
+                        >
+                          Password *
+                        </Label>
                         <Input
                           id="password"
                           type="password"
-                          placeholder="Create a secure password"
+                          placeholder="Create a strong password"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.password}
                           onChange={(e) =>
                             handleRecruiterInputChange(
@@ -605,13 +645,17 @@ export default function Register() {
                       </div>
 
                       <div className="md:col-span-2 space-y-2">
-                        <Label htmlFor="confirmPassword">
+                        <Label
+                          htmlFor="confirmPassword"
+                          className="text-sm md:text-base"
+                        >
                           Confirm Password *
                         </Label>
                         <Input
                           id="confirmPassword"
                           type="password"
                           placeholder="Confirm your password"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.confirmPassword}
                           onChange={(e) =>
                             handleRecruiterInputChange(
@@ -628,23 +672,29 @@ export default function Register() {
 
                 {currentStep === 2 && (
                   <div className="space-y-6">
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold flex items-center justify-center gap-2">
-                        <BuildingIcon className="h-6 w-6" />
+                    <div className="text-center mb-4 md:mb-6">
+                      <h3 className="text-lg md:text-xl font-semibold flex items-center justify-center gap-2">
+                        <BuildingIcon className="h-5 w-5 md:h-6 md:w-6" />
                         Company Information
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mt-2">
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
                         Tell us about your company
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="companyName">Company Name *</Label>
+                        <Label
+                          htmlFor="companyName"
+                          className="text-sm md:text-base"
+                        >
+                          Company Name *
+                        </Label>
                         <Input
                           id="companyName"
                           type="text"
                           placeholder="Acme Corporation"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.companyName}
                           onChange={(e) =>
                             handleRecruiterInputChange(
@@ -657,13 +707,17 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="companyWebsite">
+                        <Label
+                          htmlFor="companyWebsite"
+                          className="text-sm md:text-base"
+                        >
                           Company Website *
                         </Label>
                         <Input
                           id="companyWebsite"
                           type="url"
                           placeholder="https://company.com"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.companyWebsite}
                           onChange={(e) =>
                             handleRecruiterInputChange(
@@ -676,13 +730,18 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="industry">Industry *</Label>
+                        <Label
+                          htmlFor="industry"
+                          className="text-sm md:text-base"
+                        >
+                          Industry *
+                        </Label>
                         <Select
                           onValueChange={(value) =>
                             handleRecruiterInputChange("industry", value)
                           }
                         >
-                          <SelectTrigger>
+                          <SelectTrigger className="h-10 md:h-12 text-sm md:text-base">
                             <SelectValue placeholder="Select industry" />
                           </SelectTrigger>
                           <SelectContent>
@@ -696,13 +755,18 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="companySize">Company Size</Label>
+                        <Label
+                          htmlFor="companySize"
+                          className="text-sm md:text-base"
+                        >
+                          Company Size
+                        </Label>
                         <Select
                           onValueChange={(value) =>
                             handleRecruiterInputChange("companySize", value)
                           }
                         >
-                          <SelectTrigger>
+                          <SelectTrigger className="h-10 md:h-12 text-sm md:text-base">
                             <SelectValue placeholder="Select company size" />
                           </SelectTrigger>
                           <SelectContent>
@@ -716,11 +780,17 @@ export default function Register() {
                       </div>
 
                       <div className="md:col-span-2 space-y-2">
-                        <Label htmlFor="location">Company Location *</Label>
+                        <Label
+                          htmlFor="location"
+                          className="text-sm md:text-base"
+                        >
+                          Company Location *
+                        </Label>
                         <Input
                           id="location"
                           type="text"
                           placeholder="City, State/Country"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.location}
                           onChange={(e) =>
                             handleRecruiterInputChange(
@@ -733,13 +803,17 @@ export default function Register() {
                       </div>
 
                       <div className="md:col-span-2 space-y-2">
-                        <Label htmlFor="companyDescription">
+                        <Label
+                          htmlFor="companyDescription"
+                          className="text-sm md:text-base"
+                        >
                           Company Description (Optional)
                         </Label>
                         <Textarea
                           id="companyDescription"
                           placeholder="Brief description of your company..."
                           rows={3}
+                          className="text-sm md:text-base"
                           value={recruiterData.companyDescription}
                           onChange={(e) =>
                             handleRecruiterInputChange(
@@ -755,22 +829,22 @@ export default function Register() {
 
                 {currentStep === 3 && (
                   <div className="space-y-6">
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold flex items-center justify-center gap-2">
-                        <CheckIcon className="h-6 w-6" />
+                    <div className="text-center mb-4 md:mb-6">
+                      <h3 className="text-lg md:text-xl font-semibold flex items-center justify-center gap-2">
+                        <CheckIcon className="h-5 w-5 md:h-6 md:w-6" />
                         Review & Confirm
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mt-2">
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
                         Almost there! Please review your information
                       </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-4">
-                        <h4 className="font-semibold text-lg border-b pb-2">
+                        <h4 className="font-semibold text-base md:text-lg border-b pb-2">
                           Personal Information
                         </h4>
-                        <div className="space-y-2 text-sm">
+                        <div className="space-y-2 text-sm md:text-base">
                           <div>
                             <span className="font-medium">Name:</span>{" "}
                             {recruiterData.fullName}
@@ -787,10 +861,10 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold text-lg border-b pb-2">
+                        <h4 className="font-semibold text-base md:text-lg border-b pb-2">
                           Company Information
                         </h4>
-                        <div className="space-y-2 text-sm">
+                        <div className="space-y-2 text-sm md:text-base">
                           <div>
                             <span className="font-medium">Company:</span>{" "}
                             {recruiterData.companyName}
@@ -811,24 +885,24 @@ export default function Register() {
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-2 p-4 border rounded-lg bg-blue-50 dark:bg-blue-900/20">
+                    <div className="flex items-center space-x-2 mt-6">
                       <Checkbox
-                        id="terms"
+                        id="agreeTermsRecruiter"
                         checked={recruiterData.agreeToTerms}
                         onCheckedChange={(checked) =>
-                          handleRecruiterInputChange("agreeToTerms", checked)
+                          handleRecruiterInputChange("agreeToTerms", !!checked)
                         }
                       />
-                      <label
-                        htmlFor="terms"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      <Label
+                        htmlFor="agreeTermsRecruiter"
+                        className="text-sm md:text-base"
                       >
                         I agree to the{" "}
                         <Link
                           to="/terms"
                           className="text-blue-600 hover:underline"
                         >
-                          Terms of Service
+                          Terms & Conditions
                         </Link>{" "}
                         and{" "}
                         <Link
@@ -837,7 +911,7 @@ export default function Register() {
                         >
                           Privacy Policy
                         </Link>
-                      </label>
+                      </Label>
                     </div>
                   </div>
                 )}
@@ -847,23 +921,29 @@ export default function Register() {
               <>
                 {currentStep === 1 && (
                   <div className="space-y-6">
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold flex items-center justify-center gap-2">
-                        <UserIcon className="h-6 w-6" />
+                    <div className="text-center mb-4 md:mb-6">
+                      <h3 className="text-lg md:text-xl font-semibold flex items-center justify-center gap-2">
+                        <UserIcon className="h-5 w-5 md:h-6 md:w-6" />
                         Basic Information
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mt-2">
-                        Let's start with your basic details
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
+                        Let's start with your basic information
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="fullName">Full Name *</Label>
+                        <Label
+                          htmlFor="fullName"
+                          className="text-sm md:text-base"
+                        >
+                          Full Name *
+                        </Label>
                         <Input
                           id="fullName"
                           type="text"
                           placeholder="Enter your full name"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={jobSeekerData.fullName}
                           onChange={(e) =>
                             handleJobSeekerInputChange(
@@ -876,11 +956,14 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email Address *</Label>
+                        <Label htmlFor="email" className="text-sm md:text-base">
+                          Email Address *
+                        </Label>
                         <Input
                           id="email"
                           type="email"
-                          placeholder="you@email.com"
+                          placeholder="john@example.com"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={jobSeekerData.email}
                           onChange={(e) =>
                             handleJobSeekerInputChange("email", e.target.value)
@@ -890,11 +973,14 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Label htmlFor="phone" className="text-sm md:text-base">
+                          Phone Number *
+                        </Label>
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="+1 (555) 000-0000"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={jobSeekerData.phone}
                           onChange={(e) =>
                             handleJobSeekerInputChange("phone", e.target.value)
@@ -904,11 +990,17 @@ export default function Register() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="password">Password *</Label>
+                        <Label
+                          htmlFor="password"
+                          className="text-sm md:text-base"
+                        >
+                          Password *
+                        </Label>
                         <Input
                           id="password"
                           type="password"
-                          placeholder="Create a secure password"
+                          placeholder="Create a strong password"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={jobSeekerData.password}
                           onChange={(e) =>
                             handleJobSeekerInputChange(
@@ -921,13 +1013,17 @@ export default function Register() {
                       </div>
 
                       <div className="md:col-span-2 space-y-2">
-                        <Label htmlFor="confirmPassword">
+                        <Label
+                          htmlFor="confirmPassword"
+                          className="text-sm md:text-base"
+                        >
                           Confirm Password *
                         </Label>
                         <Input
                           id="confirmPassword"
                           type="password"
                           placeholder="Confirm your password"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={jobSeekerData.confirmPassword}
                           onChange={(e) =>
                             handleJobSeekerInputChange(
@@ -944,58 +1040,57 @@ export default function Register() {
 
                 {currentStep === 2 && (
                   <div className="space-y-6">
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold flex items-center justify-center gap-2">
-                        <BriefcaseIcon className="h-6 w-6" />
+                    <div className="text-center mb-4 md:mb-6">
+                      <h3 className="text-lg md:text-xl font-semibold flex items-center justify-center gap-2">
+                        <BrainIcon className="h-5 w-5 md:h-6 md:w-6" />
                         Career Profile
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mt-2">
-                        Help us match you with the perfect jobs
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
+                        Tell us about your career goals and experience
                       </p>
                     </div>
 
                     <div className="space-y-6">
                       {/* Resume Upload */}
                       <div className="space-y-2">
-                        <Label htmlFor="resume">Resume Upload *</Label>
-                        <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
-                          <UploadIcon className="h-12 w-12 mx-auto text-gray-400 mb-2" />
-                          <div className="space-y-1">
-                            <p className="text-sm font-medium">
-                              Click to upload your resume
+                        <Label className="text-sm md:text-base">
+                          Resume Upload *
+                        </Label>
+                        <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-6 text-center hover:border-blue-500 transition-colors">
+                          <UploadIcon className="mx-auto h-8 w-8 md:h-12 md:w-12 text-gray-400 mb-4" />
+                          <div className="space-y-2">
+                            <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                              Drop your resume here or click to browse
                             </p>
-                            <p className="text-xs text-gray-500">
-                              PDF, DOC, or DOCX (max 10MB)
+                            <p className="text-xs md:text-sm text-gray-500">
+                              PDF, DOC, or DOCX (Max 5MB)
                             </p>
                           </div>
-                          <input
+                          <Input
                             type="file"
+                            className="hidden"
                             accept=".pdf,.doc,.docx"
-                            onChange={(e) =>
-                              handleFileUpload(
-                                "resume",
-                                e.target.files?.[0] || null,
-                              )
-                            }
-                            className="mt-2"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0] || null;
+                              handleFileUpload("resume", file);
+                            }}
                           />
-                          {jobSeekerData.resume && (
-                            <div className="mt-2 text-sm text-green-600 font-medium">
-                              ✓ {jobSeekerData.resume.name}
-                            </div>
-                          )}
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div className="space-y-2">
-                          <Label htmlFor="desiredJobTitle">
+                          <Label
+                            htmlFor="desiredJobTitle"
+                            className="text-sm md:text-base"
+                          >
                             Desired Job Title *
                           </Label>
                           <Input
                             id="desiredJobTitle"
                             type="text"
-                            placeholder="e.g., Frontend Developer"
+                            placeholder="e.g. Software Engineer"
+                            className="h-10 md:h-12 text-sm md:text-base"
                             value={jobSeekerData.desiredJobTitle}
                             onChange={(e) =>
                               handleJobSeekerInputChange(
@@ -1008,7 +1103,10 @@ export default function Register() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="experienceLevel">
+                          <Label
+                            htmlFor="experienceLevel"
+                            className="text-sm md:text-base"
+                          >
                             Experience Level *
                           </Label>
                           <Select
@@ -1019,7 +1117,7 @@ export default function Register() {
                               )
                             }
                           >
-                            <SelectTrigger>
+                            <SelectTrigger className="h-10 md:h-12 text-sm md:text-base">
                               <SelectValue placeholder="Select experience level" />
                             </SelectTrigger>
                             <SelectContent>
@@ -1033,11 +1131,17 @@ export default function Register() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="education">Education *</Label>
+                          <Label
+                            htmlFor="education"
+                            className="text-sm md:text-base"
+                          >
+                            Education *
+                          </Label>
                           <Input
                             id="education"
                             type="text"
-                            placeholder="e.g., B.Tech Computer Science"
+                            placeholder="e.g. B.S. Computer Science"
+                            className="h-10 md:h-12 text-sm md:text-base"
                             value={jobSeekerData.education}
                             onChange={(e) =>
                               handleJobSeekerInputChange(
@@ -1050,13 +1154,17 @@ export default function Register() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="locationPreference">
+                          <Label
+                            htmlFor="locationPreference"
+                            className="text-sm md:text-base"
+                          >
                             Location Preference *
                           </Label>
                           <Input
                             id="locationPreference"
                             type="text"
-                            placeholder="e.g., San Francisco, Remote"
+                            placeholder="e.g. New York, Remote"
+                            className="h-10 md:h-12 text-sm md:text-base"
                             value={jobSeekerData.locationPreference}
                             onChange={(e) =>
                               handleJobSeekerInputChange(
@@ -1068,8 +1176,11 @@ export default function Register() {
                           />
                         </div>
 
-                        <div className="md:col-span-2 space-y-2">
-                          <Label htmlFor="employmentType">
+                        <div className="space-y-2">
+                          <Label
+                            htmlFor="employmentType"
+                            className="text-sm md:text-base"
+                          >
                             Employment Type
                           </Label>
                           <Select
@@ -1080,7 +1191,7 @@ export default function Register() {
                               )
                             }
                           >
-                            <SelectTrigger>
+                            <SelectTrigger className="h-10 md:h-12 text-sm md:text-base">
                               <SelectValue placeholder="Select employment type" />
                             </SelectTrigger>
                             <SelectContent>
@@ -1096,25 +1207,28 @@ export default function Register() {
 
                       {/* Skills Selection */}
                       <div className="space-y-3">
-                        <Label>Skills * (Select at least one)</Label>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                        <Label className="text-sm md:text-base">
+                          Skills * (Select all that apply)
+                        </Label>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                           {skillOptions.map((skill) => (
-                            <Badge
-                              key={skill}
-                              variant={
-                                jobSeekerData.skills.includes(skill)
-                                  ? "default"
-                                  : "outline"
-                              }
-                              className="cursor-pointer p-2 text-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900"
-                              onClick={() => handleSkillToggle(skill)}
-                            >
-                              {skill}
-                            </Badge>
+                            <div key={skill}>
+                              <Badge
+                                variant={
+                                  jobSeekerData.skills.includes(skill)
+                                    ? "default"
+                                    : "outline"
+                                }
+                                className="cursor-pointer w-full justify-center py-2 text-xs md:text-sm"
+                                onClick={() => handleSkillToggle(skill)}
+                              >
+                                {skill}
+                              </Badge>
+                            </div>
                           ))}
                         </div>
-                        <p className="text-xs text-gray-500">
-                          Selected skills: {jobSeekerData.skills.length}
+                        <p className="text-xs md:text-sm text-gray-500">
+                          Selected: {jobSeekerData.skills.length} skills
                         </p>
                       </div>
                     </div>
@@ -1123,85 +1237,98 @@ export default function Register() {
 
                 {currentStep === 3 && (
                   <div className="space-y-6">
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-semibold flex items-center justify-center gap-2">
-                        <ExternalLinkIcon className="h-6 w-6" />
+                    <div className="text-center mb-4 md:mb-6">
+                      <h3 className="text-lg md:text-xl font-semibold flex items-center justify-center gap-2">
+                        <CheckIcon className="h-5 w-5 md:h-6 md:w-6" />
                         Additional Info & Confirmation
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mt-2">
-                        Optional details to enhance your profile
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
+                        Optional information to enhance your profile
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
-                        <div className="relative">
-                          <LinkedinIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-blue-600" />
-                          <Input
-                            id="linkedinUrl"
-                            type="url"
-                            placeholder="https://linkedin.com/in/yourprofile"
-                            className="pl-10"
-                            value={jobSeekerData.linkedinUrl}
-                            onChange={(e) =>
-                              handleJobSeekerInputChange(
-                                "linkedinUrl",
-                                e.target.value,
-                              )
-                            }
-                          />
-                        </div>
+                        <Label
+                          htmlFor="linkedinUrl"
+                          className="text-sm md:text-base flex items-center gap-2"
+                        >
+                          <LinkedinIcon className="h-4 w-4" />
+                          LinkedIn URL
+                        </Label>
+                        <Input
+                          id="linkedinUrl"
+                          type="url"
+                          placeholder="https://linkedin.com/in/yourname"
+                          className="h-10 md:h-12 text-sm md:text-base"
+                          value={jobSeekerData.linkedinUrl}
+                          onChange={(e) =>
+                            handleJobSeekerInputChange(
+                              "linkedinUrl",
+                              e.target.value,
+                            )
+                          }
+                        />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="portfolioWebsite">
+                        <Label
+                          htmlFor="portfolioWebsite"
+                          className="text-sm md:text-base flex items-center gap-2"
+                        >
+                          <GlobeIcon className="h-4 w-4" />
                           Portfolio Website
                         </Label>
-                        <div className="relative">
-                          <GlobeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-600" />
-                          <Input
-                            id="portfolioWebsite"
-                            type="url"
-                            placeholder="https://yourportfolio.com"
-                            className="pl-10"
-                            value={jobSeekerData.portfolioWebsite}
-                            onChange={(e) =>
-                              handleJobSeekerInputChange(
-                                "portfolioWebsite",
-                                e.target.value,
-                              )
-                            }
-                          />
-                        </div>
+                        <Input
+                          id="portfolioWebsite"
+                          type="url"
+                          placeholder="https://yourportfolio.com"
+                          className="h-10 md:h-12 text-sm md:text-base"
+                          value={jobSeekerData.portfolioWebsite}
+                          onChange={(e) =>
+                            handleJobSeekerInputChange(
+                              "portfolioWebsite",
+                              e.target.value,
+                            )
+                          }
+                        />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="githubUrl">GitHub URL</Label>
-                        <div className="relative">
-                          <CodeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-600" />
-                          <Input
-                            id="githubUrl"
-                            type="url"
-                            placeholder="https://github.com/yourusername"
-                            className="pl-10"
-                            value={jobSeekerData.githubUrl}
-                            onChange={(e) =>
-                              handleJobSeekerInputChange(
-                                "githubUrl",
-                                e.target.value,
-                              )
-                            }
-                          />
-                        </div>
+                        <Label
+                          htmlFor="githubUrl"
+                          className="text-sm md:text-base flex items-center gap-2"
+                        >
+                          <CodeIcon className="h-4 w-4" />
+                          GitHub URL
+                        </Label>
+                        <Input
+                          id="githubUrl"
+                          type="url"
+                          placeholder="https://github.com/yourname"
+                          className="h-10 md:h-12 text-sm md:text-base"
+                          value={jobSeekerData.githubUrl}
+                          onChange={(e) =>
+                            handleJobSeekerInputChange(
+                              "githubUrl",
+                              e.target.value,
+                            )
+                          }
+                        />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="languages">Languages Known</Label>
+                        <Label
+                          htmlFor="languages"
+                          className="text-sm md:text-base"
+                        >
+                          Languages Known
+                        </Label>
                         <Input
                           id="languages"
                           type="text"
-                          placeholder="e.g., English, Spanish, French"
+                          placeholder="e.g. English, Spanish, French"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={jobSeekerData.languages}
                           onChange={(e) =>
                             handleJobSeekerInputChange(
@@ -1214,58 +1341,70 @@ export default function Register() {
                     </div>
 
                     {/* Profile Summary */}
-                    <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                      <h4 className="font-semibold mb-3">Profile Summary</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div className="bg-gray-50 dark:bg-gray-800 p-4 md:p-6 rounded-xl">
+                      <h4 className="font-semibold text-base md:text-lg mb-4">
+                        Profile Summary
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base">
                         <div>
-                          <span className="font-medium">Name:</span>{" "}
-                          {jobSeekerData.fullName}
+                          <p>
+                            <span className="font-medium">Name:</span>{" "}
+                            {jobSeekerData.fullName}
+                          </p>
+                          <p>
+                            <span className="font-medium">Email:</span>{" "}
+                            {jobSeekerData.email}
+                          </p>
+                          <p>
+                            <span className="font-medium">Desired Role:</span>{" "}
+                            {jobSeekerData.desiredJobTitle}
+                          </p>
+                          <p>
+                            <span className="font-medium">Experience:</span>{" "}
+                            {jobSeekerData.experienceLevel}
+                          </p>
                         </div>
                         <div>
-                          <span className="font-medium">Email:</span>{" "}
-                          {jobSeekerData.email}
-                        </div>
-                        <div>
-                          <span className="font-medium">Desired Role:</span>{" "}
-                          {jobSeekerData.desiredJobTitle}
-                        </div>
-                        <div>
-                          <span className="font-medium">Experience:</span>{" "}
-                          {jobSeekerData.experienceLevel}
-                        </div>
-                        <div>
-                          <span className="font-medium">Education:</span>{" "}
-                          {jobSeekerData.education}
-                        </div>
-                        <div>
-                          <span className="font-medium">Location:</span>{" "}
-                          {jobSeekerData.locationPreference}
-                        </div>
-                        <div className="md:col-span-2">
-                          <span className="font-medium">Skills:</span>{" "}
-                          {jobSeekerData.skills.join(", ")}
+                          <p>
+                            <span className="font-medium">Education:</span>{" "}
+                            {jobSeekerData.education}
+                          </p>
+                          <p>
+                            <span className="font-medium">Location:</span>{" "}
+                            {jobSeekerData.locationPreference}
+                          </p>
+                          <p>
+                            <span className="font-medium">Skills:</span>{" "}
+                            {jobSeekerData.skills.length} selected
+                          </p>
+                          <p>
+                            <span className="font-medium">
+                              Employment Type:
+                            </span>{" "}
+                            {jobSeekerData.employmentType || "Not specified"}
+                          </p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-2 p-4 border rounded-lg bg-blue-50 dark:bg-blue-900/20">
+                    <div className="flex items-center space-x-2">
                       <Checkbox
-                        id="terms"
+                        id="agreeTermsSeeker"
                         checked={jobSeekerData.agreeToTerms}
                         onCheckedChange={(checked) =>
-                          handleJobSeekerInputChange("agreeToTerms", checked)
+                          handleJobSeekerInputChange("agreeToTerms", !!checked)
                         }
                       />
-                      <label
-                        htmlFor="terms"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      <Label
+                        htmlFor="agreeTermsSeeker"
+                        className="text-sm md:text-base"
                       >
                         I agree to the{" "}
                         <Link
                           to="/terms"
                           className="text-blue-600 hover:underline"
                         >
-                          Terms of Service
+                          Terms & Conditions
                         </Link>{" "}
                         and{" "}
                         <Link
@@ -1274,7 +1413,7 @@ export default function Register() {
                         >
                           Privacy Policy
                         </Link>
-                      </label>
+                      </Label>
                     </div>
                   </div>
                 )}
@@ -1282,32 +1421,23 @@ export default function Register() {
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between items-center pt-6 border-t">
+            <div className="flex justify-between pt-6 border-t">
               <Button
                 type="button"
                 variant="outline"
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className="flex items-center gap-2"
+                className="px-4 md:px-6 py-2 md:py-3 text-sm md:text-base"
               >
-                <ArrowLeftIcon className="h-4 w-4" />
+                <ArrowLeftIcon className="mr-2 h-4 w-4" />
                 Previous
               </Button>
 
-              {currentStep < totalSteps ? (
-                <Button
-                  type="button"
-                  onClick={nextStep}
-                  className="flex items-center gap-2"
-                >
-                  Next
-                  <ArrowRightIcon className="h-4 w-4" />
-                </Button>
-              ) : (
+              {currentStep === totalSteps ? (
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="flex items-center gap-2"
+                  className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-base bg-blue-600 hover:bg-blue-700"
                 >
                   {loading ? (
                     <>
@@ -1317,22 +1447,32 @@ export default function Register() {
                   ) : (
                     <>
                       Create Account
-                      <CheckIcon className="h-4 w-4" />
+                      <CheckIcon className="ml-2 h-4 w-4" />
                     </>
                   )}
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  onClick={nextStep}
+                  className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-base bg-blue-600 hover:bg-blue-700"
+                >
+                  Next
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
                 </Button>
               )}
             </div>
           </form>
 
-          <div className="text-center pt-4 border-t">
-            <span className="text-sm text-gray-600 dark:text-gray-400">
+          {/* Sign In Link */}
+          <div className="text-center pt-6 border-t">
+            <span className="text-sm md:text-base text-gray-600 dark:text-gray-400">
               Already have an account?{" "}
               <Link
                 to="/login"
                 className="text-blue-600 hover:underline font-medium"
               >
-                Sign in
+                Sign in here
               </Link>
             </span>
           </div>

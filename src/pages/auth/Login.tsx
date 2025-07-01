@@ -239,14 +239,16 @@ export default function Login() {
             {/* Login Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email" className="text-sm md:text-base">
+                  Email Address
+                </Label>
                 <div className="relative">
                   <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <Input
                     id="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10"
+                    className="pl-10 h-10 md:h-12 text-sm md:text-base"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -255,14 +257,16 @@ export default function Login() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-sm md:text-base">
+                  Password
+                </Label>
                 <div className="relative">
                   <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
-                    className="pl-10 pr-10"
+                    className="pl-10 pr-10 h-10 md:h-12 text-sm md:text-base"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -270,7 +274,7 @@ export default function Login() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 touch-target"
                   >
                     {showPassword ? (
                       <EyeOffIcon className="h-4 w-4" />
@@ -281,20 +285,20 @@ export default function Login() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="remember"
                     checked={rememberMe}
                     onCheckedChange={(checked) => setRememberMe(!!checked)}
                   />
-                  <Label htmlFor="remember" className="text-sm">
+                  <Label htmlFor="remember" className="text-xs md:text-sm">
                     Remember me
                   </Label>
                 </div>
                 <Link
                   to="/forgot-password"
-                  className="text-sm text-blue-600 hover:underline"
+                  className="text-xs md:text-sm text-blue-600 hover:underline touch-target"
                 >
                   Forgot password?
                 </Link>
@@ -302,16 +306,16 @@ export default function Login() {
 
               <Button
                 type="submit"
-                className="w-full py-6 text-lg"
+                className="w-full py-3 md:py-4 text-sm md:text-lg bg-blue-600 hover:bg-blue-700"
                 disabled={loading}
               >
                 {loading ? (
                   <>
-                    <LoaderIcon className="mr-2 h-5 w-5 animate-spin" />
-                    Signing in...
+                    <LoaderIcon className="mr-2 h-4 w-4 md:h-5 md:w-5 animate-spin" />
+                    <span className="text-sm md:text-base">Signing in...</span>
                   </>
                 ) : (
-                  "Sign In"
+                  <span className="text-sm md:text-base">Sign In</span>
                 )}
               </Button>
             </form>
@@ -328,7 +332,7 @@ export default function Login() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
               <Button
                 variant="outline"
                 size="sm"
@@ -336,10 +340,11 @@ export default function Login() {
                   handleDemoLogin("job_seeker", "demo.jobseeker@carerai.com")
                 }
                 disabled={loading}
-                className="py-4"
+                className="py-3 md:py-4 text-xs md:text-sm touch-target"
               >
-                <UserIcon className="mr-2 h-4 w-4" />
-                Demo Seeker
+                <UserIcon className="mr-1 md:mr-2 h-3 w-3 md:h-4 md:w-4" />
+                <span className="hidden sm:inline">Demo Seeker</span>
+                <span className="sm:hidden">Seeker</span>
               </Button>
               <Button
                 variant="outline"
@@ -348,20 +353,20 @@ export default function Login() {
                   handleDemoLogin("recruiter", "demo.recruiter@carerai.com")
                 }
                 disabled={loading}
-                className="py-4"
+                className="py-3 md:py-4 text-xs md:text-sm touch-target"
               >
-                <BuildingIcon className="mr-2 h-4 w-4" />
-                Demo Recruiter
+                <BuildingIcon className="mr-1 md:mr-2 h-3 w-3 md:h-4 md:w-4" />
+                Recruiter
               </Button>
             </div>
 
             {/* Sign Up Link */}
             <div className="text-center pt-4 border-t">
-              <span className="text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account?{" "}
                 <Link
                   to="/register"
-                  className="text-blue-600 hover:underline font-medium"
+                  className="text-blue-600 hover:underline font-medium touch-target"
                 >
                   Create free account
                 </Link>

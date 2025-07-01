@@ -257,7 +257,9 @@ export default function Navbar() {
                           <Badge variant="secondary" className="w-fit text-xs">
                             {user.role === "job_seeker"
                               ? "Job Seeker"
-                              : "Recruiter"}
+                              : user.role === "recruiter"
+                                ? "Recruiter"
+                                : "Admin"}
                           </Badge>
                         </div>
                       </DropdownMenuLabel>

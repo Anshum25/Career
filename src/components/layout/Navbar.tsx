@@ -112,7 +112,7 @@ export default function Navbar() {
   const adminNavItems = [
     {
       name: "Dashboard",
-      path: "/admin",
+      path: "/dashboard/admin",
       icon: <BarChart3Icon className="h-4 w-4" />,
     },
     {

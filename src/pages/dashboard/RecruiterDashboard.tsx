@@ -83,7 +83,6 @@ import {
   Users2Icon,
   Target,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 // Mock data
 const mockStats = {

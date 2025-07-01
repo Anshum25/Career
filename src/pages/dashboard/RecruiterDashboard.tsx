@@ -187,11 +187,20 @@ const sidebarItems = [
 
 export default function RecruiterDashboard() {
   const { user } = useAuth();
+  const [searchParams] = useSearchParams();
   const [activeSection, setActiveSection] = useState("overview");
   const [selectedApplicants, setSelectedApplicants] = useState<string[]>([]);
   const [filterStatus, setFilterStatus] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [isNewJobModalOpen, setIsNewJobModalOpen] = useState(false);
+
+  // Handle URL parameters for section navigation
+  useEffect(() => {
+    const section = searchParams.get("section");
+    if (section) {
+      setActiveSection(section);
+    }
+  }, [searchParams]);
 
   const handleSelectApplicant = (applicantId: string) => {
     setSelectedApplicants((prev) =>

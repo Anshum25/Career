@@ -1108,49 +1108,11 @@ export default function RecruiterDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Sidebar */}
-      <div className="hidden lg:flex lg:w-64 lg:flex-col">
-        <div className="flex flex-col flex-grow pt-5 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
-          <div className="flex items-center flex-shrink-0 px-6">
-            <BriefcaseIcon className="h-8 w-8 text-blue-600" />
-            <span className="ml-2 text-xl font-bold">Recruiter</span>
-          </div>
-          <div className="mt-8 flex-grow flex flex-col">
-            <nav className="flex-1 px-3 space-y-1">
-              {sidebarItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveSection(item.id)}
-                  className={cn(
-                    "w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors",
-                    activeSection === item.id
-                      ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
-                      : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700",
-                  )}
-                >
-                  <item.icon className="mr-3 h-5 w-5" />
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu button */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
-        <Button variant="outline" size="sm">
-          <MoreHorizontalIcon className="h-4 w-4" />
-        </Button>
-      </div>
-
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <main className="flex-1 overflow-y-auto">
-          <div className="p-4 lg:p-8">{renderContent()}</div>
-        </main>
-      </div>
+      <main className="w-full">
+        <div className="max-w-7xl mx-auto p-4 lg:p-8">{renderContent()}</div>
+      </main>
 
       {/* New Job Modal */}
       <Dialog open={isNewJobModalOpen} onOpenChange={setIsNewJobModalOpen}>

@@ -14,11 +14,20 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   BriefcaseIcon,
   BuildingIcon,
   UserIcon,
   LoaderIcon,
+  EyeIcon,
+  EyeOffIcon,
+  MailIcon,
+  LockIcon,
+  BrainIcon,
+  CheckIcon,
+  StarIcon,
+  VideoIcon,
 } from "lucide-react";
 import { UserRole } from "@/lib/types";
 
@@ -26,6 +35,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState<UserRole>("job_seeker");
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
   const { login, loading } = useAuth();
   const navigate = useNavigate();
@@ -73,158 +84,283 @@ export default function Login() {
     }
   };
 
+  const roleFeatures = {
+    job_seeker: [
+      { icon: BrainIcon, text: "AI-powered job matching" },
+      { icon: VideoIcon, text: "Resume builder & optimization" },
+      { icon: StarIcon, text: "Interview practice & coaching" },
+      { icon: CheckIcon, text: "One-click job applications" },
+    ],
+    recruiter: [
+      { icon: BrainIcon, text: "AI candidate screening" },
+      { icon: UserIcon, text: "Advanced talent search" },
+      { icon: VideoIcon, text: "Interview scheduling tools" },
+      { icon: CheckIcon, text: "Hiring analytics & insights" },
+    ],
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted/30 px-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <BriefcaseIcon className="h-12 w-12 text-primary" />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 px-4 py-8">
+      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* Left Side - Welcome Content */}
+        <div className="space-y-8 text-center lg:text-left">
+          <div className="space-y-4">
+            <div className="flex justify-center lg:justify-start">
+              <BriefcaseIcon className="h-16 w-16 text-blue-600" />
+            </div>
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+              Welcome back to{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                CareerAI
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+              Continue your AI-powered career journey. Find jobs, build resumes,
+              and connect with opportunities that match your skills perfectly.
+            </p>
           </div>
-          <CardTitle className="text-2xl">Welcome Back</CardTitle>
-          <CardDescription>
-            Sign in to your CareerAI account to continue your journey
-          </CardDescription>
-        </CardHeader>
 
-        <CardContent className="space-y-6">
-          <Tabs
-            value={selectedRole}
-            onValueChange={(value) => setSelectedRole(value as UserRole)}
-          >
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger
-                value="job_seeker"
-                className="flex items-center gap-2"
-              >
-                <UserIcon className="h-4 w-4" />
-                Job Seeker
-              </TabsTrigger>
-              <TabsTrigger
-                value="recruiter"
-                className="flex items-center gap-2"
-              >
-                <BuildingIcon className="h-4 w-4" />
-                Recruiter
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="job_seeker" className="space-y-4 mt-6">
-              <div className="space-y-2">
-                <p className="text-sm text-muted-foreground">
-                  Access AI-powered job matching, resume builder, and career
-                  coaching tools.
-                </p>
+          {/* Feature Highlights */}
+          <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
+            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+              <div className="text-2xl font-bold text-blue-600">500K+</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Active Users
               </div>
-            </TabsContent>
-
-            <TabsContent value="recruiter" className="space-y-4 mt-6">
-              <div className="space-y-2">
-                <p className="text-sm text-muted-foreground">
-                  Find top talent with AI matching, instant interviews, and
-                  smart hiring tools.
-                </p>
+            </div>
+            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+              <div className="text-2xl font-bold text-green-600">89%</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Success Rate
               </div>
-            </TabsContent>
-          </Tabs>
-
-          {error && (
-            <Alert variant="destructive">
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+              <div className="text-2xl font-bold text-purple-600">2.5M+</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                AI Matches
+              </div>
             </div>
+            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
+              <div className="text-2xl font-bold text-orange-600">125K+</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Jobs Posted
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <div className="flex items-center justify-between">
-              <Link
-                to="/forgot-password"
-                className="text-sm text-primary hover:underline"
+        {/* Right Side - Login Form */}
+        <Card className="w-full max-w-md mx-auto shadow-2xl border-0">
+          <CardHeader className="text-center space-y-4">
+            <CardTitle className="text-2xl font-bold">Sign In</CardTitle>
+            <CardDescription className="text-base">
+              Enter your credentials to access your account
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent className="space-y-6">
+            {/* Role Selection */}
+            <Tabs
+              value={selectedRole}
+              onValueChange={(value) => setSelectedRole(value as UserRole)}
+            >
+              <TabsList className="grid w-full grid-cols-2 h-12">
+                <TabsTrigger
+                  value="job_seeker"
+                  className="flex items-center gap-2 text-sm py-2"
+                >
+                  <UserIcon className="h-4 w-4" />
+                  Job Seeker
+                </TabsTrigger>
+                <TabsTrigger
+                  value="recruiter"
+                  className="flex items-center gap-2 text-sm py-2"
+                >
+                  <BuildingIcon className="h-4 w-4" />
+                  Recruiter
+                </TabsTrigger>
+              </TabsList>
+
+              {/* Role Description */}
+              <div className="mt-4">
+                <TabsContent value="job_seeker">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                    <h4 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">
+                      Job Seeker Access
+                    </h4>
+                    <div className="space-y-1">
+                      {roleFeatures.job_seeker.map((feature, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <feature.icon className="h-4 w-4 text-blue-600" />
+                          <span className="text-sm text-blue-800 dark:text-blue-200">
+                            {feature.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="recruiter">
+                  <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
+                    <h4 className="font-semibold text-purple-900 dark:text-purple-300 mb-2">
+                      Recruiter Access
+                    </h4>
+                    <div className="space-y-1">
+                      {roleFeatures.recruiter.map((feature, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <feature.icon className="h-4 w-4 text-purple-600" />
+                          <span className="text-sm text-purple-800 dark:text-purple-200">
+                            {feature.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
+              </div>
+            </Tabs>
+
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+
+            {/* Login Form */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address</Label>
+                <div className="relative">
+                  <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="pl-10"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <div className="relative">
+                  <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
+                    className="pl-10 pr-10"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    {showPassword ? (
+                      <EyeOffIcon className="h-4 w-4" />
+                    ) : (
+                      <EyeIcon className="h-4 w-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="remember"
+                    checked={rememberMe}
+                    onCheckedChange={(checked) => setRememberMe(!!checked)}
+                  />
+                  <Label htmlFor="remember" className="text-sm">
+                    Remember me
+                  </Label>
+                </div>
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-blue-600 hover:underline"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full py-6 text-lg"
+                disabled={loading}
               >
-                Forgot password?
-              </Link>
+                {loading ? (
+                  <>
+                    <LoaderIcon className="mr-2 h-5 w-5 animate-spin" />
+                    Signing in...
+                  </>
+                ) : (
+                  "Sign In"
+                )}
+              </Button>
+            </form>
+
+            {/* Demo Accounts */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <Separator className="w-full" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or try demo accounts
+                </span>
+              </div>
             </div>
 
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? (
-                <>
-                  <LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                "Sign In"
-              )}
-            </Button>
-          </form>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <Separator className="w-full" />
+            <div className="grid grid-cols-2 gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  handleDemoLogin("job_seeker", "demo.jobseeker@carerai.com")
+                }
+                disabled={loading}
+                className="py-4"
+              >
+                <UserIcon className="mr-2 h-4 w-4" />
+                Demo Seeker
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  handleDemoLogin("recruiter", "demo.recruiter@carerai.com")
+                }
+                disabled={loading}
+                className="py-4"
+              >
+                <BuildingIcon className="mr-2 h-4 w-4" />
+                Demo Recruiter
+              </Button>
             </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or try demo accounts
+
+            {/* Sign Up Link */}
+            <div className="text-center pt-4 border-t">
+              <span className="text-sm text-gray-600 dark:text-gray-400">
+                Don't have an account?{" "}
+                <Link
+                  to="/register"
+                  className="text-blue-600 hover:underline font-medium"
+                >
+                  Create free account
+                </Link>
               </span>
             </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() =>
-                handleDemoLogin("job_seeker", "demo.jobseeker@carerai.com")
-              }
-              disabled={loading}
-            >
-              <UserIcon className="mr-2 h-4 w-4" />
-              Demo Seeker
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() =>
-                handleDemoLogin("recruiter", "demo.recruiter@carerai.com")
-              }
-              disabled={loading}
-            >
-              <BuildingIcon className="mr-2 h-4 w-4" />
-              Demo Recruiter
-            </Button>
-          </div>
-
-          <div className="text-center">
-            <span className="text-sm text-muted-foreground">
-              Don't have an account?{" "}
-              <Link to="/register" className="text-primary hover:underline">
-                Sign up
-              </Link>
-            </span>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

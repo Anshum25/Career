@@ -537,11 +537,17 @@ export default function Register() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="fullName">Full Name *</Label>
+                        <Label
+                          htmlFor="fullName"
+                          className="text-sm md:text-base"
+                        >
+                          Full Name *
+                        </Label>
                         <Input
                           id="fullName"
                           type="text"
                           placeholder="Enter your full name"
+                          className="h-10 md:h-12 text-sm md:text-base"
                           value={recruiterData.fullName}
                           onChange={(e) =>
                             handleRecruiterInputChange(

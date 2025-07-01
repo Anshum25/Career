@@ -26,6 +26,8 @@ import {
   LogOutIcon,
   MenuIcon,
   XIcon,
+  BuildingIcon,
+  BellIcon,
 } from "lucide-react";
 
 export default function Navbar() {

@@ -166,25 +166,26 @@ export default function Login() {
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4 md:space-y-6 p-6 md:p-8">
             {/* Role Selection */}
             <Tabs
               value={selectedRole}
               onValueChange={(value) => setSelectedRole(value as UserRole)}
             >
-              <TabsList className="grid w-full grid-cols-2 h-12">
+              <TabsList className="grid w-full grid-cols-2 h-10 md:h-12">
                 <TabsTrigger
                   value="job_seeker"
-                  className="flex items-center gap-2 text-sm py-2"
+                  className="flex items-center gap-1 md:gap-2 text-xs md:text-sm py-2"
                 >
-                  <UserIcon className="h-4 w-4" />
-                  Job Seeker
+                  <UserIcon className="h-3 w-3 md:h-4 md:w-4" />
+                  <span className="hidden sm:inline">Job Seeker</span>
+                  <span className="sm:hidden">Seeker</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="recruiter"
-                  className="flex items-center gap-2 text-sm py-2"
+                  className="flex items-center gap-1 md:gap-2 text-xs md:text-sm py-2"
                 >
-                  <BuildingIcon className="h-4 w-4" />
+                  <BuildingIcon className="h-3 w-3 md:h-4 md:w-4" />
                   Recruiter
                 </TabsTrigger>
               </TabsList>
@@ -192,15 +193,15 @@ export default function Login() {
               {/* Role Description */}
               <div className="mt-4">
                 <TabsContent value="job_seeker">
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg">
+                    <h4 className="font-semibold text-blue-900 dark:text-blue-300 mb-2 text-sm md:text-base">
                       Job Seeker Access
                     </h4>
                     <div className="space-y-1">
                       {roleFeatures.job_seeker.map((feature, index) => (
                         <div key={index} className="flex items-center gap-2">
-                          <feature.icon className="h-4 w-4 text-blue-600" />
-                          <span className="text-sm text-blue-800 dark:text-blue-200">
+                          <feature.icon className="h-3 w-3 md:h-4 md:w-4 text-blue-600 flex-shrink-0" />
+                          <span className="text-xs md:text-sm text-blue-800 dark:text-blue-200">
                             {feature.text}
                           </span>
                         </div>
@@ -210,15 +211,15 @@ export default function Login() {
                 </TabsContent>
 
                 <TabsContent value="recruiter">
-                  <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
-                    <h4 className="font-semibold text-purple-900 dark:text-purple-300 mb-2">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg">
+                    <h4 className="font-semibold text-blue-900 dark:text-blue-300 mb-2 text-sm md:text-base">
                       Recruiter Access
                     </h4>
                     <div className="space-y-1">
                       {roleFeatures.recruiter.map((feature, index) => (
                         <div key={index} className="flex items-center gap-2">
-                          <feature.icon className="h-4 w-4 text-purple-600" />
-                          <span className="text-sm text-purple-800 dark:text-purple-200">
+                          <feature.icon className="h-3 w-3 md:h-4 md:w-4 text-blue-600 flex-shrink-0" />
+                          <span className="text-xs md:text-sm text-blue-800 dark:text-blue-200">
                             {feature.text}
                           </span>
                         </div>

@@ -409,21 +409,21 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 px-4 py-8">
-      <Card className="w-full max-w-4xl">
-        <CardHeader className="text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-8">
+      <Card className="w-full max-w-4xl shadow-xl border border-gray-200 dark:border-gray-700">
+        <CardHeader className="text-center p-6 md:p-8">
           <div className="flex justify-center mb-4">
-            <BriefcaseIcon className="h-12 w-12 text-blue-600" />
+            <BriefcaseIcon className="h-10 w-10 md:h-12 md:w-12 text-blue-600" />
           </div>
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <CardTitle className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">
             Join CareerAI
           </CardTitle>
-          <CardDescription className="text-lg">
+          <CardDescription className="text-base md:text-lg">
             Create your account and start your AI-powered career journey
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-8">
+        <CardContent className="space-y-6 md:space-y-8 p-6 md:p-8">
           {/* Role Selection */}
           <Tabs
             value={selectedRole}

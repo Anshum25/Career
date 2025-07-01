@@ -109,8 +109,45 @@ export default function Navbar() {
     },
   ];
 
+  const adminNavItems = [
+    {
+      name: "Dashboard",
+      path: "/admin",
+      icon: <BarChart3Icon className="h-4 w-4" />,
+    },
+    {
+      name: "Users",
+      path: "/admin/users",
+      icon: <UserIcon className="h-4 w-4" />,
+    },
+    {
+      name: "Recruiters",
+      path: "/admin/recruiters",
+      icon: <BuildingIcon className="h-4 w-4" />,
+    },
+    {
+      name: "Jobs",
+      path: "/admin/jobs",
+      icon: <BriefcaseIcon className="h-4 w-4" />,
+    },
+    {
+      name: "Reports",
+      path: "/admin/reports",
+      icon: <FileTextIcon className="h-4 w-4" />,
+    },
+    {
+      name: "Settings",
+      path: "/admin/settings",
+      icon: <SettingsIcon className="h-4 w-4" />,
+    },
+  ];
+
   const coreNavItems =
-    user?.role === "recruiter" ? recruiterNavItems : jobSeekerNavItems;
+    user?.role === "admin"
+      ? adminNavItems
+      : user?.role === "recruiter"
+        ? recruiterNavItems
+        : jobSeekerNavItems;
 
   const NavLink = ({
     item,

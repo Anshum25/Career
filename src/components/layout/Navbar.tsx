@@ -272,6 +272,32 @@ export default function Navbar() {
                 {coreNavItems.map((item) => (
                   <NavLink key={item.path} item={item} mobile />
                 ))}
+                {/* Mobile Profile Section */}
+                <div className="pt-4 mt-4 border-t border-slate-200 dark:border-slate-700 space-y-2">
+                  <Link
+                    to="/profile/naukri"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <UserIcon className="h-5 w-5" />
+                    View Profile
+                  </Link>
+                  <Link
+                    to="/profile/naukri"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <SettingsIcon className="h-5 w-5" />
+                    Settings
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200"
+                  >
+                    <LogOutIcon className="h-5 w-5" />
+                    Logout
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}

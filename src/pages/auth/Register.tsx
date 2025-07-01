@@ -432,35 +432,39 @@ export default function Register() {
               resetForm();
             }}
           >
-            <TabsList className="grid w-full grid-cols-2 h-14">
+            <TabsList className="grid w-full grid-cols-2 h-12 md:h-14">
               <TabsTrigger
                 value="job_seeker"
-                className="flex items-center gap-2 text-base py-3"
+                className="flex items-center gap-1 md:gap-2 text-sm md:text-base py-3"
               >
-                <UserIcon className="h-5 w-5" />
-                Job Seeker
+                <UserIcon className="h-4 w-4 md:h-5 md:w-5" />
+                <span className="hidden sm:inline">Job Seeker</span>
+                <span className="sm:hidden">Seeker</span>
               </TabsTrigger>
               <TabsTrigger
                 value="recruiter"
-                className="flex items-center gap-2 text-base py-3"
+                className="flex items-center gap-1 md:gap-2 text-sm md:text-base py-3"
               >
-                <BuildingIcon className="h-5 w-5" />
+                <BuildingIcon className="h-4 w-4 md:h-5 md:w-5" />
                 Recruiter
               </TabsTrigger>
             </TabsList>
 
             {/* Role Benefits */}
-            <div className="mt-6">
+            <div className="mt-4 md:mt-6">
               <TabsContent value="job_seeker">
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl">
-                  <h3 className="font-semibold text-lg mb-4 text-blue-900 dark:text-blue-300">
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 md:p-6 rounded-xl">
+                  <h3 className="font-semibold text-base md:text-lg mb-3 md:mb-4 text-blue-900 dark:text-blue-300">
                     What you'll get as a Job Seeker:
                   </h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {roleFeatures.job_seeker.map((feature, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <feature.icon className="h-5 w-5 text-blue-600" />
-                        <span className="text-sm font-medium text-blue-800 dark:text-blue-200">
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 md:gap-3"
+                      >
+                        <feature.icon className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
+                        <span className="text-xs md:text-sm font-medium text-blue-800 dark:text-blue-200">
                           {feature.text}
                         </span>
                       </div>
@@ -470,15 +474,18 @@ export default function Register() {
               </TabsContent>
 
               <TabsContent value="recruiter">
-                <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-xl">
-                  <h3 className="font-semibold text-lg mb-4 text-purple-900 dark:text-purple-300">
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 md:p-6 rounded-xl">
+                  <h3 className="font-semibold text-base md:text-lg mb-3 md:mb-4 text-blue-900 dark:text-blue-300">
                     What you'll get as a Recruiter:
                   </h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {roleFeatures.recruiter.map((feature, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <feature.icon className="h-5 w-5 text-purple-600" />
-                        <span className="text-sm font-medium text-purple-800 dark:text-purple-200">
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 md:gap-3"
+                      >
+                        <feature.icon className="h-4 w-4 md:h-5 md:w-5 text-blue-600 flex-shrink-0" />
+                        <span className="text-xs md:text-sm font-medium text-blue-800 dark:text-blue-200">
                           {feature.text}
                         </span>
                       </div>

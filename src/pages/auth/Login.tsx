@@ -100,49 +100,55 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 px-4 py-8">
-      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-8">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Left Side - Welcome Content */}
-        <div className="space-y-8 text-center lg:text-left">
-          <div className="space-y-4">
+        <div className="space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1">
+          <div className="space-y-4 md:space-y-6">
             <div className="flex justify-center lg:justify-start">
-              <BriefcaseIcon className="h-16 w-16 text-blue-600" />
+              <BriefcaseIcon className="h-12 w-12 md:h-16 md:w-16 text-blue-600" />
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
               Welcome back to{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                CareerAI
-              </span>
+              <span className="text-blue-600 dark:text-blue-400">CareerAI</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
               Continue your AI-powered career journey. Find jobs, build resumes,
               and connect with opportunities that match your skills perfectly.
             </p>
           </div>
 
           {/* Feature Highlights */}
-          <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
-            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-              <div className="text-2xl font-bold text-blue-600">500K+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+          <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-lg mx-auto lg:mx-0">
+            <div className="text-center p-3 md:p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="text-xl md:text-2xl font-bold text-blue-600">
+                500K+
+              </div>
+              <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
                 Active Users
               </div>
             </div>
-            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-              <div className="text-2xl font-bold text-green-600">89%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-center p-3 md:p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="text-xl md:text-2xl font-bold text-green-600">
+                89%
+              </div>
+              <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
                 Success Rate
               </div>
             </div>
-            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-              <div className="text-2xl font-bold text-purple-600">2.5M+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-center p-3 md:p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="text-xl md:text-2xl font-bold text-blue-600">
+                2.5M+
+              </div>
+              <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
                 AI Matches
               </div>
             </div>
-            <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm">
-              <div className="text-2xl font-bold text-orange-600">125K+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-center p-3 md:p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="text-xl md:text-2xl font-bold text-blue-600">
+                125K+
+              </div>
+              <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
                 Jobs Posted
               </div>
             </div>
@@ -150,10 +156,12 @@ export default function Login() {
         </div>
 
         {/* Right Side - Login Form */}
-        <Card className="w-full max-w-md mx-auto shadow-2xl border-0">
-          <CardHeader className="text-center space-y-4">
-            <CardTitle className="text-2xl font-bold">Sign In</CardTitle>
-            <CardDescription className="text-base">
+        <Card className="w-full max-w-md mx-auto shadow-xl border border-gray-200 dark:border-gray-700 order-1 lg:order-2">
+          <CardHeader className="text-center space-y-3 md:space-y-4 p-6 md:p-8">
+            <CardTitle className="text-xl md:text-2xl font-bold">
+              Sign In
+            </CardTitle>
+            <CardDescription className="text-sm md:text-base">
               Enter your credentials to access your account
             </CardDescription>
           </CardHeader>
